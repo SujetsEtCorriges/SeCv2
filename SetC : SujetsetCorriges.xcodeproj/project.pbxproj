@@ -18,12 +18,14 @@
 		9127A15D167D36FD00D1EB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A15C167D36FD00D1EB09 /* Default-568h@2x.png */; };
 		9127A160167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */; };
 		9127A163167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9127A161167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard */; };
-		9127A166167D36FD00D1EB09 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A165167D36FD00D1EB09 /* FirstViewController.m */; };
+		9127A166167D36FD00D1EB09 /* ActuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A165167D36FD00D1EB09 /* ActuViewController.m */; };
 		9127A168167D36FD00D1EB09 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A167167D36FD00D1EB09 /* first.png */; };
 		9127A16A167D36FD00D1EB09 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A169167D36FD00D1EB09 /* first@2x.png */; };
 		9127A16D167D36FD00D1EB09 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A16C167D36FD00D1EB09 /* SecondViewController.m */; };
 		9127A16F167D36FD00D1EB09 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A16E167D36FD00D1EB09 /* second.png */; };
 		9127A171167D36FD00D1EB09 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A170167D36FD00D1EB09 /* second@2x.png */; };
+		9127A17F167D378F00D1EB09 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A17C167D378F00D1EB09 /* ECSlidingViewController.m */; };
+		9127A180167D378F00D1EB09 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A17E167D378F00D1EB09 /* UIImage+ImageWithUIView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,14 +44,18 @@
 		9127A15C167D36FD00D1EB09 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9127A15F167D36FD00D1EB09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		9127A162167D36FD00D1EB09 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		9127A164167D36FD00D1EB09 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		9127A165167D36FD00D1EB09 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		9127A164167D36FD00D1EB09 /* ActuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActuViewController.h; sourceTree = "<group>"; };
+		9127A165167D36FD00D1EB09 /* ActuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActuViewController.m; sourceTree = "<group>"; };
 		9127A167167D36FD00D1EB09 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		9127A169167D36FD00D1EB09 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		9127A16B167D36FD00D1EB09 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		9127A16C167D36FD00D1EB09 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		9127A16E167D36FD00D1EB09 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		9127A170167D36FD00D1EB09 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		9127A17B167D378F00D1EB09 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		9127A17C167D378F00D1EB09 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		9127A17D167D378F00D1EB09 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		9127A17E167D378F00D1EB09 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,18 +102,15 @@
 		9127A14C167D36FD00D1EB09 /* SetC : SujetsetCorriges */ = {
 			isa = PBXGroup;
 			children = (
+				9127A177167D370B00D1EB09 /* Actualité */,
 				9127A155167D36FD00D1EB09 /* AppDelegate.h */,
 				9127A156167D36FD00D1EB09 /* AppDelegate.m */,
 				9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */,
 				9127A161167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard */,
-				9127A164167D36FD00D1EB09 /* FirstViewController.h */,
-				9127A165167D36FD00D1EB09 /* FirstViewController.m */,
-				9127A167167D36FD00D1EB09 /* first.png */,
-				9127A169167D36FD00D1EB09 /* first@2x.png */,
 				9127A16B167D36FD00D1EB09 /* SecondViewController.h */,
 				9127A16C167D36FD00D1EB09 /* SecondViewController.m */,
-				9127A16E167D36FD00D1EB09 /* second.png */,
-				9127A170167D36FD00D1EB09 /* second@2x.png */,
+				9127A17A167D376D00D1EB09 /* ECSliding */,
+				9127A179167D376700D1EB09 /* Image */,
 				9127A14D167D36FD00D1EB09 /* Supporting Files */,
 			);
 			path = "SetC : SujetsetCorriges";
@@ -125,6 +128,37 @@
 				9127A15C167D36FD00D1EB09 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9127A177167D370B00D1EB09 /* Actualité */ = {
+			isa = PBXGroup;
+			children = (
+				9127A164167D36FD00D1EB09 /* ActuViewController.h */,
+				9127A165167D36FD00D1EB09 /* ActuViewController.m */,
+			);
+			name = "Actualité";
+			sourceTree = "<group>";
+		};
+		9127A179167D376700D1EB09 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				9127A167167D36FD00D1EB09 /* first.png */,
+				9127A169167D36FD00D1EB09 /* first@2x.png */,
+				9127A16E167D36FD00D1EB09 /* second.png */,
+				9127A170167D36FD00D1EB09 /* second@2x.png */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		9127A17A167D376D00D1EB09 /* ECSliding */ = {
+			isa = PBXGroup;
+			children = (
+				9127A17B167D378F00D1EB09 /* ECSlidingViewController.h */,
+				9127A17C167D378F00D1EB09 /* ECSlidingViewController.m */,
+				9127A17D167D378F00D1EB09 /* UIImage+ImageWithUIView.h */,
+				9127A17E167D378F00D1EB09 /* UIImage+ImageWithUIView.m */,
+			);
+			name = ECSliding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,8 +234,10 @@
 			files = (
 				9127A153167D36FD00D1EB09 /* main.m in Sources */,
 				9127A157167D36FD00D1EB09 /* AppDelegate.m in Sources */,
-				9127A166167D36FD00D1EB09 /* FirstViewController.m in Sources */,
+				9127A166167D36FD00D1EB09 /* ActuViewController.m in Sources */,
 				9127A16D167D36FD00D1EB09 /* SecondViewController.m in Sources */,
+				9127A17F167D378F00D1EB09 /* ECSlidingViewController.m in Sources */,
+				9127A180167D378F00D1EB09 /* UIImage+ImageWithUIView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

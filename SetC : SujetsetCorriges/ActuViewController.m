@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 SeC. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "ActuViewController.h"
 
-@interface FirstViewController ()
+@interface ActuViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation ActuViewController
 
 - (void)viewDidLoad
 {
