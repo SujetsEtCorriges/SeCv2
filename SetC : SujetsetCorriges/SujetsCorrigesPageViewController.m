@@ -1,0 +1,285 @@
+//
+//  SujetsCorrigesPageViewController.m
+//  SetC : SujetsetCorriges
+//
+//  Created by Mestiri Hedi on 16/12/12.
+//  Copyright (c) 2012 SeC. All rights reserved.
+//
+
+#import "SujetsCorrigesPageViewController.h"
+
+#import "SujetsCorrigesListViewController.h"
+#import "ECSlidingViewController.h"
+#import "ConcoursListViewController.h"
+#import "VariableStore.h"
+
+//ASIHTTPRequest
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+
+@interface SujetsCorrigesPageViewController ()
+
+@end
+
+@implementation SujetsCorrigesPageViewController
+
+@synthesize pageController = pageController_;
+@synthesize pageContent = pageContent_;
+@synthesize concours = concours_;
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    
+    VariableStore *obj=[VariableStore getInstance];
+    concours_ = obj.concours;
+    filiere_ = obj.filiere;
+    
+    [self createContentPages];
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin] forKey: UIPageViewControllerOptionSpineLocationKey];
+    
+    self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
+    
+    pageController_.dataSource = self;
+    [[pageController_ view] setFrame:[[self view] bounds]];
+    
+    SujetsCorrigesListViewController *initialViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    
+    [self addChildViewController:pageController_];
+    [[self view] addSubview:[pageController_ view]];
+    [pageController_ didMoveToParentViewController:self];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[ConcoursListViewController class]])
+    {
+        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"concoursListSideView"];
+    }
+    
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    [self.slidingViewController setAnchorRightRevealAmount:200.0f];
+}
+
+
+- (IBAction)affichageConcours:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+// Méthode pour le page view controller
+- (SujetsCorrigesListViewController *)viewControllerAtIndex:(NSUInteger)index
+{
+    // Return the data view controller for the given index.
+    if (([self.pageContent count] == 0) || (index >= [self.pageContent count]))
+    {
+        return nil;
+    }
+    
+    // Create a new view controller and pass suitable data.
+    SujetsCorrigesListViewController *dataViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsListView"];
+    if ([concours_ isEqualToString:@"aucun"])
+    {
+        dataViewController.intro = YES;
+        return dataViewController;
+    }
+    else
+    {
+        dataViewController.listeSujCor = [self.pageContent objectAtIndex:index];
+        dataViewController.intro = NO;
+        dataViewController.concours = concours_;
+        dataViewController.filiere = filiere_;
+        return dataViewController;
+    }
+    
+}
+
+- (NSUInteger)indexOfViewController:(SujetsCorrigesListViewController *)viewController
+{
+    return [self.pageContent indexOfObject:viewController.listeSujCor];
+}
+
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSUInteger index = [self indexOfViewController:(SujetsCorrigesListViewController *)viewController];
+    if ((index == 0) || (index == NSNotFound))
+    {
+        return nil;
+    }
+    
+    index--;
+    
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NSUInteger index = [self indexOfViewController:(SujetsCorrigesListViewController *)viewController];
+    if (index == NSNotFound)
+    {
+        return nil;
+    }
+    
+    index++;
+    
+    if (index == [self.pageContent count])
+    {
+        return nil;
+    }
+    
+    return [self viewControllerAtIndex:index];
+}
+
+
+
+#pragma mark - XMLParserDelegate
+- (void) parseXMLFile:(NSString*)theData
+{
+    @autoreleasepool
+    {
+        parser_ = [[XMLParser alloc] init];
+        parser_.delegate = self;
+        if ([parser_.XMLData count] == 0)
+        {
+            [parser_ parseXMLFileAtData:theData];
+        }
+    }
+}
+
+- (void) xmlParser:(XMLParser *)parser didFinishParsing:(NSArray *)array
+{
+    
+}
+
+- (void) xmlParser:(XMLParser *)parser didFailWithError:(NSArray *)error
+{
+    
+}
+
+
+//algorithme création des pages
+- (void) createContentPages
+{
+    if ([concours_ isEqualToString:@"aucun"])
+    {
+        NSMutableArray *pageStrings = [[NSMutableArray alloc] init];
+        NSString *temp = @"intro";
+        [pageStrings addObject:temp];
+        pageContent_ = [[NSArray alloc] initWithArray:pageStrings];
+    }
+    else
+    {
+        if ([concours_ isEqualToString:@"Banque PT"])
+            filiere_ = @"PT";
+        else if ([concours_ isEqualToString:@"ENAC EPL"])
+            filiere_ = @"NC";
+        
+        NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/gestionXML/extractXML"];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        [request setPostValue:concours_ forKey:@"concours"];
+        [request setPostValue:filiere_ forKey:@"filiere"];
+        [request startSynchronous];
+        NSError *error = [request error];
+        if (!error)
+        {
+            parser_ = [[XMLParser alloc] init];
+            [parser_ parseXMLFileAtData:[request responseString]];
+            
+            //initialisation des variables temporaire
+            NSDictionary *tempSujCor = [[NSDictionary alloc] init];
+            NSString *tempMatiere = [[NSString alloc] init];
+            
+            //tableau des matières du concours
+            NSMutableArray *tabMatiere = [[NSMutableArray alloc] init];
+            
+            //booléen pour savoir si la matière a déjà été rencontré
+            BOOL found = NO;
+            
+            //dictionnaire avec clé le nom de matière et pour valeur un tableau contenant les éléments XML correspondant à la matière
+            NSMutableDictionary *tabSujCor = [[NSMutableDictionary alloc] init];
+            
+            //pour chaque entrée du XML
+            for (int i=0; i<[parser_.XMLData count]; i++)
+            {
+                //on prend l'entrée et on enregistre la matière
+                tempSujCor = [parser_.XMLData objectAtIndex:i];
+                tempMatiere= [tempSujCor objectForKey:kMatiere];
+                
+                //on recherche si la matière est dans le tableau
+                for (NSString *mat in tabMatiere)
+                {
+                    if ([mat isEqualToString:tempMatiere])
+                    {
+                        found = YES;
+                        break;
+                    }
+                }
+                
+                //si la matière n'a pas été trouvé
+                if (!found)
+                {
+                    //on ajoute la matière dans le tableau
+                    [tabMatiere addObject:tempMatiere];
+                    
+                    //on créé un tableau qui contiendra les éléments XML correspondant à une matière particulière
+                    NSMutableArray *tabElement = [[NSMutableArray alloc] init];
+                    
+                    //on ajoute l'élément XML actuel dans le tableau d'ID
+                    [tabElement addObject:tempSujCor];
+                    
+                    //on ajoute dans le dictionnaire le tableau d'élément avec pour clé le nom de la matière
+                    [tabSujCor setObject:tabElement forKey:tempMatiere];
+                    
+                    found = NO;
+                }
+                else
+                {
+                    //la matière existe, dans un tableau d'élément existe pour cette matière, on l'enregistre
+                    //NSMutableArray *tabElement = [[NSMutableArray alloc] init];
+                    NSMutableArray *tabElement = [tabSujCor objectForKey:tempMatiere];
+                    
+                    //on rajoute à ce tableau l'élément actuel
+                    [tabElement addObject:tempSujCor];
+                    
+                    //on remplace l'ancien tableau d'élément par le nouveau dans le dictionnaire
+                    [tabSujCor setObject:tabElement forKey:tempMatiere];
+                    
+                    found = NO;
+                }
+            }
+            
+            //Organisation du tableau matière par ordre alphabétique
+            NSArray *matiereOrdreAlphabetique = [tabMatiere sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            
+            NSMutableArray *pageStrings = [[NSMutableArray alloc] init];
+            for (NSString *mat in matiereOrdreAlphabetique)
+            {
+                NSMutableArray *temp = [tabSujCor objectForKey:mat];
+                [pageStrings addObject:temp];
+            }
+            
+            pageContent_ = [[NSArray alloc] initWithArray:pageStrings];
+        }
+    }
+}
+
+@end

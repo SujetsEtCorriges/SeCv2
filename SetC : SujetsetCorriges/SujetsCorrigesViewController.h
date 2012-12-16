@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 SeC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ECSlidingViewController.h"
 
-@interface SecondViewController : UIViewController
+@interface SujetsCorrigesViewController : ECSlidingViewController
 
 @end

@@ -6,18 +6,20 @@
 //  Copyright (c) 2012 SeC. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "SujetsCorrigesViewController.h"
 
-@interface SecondViewController ()
+@interface SujetsCorrigesViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation SujetsCorrigesViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.topViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsCorrigesNavigation"];
 }
 
 - (void)didReceiveMemoryWarning
