@@ -140,17 +140,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*ActuDetailViewController *actuDetailViewController = [[ActuDetailViewController alloc] init];
-    
-    actuDetailViewController.url = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"link"];
-    actuDetailViewController.texte = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"summary"];
-    actuDetailViewController.titre = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
-    actuDetailViewController.auteur = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"author"];
-    actuDetailViewController.date = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"];
-    actuDetailViewController.idArticle = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"id"];
-    
-    [self.navigationController pushViewController:actuDetailViewController animated:YES];*/
-    
     [self performSegueWithIdentifier: @"pushToNewsDetails" sender: self];
 }
 

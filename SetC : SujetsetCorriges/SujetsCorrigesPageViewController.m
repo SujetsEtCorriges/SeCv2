@@ -49,7 +49,43 @@
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
         
+    [self createPageViewController];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+
+//SLIDER
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
+    if (![self.slidingViewController.underLeftViewController isKindOfClass:[ConcoursListViewController class]])
+    {
+        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"concoursListSideView"];
+    }
+    
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    [self.slidingViewController setAnchorRightRevealAmount:200.0f];
+}
+
+- (IBAction)affichageConcours:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECRight];
+}
+
+
+
+
+#pragma mark - UIPageViewControllerDelegate
+- (void)createPageViewController
+{
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin] forKey: UIPageViewControllerOptionSpineLocationKey];
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
@@ -67,28 +103,62 @@
     [pageController_ didMoveToParentViewController:self];
 }
 
-
-- (void)viewWillAppear:(BOOL)animated
+- (SujetsCorrigesListViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    [super viewWillAppear:animated];
-    
-    if (![self.slidingViewController.underLeftViewController isKindOfClass:[ConcoursListViewController class]])
+    // Return the data view controller for the given index.
+    if (([self.pageContent count] == 0) || (index >= [self.pageContent count]))
     {
-        self.slidingViewController.underLeftViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"concoursListSideView"];
+        return nil;
     }
     
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    [self.slidingViewController setAnchorRightRevealAmount:200.0f];
+    // Create a new view controller and pass suitable data.
+    SujetsCorrigesListViewController *dataViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsListView"];
+
+    dataViewController.listeSujCor = [self.pageContent objectAtIndex:index];
+    return dataViewController;
+    
 }
 
-
-- (IBAction)affichageConcours:(id)sender
+- (NSUInteger)indexOfViewController:(SujetsCorrigesListViewController *)viewController
 {
-    [self.slidingViewController anchorTopViewTo:ECRight];
+    return [self.pageContent indexOfObject:viewController.listeSujCor];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    NSUInteger index = [self indexOfViewController:(SujetsCorrigesListViewController *)viewController];
+    if ((index == 0) || (index == NSNotFound))
+    {
+        return nil;
+    }
+    
+    index--;
+    
+    return [self viewControllerAtIndex:index];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    NSUInteger index = [self indexOfViewController:(SujetsCorrigesListViewController *)viewController];
+    if (index == NSNotFound)
+    {
+        return nil;
+    }
+    
+    index++;
+    
+    if (index == [self.pageContent count])
+    {
+        return nil;
+    }
+    
+    return [self viewControllerAtIndex:index];
 }
 
 
 
+
+#pragma mark - PickerViewDelegate
 - (void) choixFiliere:(id)sender
 {
     tabFiliere_ = [[NSArray alloc] initWithObjects:@"MP", @"PC", @"PSI", nil];
@@ -127,7 +197,6 @@
     [menu_ setBounds:CGRectMake(0, 0, 320, 485)];
 }
 
-
 - (void) changeFiliere:(id)sender
 {
     [menu_ dismissWithClickedButtonIndex:0 animated:YES];
@@ -142,72 +211,6 @@
     [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-#pragma mark - UIPageViewControllerDelegate
-- (SujetsCorrigesListViewController *)viewControllerAtIndex:(NSUInteger)index
-{
-    // Return the data view controller for the given index.
-    if (([self.pageContent count] == 0) || (index >= [self.pageContent count]))
-    {
-        return nil;
-    }
-    
-    // Create a new view controller and pass suitable data.
-    SujetsCorrigesListViewController *dataViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsListView"];
-
-    dataViewController.listeSujCor = [self.pageContent objectAtIndex:index];
-    return dataViewController;
-    
-}
-
-- (NSUInteger)indexOfViewController:(SujetsCorrigesListViewController *)viewController
-{
-    return [self.pageContent indexOfObject:viewController.listeSujCor];
-}
-
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-{
-    NSUInteger index = [self indexOfViewController:(SujetsCorrigesListViewController *)viewController];
-    if ((index == 0) || (index == NSNotFound))
-    {
-        return nil;
-    }
-    
-    index--;
-    
-    return [self viewControllerAtIndex:index];
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-{
-    NSUInteger index = [self indexOfViewController:(SujetsCorrigesListViewController *)viewController];
-    if (index == NSNotFound)
-    {
-        return nil;
-    }
-    
-    index++;
-    
-    if (index == [self.pageContent count])
-    {
-        return nil;
-    }
-    
-    return [self viewControllerAtIndex:index];
-}
-
-
-#pragma mark - PickerViewDelegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
 {
     
@@ -230,6 +233,7 @@
     filiereRow_ = row;
     filiere_ = [tabFiliere_ objectAtIndex:row];
 }
+
 
 
 
@@ -256,6 +260,8 @@
 {
     
 }
+
+
 
 
 //algorithme création des pages

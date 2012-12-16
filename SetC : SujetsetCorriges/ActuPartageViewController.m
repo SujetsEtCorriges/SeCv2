@@ -33,13 +33,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
     ActuVariableStore *obj=[ActuVariableStore getInstance];
     urlComments_ = obj.urlComments;
     idArticle_ = obj.idArticle;
     titreArticle_ = obj.titreArticle;
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -110,8 +107,6 @@
         // Dismiss the controller
         [self dismissModalViewControllerAnimated:YES];
     };
-    
-    
 }
 
 @end
