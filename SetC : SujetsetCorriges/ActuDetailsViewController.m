@@ -10,6 +10,7 @@
 
 #import "ECSlidingViewController.h"
 #import "ActuPartageViewController.h"
+#import "ActuVariableStore.h"
 
 @interface ActuDetailsViewController ()
 
@@ -58,13 +59,18 @@
 {
     [super viewWillAppear:animated];
     
+    ActuVariableStore *obj=[ActuVariableStore getInstance];
+    obj.urlComments = url_;
+    obj.idArticle = idArticle_;
+    obj.titreArticle = titre_;
+    
     if (![self.slidingViewController.underRightViewController isKindOfClass:[ActuPartageViewController class]])
     {
         self.slidingViewController.underRightViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"partageSideView"];
     }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    [self.slidingViewController setAnchorLeftRevealAmount:100.0f];
+    [self.slidingViewController setAnchorLeftRevealAmount:120.0f];
 }
 
 

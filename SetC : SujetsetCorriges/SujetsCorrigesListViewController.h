@@ -16,13 +16,14 @@
     NSArray *tabAnneeOrdre_;
     
     NSArray *tabFiliere_;
+    
+    NSString *concours_;
+    NSString *filiere_;
+    
 }
 
 @property (strong, nonatomic) UIView *introView;
 @property (strong, nonatomic) IBOutlet UITableView *tableSuj;
 @property (strong, nonatomic) NSMutableArray *listeSujCor;
-@property (assign, nonatomic) BOOL intro;
-@property (strong, nonatomic) NSString *concours;
-@property (strong, nonatomic) NSString *filiere;
 
 @end

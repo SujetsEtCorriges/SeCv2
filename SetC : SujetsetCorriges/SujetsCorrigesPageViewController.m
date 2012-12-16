@@ -39,6 +39,17 @@
     
     [self createContentPages];
     
+    if (![concours_ isEqualToString:@"Banque PT"] && ![concours_ isEqualToString:@"aucun"])
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:@selector(choixFiliere:)];
+    }
+    else if ([concours_ isEqualToString:@"Banque PT"])
+    {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:nil];
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+    }
+        
+    
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:UIPageViewControllerSpineLocationMin] forKey: UIPageViewControllerOptionSpineLocationKey];
     
     self.pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options: options];
@@ -77,6 +88,62 @@
 }
 
 
+
+- (void) choixFiliere:(id)sender
+{
+    tabFiliere_ = [[NSArray alloc] initWithObjects:@"MP", @"PC", @"PSI", nil];
+    
+    menu_ = [[UIActionSheet alloc] initWithTitle:@"Choix de la filiere"
+                                        delegate:self
+                               cancelButtonTitle:nil
+                          destructiveButtonTitle:nil
+                               otherButtonTitles:nil];
+    
+    [menu_ setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    
+    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
+    
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
+    pickerView.showsSelectionIndicator = YES;
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    
+    [pickerView selectRow:filiereRow_ inComponent:0 animated:YES];
+    
+    [menu_ addSubview:pickerView];
+    
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"OK"]];
+    closeButton.momentary = YES;
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(changeFiliere:) forControlEvents:UIControlEventValueChanged];
+    [menu_ addSubview:closeButton];
+    
+    [menu_ showInView:[[UIApplication sharedApplication] keyWindow]];
+    
+    [menu_ setBounds:CGRectMake(0, 0, 320, 485)];
+}
+
+
+- (void) changeFiliere:(id)sender
+{
+    [menu_ dismissWithClickedButtonIndex:0 animated:YES];
+    
+    [self createContentPages];
+    
+    self.navigationItem.rightBarButtonItem.title = filiere_;
+    
+    SujetsCorrigesListViewController *initialViewController = [self viewControllerAtIndex:0];
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+    
+    [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -85,7 +152,7 @@
 
 
 
-// Méthode pour le page view controller
+#pragma mark - UIPageViewControllerDelegate
 - (SujetsCorrigesListViewController *)viewControllerAtIndex:(NSUInteger)index
 {
     // Return the data view controller for the given index.
@@ -96,19 +163,9 @@
     
     // Create a new view controller and pass suitable data.
     SujetsCorrigesListViewController *dataViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsListView"];
-    if ([concours_ isEqualToString:@"aucun"])
-    {
-        dataViewController.intro = YES;
-        return dataViewController;
-    }
-    else
-    {
-        dataViewController.listeSujCor = [self.pageContent objectAtIndex:index];
-        dataViewController.intro = NO;
-        dataViewController.concours = concours_;
-        dataViewController.filiere = filiere_;
-        return dataViewController;
-    }
+
+    dataViewController.listeSujCor = [self.pageContent objectAtIndex:index];
+    return dataViewController;
     
 }
 
@@ -147,6 +204,31 @@
     }
     
     return [self viewControllerAtIndex:index];
+}
+
+
+#pragma mark - PickerViewDelegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
+{
+    
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
+{
+    
+    return 3;
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [tabFiliere_ objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    filiereRow_ = row;
+    filiere_ = [tabFiliere_ objectAtIndex:row];
 }
 
 

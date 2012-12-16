@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ActuPartageViewController : UIViewController
+{
+    NSString *urlComments_;
+    NSString *idArticle_;
+    NSString *titreArticle_;
+}
+
+- (IBAction)boutonFacebookPushed:(id)sender;
+- (IBAction)boutonTwitterPushed:(id)sender;
 
 @end

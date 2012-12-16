@@ -52,6 +52,11 @@
 		9127A1D5167D494E00D1EB09 /* SujetsCorrigesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1D4167D494E00D1EB09 /* SujetsCorrigesListViewController.m */; };
 		9127A1D8167D4BBF00D1EB09 /* ConcoursListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1D7167D4BBE00D1EB09 /* ConcoursListViewController.m */; };
 		9127A1DB167D4D7300D1EB09 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1DA167D4D7300D1EB09 /* VariableStore.m */; };
+		9127A1F3167DEDB500D1EB09 /* SujetsCorrigesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1F2167DEDB400D1EB09 /* SujetsCorrigesDetailsViewController.m */; };
+		9127A1F6167DF76D00D1EB09 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A1F5167DF76D00D1EB09 /* Social.framework */; };
+		9127A1F8167DF77400D1EB09 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A1F7167DF77400D1EB09 /* Twitter.framework */; };
+		9127A1FB167DF80700D1EB09 /* ActuVariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1FA167DF80700D1EB09 /* ActuVariableStore.m */; };
+		9127A1FF167DFF8100D1EB09 /* SimuListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1FE167DFF8100D1EB09 /* SimuListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +136,14 @@
 		9127A1D7167D4BBE00D1EB09 /* ConcoursListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcoursListViewController.m; sourceTree = "<group>"; };
 		9127A1D9167D4D7300D1EB09 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
 		9127A1DA167D4D7300D1EB09 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
+		9127A1F1167DEDB400D1EB09 /* SujetsCorrigesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SujetsCorrigesDetailsViewController.h; sourceTree = "<group>"; };
+		9127A1F2167DEDB400D1EB09 /* SujetsCorrigesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SujetsCorrigesDetailsViewController.m; sourceTree = "<group>"; };
+		9127A1F5167DF76D00D1EB09 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		9127A1F7167DF77400D1EB09 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		9127A1F9167DF80700D1EB09 /* ActuVariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActuVariableStore.h; sourceTree = "<group>"; };
+		9127A1FA167DF80700D1EB09 /* ActuVariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActuVariableStore.m; sourceTree = "<group>"; };
+		9127A1FD167DFF8100D1EB09 /* SimuListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimuListViewController.h; sourceTree = "<group>"; };
+		9127A1FE167DFF8100D1EB09 /* SimuListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimuListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9127A1F8167DF77400D1EB09 /* Twitter.framework in Frameworks */,
+				9127A1F6167DF76D00D1EB09 /* Social.framework in Frameworks */,
 				9127A1D2167D48A000D1EB09 /* libz.dylib in Frameworks */,
 				9127A1D0167D489900D1EB09 /* MobileCoreServices.framework in Frameworks */,
 				9127A1CE167D489300D1EB09 /* SystemConfiguration.framework in Frameworks */,
@@ -172,6 +187,8 @@
 		9127A145167D36FD00D1EB09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9127A1F7167DF77400D1EB09 /* Twitter.framework */,
+				9127A1F5167DF76D00D1EB09 /* Social.framework */,
 				9127A1D1167D48A000D1EB09 /* libz.dylib */,
 				9127A1CF167D489900D1EB09 /* MobileCoreServices.framework */,
 				9127A1CD167D489300D1EB09 /* SystemConfiguration.framework */,
@@ -189,6 +206,7 @@
 			children = (
 				9127A177167D370B00D1EB09 /* Actualité */,
 				9127A1A6167D46AF00D1EB09 /* Sujets et Corriges */,
+				9127A1FC167DFD0400D1EB09 /* Simulateurs */,
 				9127A155167D36FD00D1EB09 /* AppDelegate.h */,
 				9127A156167D36FD00D1EB09 /* AppDelegate.m */,
 				9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */,
@@ -229,6 +247,8 @@
 				9127A19D167D3F6100D1EB09 /* ActuDetailsViewController.m */,
 				9127A19F167D42D700D1EB09 /* ActuPartageViewController.h */,
 				9127A1A0167D42D800D1EB09 /* ActuPartageViewController.m */,
+				9127A1F9167DF80700D1EB09 /* ActuVariableStore.h */,
+				9127A1FA167DF80700D1EB09 /* ActuVariableStore.m */,
 			);
 			name = "Actualité";
 			sourceTree = "<group>";
@@ -293,6 +313,8 @@
 				9127A1A8167D479400D1EB09 /* SujetsCorrigesPageViewController.m */,
 				9127A1D3167D494E00D1EB09 /* SujetsCorrigesListViewController.h */,
 				9127A1D4167D494E00D1EB09 /* SujetsCorrigesListViewController.m */,
+				9127A1F1167DEDB400D1EB09 /* SujetsCorrigesDetailsViewController.h */,
+				9127A1F2167DEDB400D1EB09 /* SujetsCorrigesDetailsViewController.m */,
 				9127A1D6167D4BBE00D1EB09 /* ConcoursListViewController.h */,
 				9127A1D7167D4BBE00D1EB09 /* ConcoursListViewController.m */,
 				9127A1D9167D4D7300D1EB09 /* VariableStore.h */,
@@ -336,6 +358,15 @@
 				9127A1C9167D485800D1EB09 /* Reachability.m */,
 			);
 			name = Reachability;
+			sourceTree = "<group>";
+		};
+		9127A1FC167DFD0400D1EB09 /* Simulateurs */ = {
+			isa = PBXGroup;
+			children = (
+				9127A1FD167DFF8100D1EB09 /* SimuListViewController.h */,
+				9127A1FE167DFF8100D1EB09 /* SimuListViewController.m */,
+			);
+			name = Simulateurs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +467,9 @@
 				9127A1D5167D494E00D1EB09 /* SujetsCorrigesListViewController.m in Sources */,
 				9127A1D8167D4BBF00D1EB09 /* ConcoursListViewController.m in Sources */,
 				9127A1DB167D4D7300D1EB09 /* VariableStore.m in Sources */,
+				9127A1F3167DEDB500D1EB09 /* SujetsCorrigesDetailsViewController.m in Sources */,
+				9127A1FB167DF80700D1EB09 /* ActuVariableStore.m in Sources */,
+				9127A1FF167DFF8100D1EB09 /* SimuListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +598,7 @@
 				9127A176167D36FD00D1EB09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

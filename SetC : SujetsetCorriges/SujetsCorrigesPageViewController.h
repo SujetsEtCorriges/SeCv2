@@ -25,4 +25,5 @@
 @property (strong, nonatomic) NSArray *pageContent;
 @property (strong, nonatomic) NSString *concours;
 
+
 @end

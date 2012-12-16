@@ -28,5 +28,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *titreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
+- (IBAction)affichagePartage:(id)sender;
+
 
 @end

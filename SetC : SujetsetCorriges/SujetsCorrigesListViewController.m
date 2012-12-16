@@ -9,6 +9,8 @@
 #import "SujetsCorrigesListViewController.h"
 
 #import "XMLParser.h"
+#import "VariableStore.h"
+#import "SujetsCorrigesDetailsViewController.h"
 
 @interface SujetsCorrigesListViewController ()
 
@@ -18,27 +20,19 @@
 
 @synthesize tableSuj = tableSuj_;
 @synthesize listeSujCor = listeSujCor_;
-@synthesize intro = intro_;
 @synthesize introView = introView_;
-@synthesize concours = concours_;
-@synthesize filiere = filiere_;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    VariableStore *obj=[VariableStore getInstance];
+    concours_ = obj.concours;
+    filiere_ = obj.filiere;
     
-    if (intro_)
+    
+    if ([concours_ isEqualToString:@"aucun"])
     {
         [tableSuj_ setHidden:YES];
         
@@ -191,6 +185,26 @@
     detailVC.corrigePartiel = (int)[[[tabSujCorRangeParAnnee_ objectForKey:[tabAnneeOrdre_ objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]] objectForKey:kCorrigePartiel];
     
     [self.navigationController pushViewController:detailVC animated:YES];*/
+
+    [self performSegueWithIdentifier: @"pushToSujetsCorrigesView" sender: self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushToSujetsCorrigesView"])
+    {
+        NSIndexPath *indexPath = [self.tableSuj indexPathForSelectedRow];
+        SujetsCorrigesDetailsViewController *destViewController = segue.destinationViewController;
+        
+        destViewController.concours = concours_;
+        destViewController.filiere = filiere_;
+        destViewController.annee = [tabAnneeOrdre_ objectAtIndex:[indexPath section]];
+        destViewController.epreuve = [[[tabSujCorRangeParAnnee_ objectForKey:[tabAnneeOrdre_ objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]] objectForKey:kNom];
+        
+        destViewController.lienSujet = [[[tabSujCorRangeParAnnee_ objectForKey:[tabAnneeOrdre_ objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]] objectForKey:kSujet];
+        destViewController.lienCorrige = [[[tabSujCorRangeParAnnee_ objectForKey:[tabAnneeOrdre_ objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]] objectForKey:kCorrige];
+        destViewController.corrigePartiel = (int)[[[tabSujCorRangeParAnnee_ objectForKey:[tabAnneeOrdre_ objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]] objectForKey:kCorrigePartiel];
+    }
 }
 
 @end
