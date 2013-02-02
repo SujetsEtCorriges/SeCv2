@@ -18,5 +18,6 @@
     XMLParser *parser_;
 }
 
+- (IBAction)refreshNews:(id)sender;
 
 @end

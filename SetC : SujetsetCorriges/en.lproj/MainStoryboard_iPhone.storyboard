@@ -340,12 +340,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RTS-YY-Kui" firstAttribute="top" secondItem="UQL-hp-dM3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="7tk-3m-YGa"/>
-                            <constraint firstAttribute="bottom" secondItem="RTS-YY-Kui" secondAttribute="bottom" constant="335" id="LUP-w5-TsP"/>
                             <constraint firstItem="RTS-YY-Kui" firstAttribute="trailing" secondItem="UQL-hp-dM3" secondAttribute="trailing" type="default" id="Vet-a3-egL"/>
                             <constraint firstItem="RTS-YY-Kui" firstAttribute="leading" secondItem="UQL-hp-dM3" secondAttribute="leading" type="default" id="YGi-sA-6Ks"/>
+                            <constraint firstAttribute="bottom" secondItem="RTS-YY-Kui" secondAttribute="bottom" constant="247" id="yLP-7Z-ZMZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="a4T-8Y-LcD"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="scrollViewConcours_" destination="RTS-YY-Kui" id="Kgk-0v-vpV"/>
                     </connections>
@@ -569,6 +570,9 @@
         </class>
         <class className="ActuListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="refreshNews:"/>
+            </relationships>
         </class>
         <class className="ActuPartageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuPartageViewController.h"/>

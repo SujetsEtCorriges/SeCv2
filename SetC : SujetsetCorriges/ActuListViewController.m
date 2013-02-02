@@ -11,6 +11,8 @@
 #import "MBProgressHUD.h"
 #import "ActuDetailsViewController.h"
 
+#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface ActuListViewController ()
 
 @end
@@ -18,6 +20,7 @@
 @implementation ActuListViewController
 {
     PullToRefreshView *pull;
+    BOOL firstRefresh;
 }
 
 
@@ -37,25 +40,38 @@
 {
     [super viewDidLoad];
     
-    //notification de rafraichissement
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(foregroundRefresh:)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-    
-    //initialisation de la vue pull to refresh
-    pull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.tableView];
-    [pull setDelegate:self];
-    [self.tableView addSubview:pull];
+    firstRefresh = YES;
     
     newsData_ = [[NSMutableArray alloc] init];
     
     //parsage des news
     parser_ = [[XMLParser alloc] init];
     parser_.delegate = self;
-    
     NSString *rssURL = @"http://www.sujetsetcorriges.fr/rss";
+    
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
+    {
+        //notification de rafraichissement
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(foregroundRefresh:)
+                                                     name:UIApplicationWillEnterForegroundNotification
+                                                   object:nil];
+        
+        //initialisation de la vue pull to refresh
+        pull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.tableView];
+        [pull setDelegate:self];
+        [self.tableView addSubview:pull];
+    }
+    else
+    {
+        UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+        [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
+        self.refreshControl = refresh;
+    }
+    
     [self performSelectorInBackground:@selector(parseNews:) withObject:rssURL];
+    
     
     
 }
@@ -65,8 +81,11 @@
     @autoreleasepool
     {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        MBProgressHUD *chargementHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [chargementHUD setLabelText:@"Chargement"];
+        if (firstRefresh)
+        {
+            MBProgressHUD *chargementHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [chargementHUD setLabelText:@"Chargement"];
+        }
         [parser_ parseXMLFileAtURL:theURL];
     }
 }
@@ -160,8 +179,7 @@
 }
 
 
-//méthode pour le pull to refresh
-
+//méthode pour le pull to refreshecho
 - (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view;
 {
     NSString *rssURL = @"http://www.sujetsetcorriges.fr/rss";
@@ -186,6 +204,10 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [pull finishedLoading];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    [self.refreshControl endRefreshing];
+    
+    firstRefresh = NO;
 }
 
 - (void) xmlParser:(XMLParser *)parser didFailWithError:(NSArray *)error
@@ -193,4 +215,29 @@
     
 }
 
+-(void)refreshView:(UIRefreshControl *)refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];
+    // custom refresh logic would be placed here...
+    NSString *rssURL = @"http://www.sujetsetcorriges.fr/rss";
+    //[self performSelectorInBackground:@selector(parseNews:) withObject:rssURL];
+    
+    [self performSelectorInBackground:@selector(parseNews:) withObject:rssURL];
+    //[parser_ parseXMLFileAtURL:rssURL];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+    [formatter stringFromDate:[NSDate date]]];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    //[refresh endRefreshing];
+    
+}
+
+
+
+- (IBAction)refreshNews:(id)sender
+{
+    
+}
 @end
