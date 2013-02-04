@@ -21,7 +21,7 @@ static ActuVariableStore *instance =nil;
     {
         if(instance==nil)
         {
-            instance= [ActuVariableStore new];
+            instance = [ActuVariableStore new];
             //instance.concours = @"aucun";
             //instance.filiere = @"MP";
         }

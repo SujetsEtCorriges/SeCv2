@@ -40,8 +40,14 @@
         CGFloat hauteurFenetre = screenRect.size.height - self.navigationController.navigationBar.frame.size.height - self.tabBarController.tabBar.frame.size.height;
         
         introView_ = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, hauteurFenetre)];
+        introView_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
         
         introLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(0, round(introView_.frame.size.height/4), introView_.frame.size.width, round(introView_.frame.size.height/3))];
+        introLabel_.backgroundColor = [UIColor clearColor];
+        introLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+        introLabel_.textColor = [UIColor darkGrayColor];
+        introLabel_.shadowColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+        introLabel_.shadowOffset = CGSizeMake(0,1);
         introLabel_.text = @"Sélectionnez un concours";
         introLabel_.textAlignment = UITextAlignmentCenter;
         

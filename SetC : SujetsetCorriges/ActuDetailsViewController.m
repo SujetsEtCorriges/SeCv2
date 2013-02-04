@@ -52,6 +52,10 @@
                               "<body>%@<br></body> \n"
                               "</html>", @"helvetica", [NSNumber numberWithInt:13],self.texte] baseURL:nil];
     
+    // On met le background transaparent et on désactive les ombres de la webView
+    [self.webView setBackgroundColor: [UIColor clearColor]];
+    [self.webView setOpaque:NO];
+    for (int i = 0; i < 10; i++) [[[[[self.webView subviews] objectAtIndex:0] subviews] objectAtIndex:i] setHidden:YES];
 }
 
 

@@ -95,10 +95,12 @@
         else if ([_currentElement isEqualToString:kAnnee])
         {
             [currentAnnee_ appendString:string];
+            [currentAnnee_ setString: [self cleaningString:currentAnnee_]];
         }
         else if ([_currentElement isEqualToString:kEpreuve])
         {
             [currentEpreuve_ appendString:string];
+            //[currentEpreuve_ setString: [self cleaningString:currentEpreuve_]];
         }
         else if ([_currentElement isEqualToString:kSujet])
         {
@@ -115,6 +117,7 @@
         else if ([_currentElement isEqualToString:kNom])
         {
             [currentNom_ appendString:string];
+            [currentNom_ setString: [self cleaningString:currentNom_]];
         }
     }
     else if ([typeParse_ isEqualToString:@"posts"])
