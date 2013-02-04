@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F04F5FD167F25BC009EF9DB /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F04F5FC167F25BC009EF9DB /* CommentsViewController.m */; };
 		9127A147167D36FD00D1EB09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A146167D36FD00D1EB09 /* UIKit.framework */; };
 		9127A149167D36FD00D1EB09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A148167D36FD00D1EB09 /* Foundation.framework */; };
 		9127A14B167D36FD00D1EB09 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A14A167D36FD00D1EB09 /* CoreGraphics.framework */; };
@@ -75,6 +76,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F04F5FB167F25BC009EF9DB /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		3F04F5FC167F25BC009EF9DB /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		9127A142167D36FD00D1EB09 /* SetC : SujetsetCorriges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SetC : SujetsetCorriges.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9127A146167D36FD00D1EB09 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9127A148167D36FD00D1EB09 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -279,6 +282,8 @@
 				9127A1A0167D42D800D1EB09 /* ActuPartageViewController.m */,
 				9127A1F9167DF80700D1EB09 /* ActuVariableStore.h */,
 				9127A1FA167DF80700D1EB09 /* ActuVariableStore.m */,
+				3F04F5FB167F25BC009EF9DB /* CommentsViewController.h */,
+				3F04F5FC167F25BC009EF9DB /* CommentsViewController.m */,
 			);
 			name = "Actualité";
 			sourceTree = "<group>";
@@ -562,6 +567,7 @@
 				9127A1F3167DEDB500D1EB09 /* SujetsCorrigesDetailsViewController.m in Sources */,
 				9127A1FB167DF80700D1EB09 /* ActuVariableStore.m in Sources */,
 				9127A1FF167DFF8100D1EB09 /* SimuListViewController.m in Sources */,
+				3F04F5FD167F25BC009EF9DB /* CommentsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,6 +45,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushToComments"])
+    {
+        //NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        UINavigationController *nav = segue.destinationViewController;
+        CommentsViewController *destViewController = (CommentsViewController *)[nav topViewController];
+        destViewController.url = urlComments_;
+        destViewController.idArticle = idArticle_;
+    }
+}
+
 
 - (IBAction)boutonFacebookPushed:(id)sender
 {

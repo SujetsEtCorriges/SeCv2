@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CommentsViewController.h"
+
 @interface ActuPartageViewController : UIViewController
 {
     NSString *urlComments_;
