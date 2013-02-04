@@ -10,6 +10,7 @@
 
 #import "PullToRefreshView.h"
 #import "XMLParser.h"
+#import "NewsCell.h"
 
 @interface ActuListViewController : UITableViewController <PullToRefreshViewDelegate, XMLParserDelegate>
 {

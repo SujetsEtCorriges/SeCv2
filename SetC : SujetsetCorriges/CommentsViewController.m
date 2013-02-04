@@ -155,6 +155,16 @@
 //    }
 }
 
+- (IBAction)closeComments:(id)sender
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)writeComment:(id)sender
+{
+    
+}
+
 
 //méthode pour le pull to refresh
 

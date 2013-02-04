@@ -21,6 +21,10 @@
 
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *idArticle;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *closeButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *writeButton;
 
+-(IBAction)closeComments:(id)sender;
+-(IBAction)writeComment:(id)sender;
 
 @end

@@ -23,33 +23,61 @@
         <scene sceneID="sCH-Id-uqL">
             <objects>
                 <tableViewController id="j1V-Ag-5BR" customClass="ActuListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eu3-9P-2Ia">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eu3-9P-2Ia">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="newsCell" textLabel="FeK-eM-aZg" detailTextLabel="bT7-Vf-JQA" style="IBUITableViewCellStyleValue1" id="gss-lc-6bP">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NewsCell" rowHeight="75" id="gss-lc-6bP" customClass="NewsCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="27" id="FeK-eM-aZg">
-                                            <rect key="frame" x="10" y="13" width="27" height="17"/>
-                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="NewsBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="FWv-hF-V6x">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="314" id="RGX-05-fWt"/>
+                                                <constraint firstAttribute="height" constant="69" id="guq-Jq-DUF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="dateLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1j-bR-tdE">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="KiF-ya-gSa"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.6005859375" green="0.6005859375" blue="0.6005859375" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bT7-Vf-JQA">
-                                            <rect key="frame" x="274" y="13" width="36" height="17"/>
-                                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="titleLabel" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="269" translatesAutoresizingMaskIntoConstraints="NO" id="Tmb-cx-ysm">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Un9-Io-0QB"/>
+                                                <constraint firstAttribute="width" constant="269" id="fCJ-Sc-bwB"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="Tmb-cx-ysm" firstAttribute="top" secondItem="gss-lc-6bP" secondAttribute="top" constant="7" id="39B-M3-Q22"/>
+                                    <constraint firstItem="FWv-hF-V6x" firstAttribute="centerX" secondItem="gss-lc-6bP" secondAttribute="centerX" type="default" id="5jv-3b-2H6"/>
+                                    <constraint firstItem="Tmb-cx-ysm" firstAttribute="trailing" secondItem="c1j-bR-tdE" secondAttribute="trailing" type="default" id="819-uE-a6D"/>
+                                    <constraint firstAttribute="bottom" secondItem="c1j-bR-tdE" secondAttribute="bottom" constant="10" id="CQm-xy-gnN"/>
+                                    <constraint firstItem="Tmb-cx-ysm" firstAttribute="leading" secondItem="gss-lc-6bP" secondAttribute="leading" constant="20" type="default" id="Vk0-xb-VGS"/>
+                                    <constraint firstItem="c1j-bR-tdE" firstAttribute="leading" secondItem="gss-lc-6bP" secondAttribute="leading" constant="20" type="default" id="iHf-pq-Mtb"/>
+                                    <constraint firstItem="FWv-hF-V6x" firstAttribute="centerY" secondItem="gss-lc-6bP" secondAttribute="centerY" type="default" id="tGj-gV-scG"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dateLabel" destination="c1j-bR-tdE" id="iby-ac-59S"/>
+                                    <outlet property="titleLabel" destination="Tmb-cx-ysm" id="4E5-rQ-GiD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -293,8 +321,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Commentaires" id="lUb-Nx-gLU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Mpl-mG-oFc"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Mpl-mG-oFc">
+                            <connections>
+                                <action selector="closeComments:" destination="bNd-51-es4" id="VJU-of-mId"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="O5e-C3-hXm">
+                            <connections>
+                                <action selector="writeComment:" destination="bNd-51-es4" id="o8a-wQ-byk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="closeButton" destination="Mpl-mG-oFc" id="6mJ-ww-bz6"/>
+                        <outlet property="writeButton" destination="O5e-C3-hXm" id="Rs6-yM-vvR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mgb-6p-yAP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -605,6 +646,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NewsBackground.png" width="640" height="150"/>
         <image name="first" width="16" height="16"/>
         <image name="second" width="16" height="16"/>
     </resources>
@@ -637,6 +679,12 @@
         </class>
         <class className="CommentsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CommentsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="closeComments:"/>
+                <relationship kind="action" name="writeComment:"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="writeButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="ConcoursListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ConcoursListViewController.h"/>
@@ -646,6 +694,13 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="NewsCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="SimuListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SimuListViewController.h"/>

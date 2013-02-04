@@ -117,18 +117,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"newsCell";
+    static NSString *CellIdentifier = @"NewsCell";
     
-    UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    if (cell == nil)
+//    {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
+    
+    NewsCell *cell = (NewsCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[NewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    
+    cell.titleLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.dateLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
     //configuration de la cellulle titre
-    cell.textLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
+    //cell.textLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
+    //cell.detailTextLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
     
     //renvoie de la cellule
     return cell;
@@ -201,7 +208,7 @@
 {
     newsData_ = parser_.XMLData;
     [self.tableView reloadData];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [pull finishedLoading];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
