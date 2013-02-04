@@ -43,10 +43,10 @@
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<html> \n"
                               "<head> \n"
                               "<style type=\"text/css\"> \n"
-                              "body {color:black; font-family: \"%@\"; font-size: %@; text-shadow: none 0px 1px 0px;}\n"
+                              "body {color:#404040; font-family: \"%@\"; font-size: %@; text-shadow: none 0px 1px 0px;}\n"
                               "img {max-width: 298px; height:auto; margin-left:auto; margin-right:auto; display:block;}\n"
                               "iframe {max-width: 298px; height:auto; margin-left:auto; margin-right:auto; display:block;}\n"
-                              //"a {color:#337D12; text-decoration: none;}"
+                              "a {color:#0E9CFF; text-decoration: none;}"
                               "</style> \n"
                               "</head> \n"
                               "<body>%@<br></body> \n"
@@ -94,7 +94,7 @@
     [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss '+0000'"];
     NSDate *convertedDate = [dateFormatter dateFromString:dateEN];
     [dateFormatter setLocale:frLocale];
-    [dateFormatter setDateFormat:@"dd/MM"];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
     NSString *convertedStringDate = [dateFormatter stringFromDate:convertedDate];
     
     return convertedStringDate;

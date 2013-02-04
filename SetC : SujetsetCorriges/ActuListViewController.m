@@ -65,7 +65,7 @@
     else
     {
         UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
         [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
         self.refreshControl = refresh;
     }
@@ -155,7 +155,7 @@
     [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss '+0000'"];
     NSDate *convertedDate = [dateFormatter dateFromString:dateEN];
     [dateFormatter setLocale:frLocale];
-    [dateFormatter setDateFormat:@"dd/MM"];
+    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
     NSString *convertedStringDate = [dateFormatter stringFromDate:convertedDate];
     
     return convertedStringDate;
@@ -233,8 +233,8 @@
     //[parser_ parseXMLFileAtURL:rssURL];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, h:mm a"];
-    NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+    [formatter setDateFormat:@"dd MMMM - h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Mis à jour le %@",
     [formatter stringFromDate:[NSDate date]]];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
     //[refresh endRefreshing];
