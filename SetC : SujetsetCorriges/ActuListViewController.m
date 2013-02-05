@@ -133,6 +133,7 @@
     
     cell.titleLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.dateLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
+    cell.nbcommentsLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"nbcomments"];
     //configuration de la cellulle titre
     //cell.textLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
     //cell.detailTextLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];

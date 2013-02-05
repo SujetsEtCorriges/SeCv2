@@ -1,14 +1,16 @@
 //
-//  NewsCell.m
+//  EpreuveCell.m
 //  SetC : SujetsetCorriges
 //
-//  Created by Jérémy on 04/02/13.
+//  Created by Jérémy on 05/02/13.
 //  Copyright (c) 2013 SeC. All rights reserved.
 //
 
-#import "NewsCell.h"
+#import "EpreuveCell.h"
 
-@implementation NewsCell
+@implementation EpreuveCell
+
+@synthesize epreuveLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,18 +25,16 @@
 {
     [super setSelected:selected animated:animated];
 
+    epreuveLabel.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
     // Configure the view for the selected state
-    self.titleLabel.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
-    self.dateLabel.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
     [super setSelected:highlighted animated:animated];
     
+    epreuveLabel.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
     // Configure the view for the selected state
-    self.titleLabel.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
-    self.dateLabel.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
 }
 
 @end

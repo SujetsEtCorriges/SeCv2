@@ -80,6 +80,8 @@
             link_ = [[NSMutableString alloc] init];
             message_ = [[NSMutableString alloc] init];
             id_ = [[NSMutableString alloc] init];
+            nbcomments_ = [[NSMutableString alloc] init];
+            
         }
     }
 }
@@ -152,6 +154,11 @@
             [id_ appendString:string];
             [id_ setString: [self cleaningString:id_]];
         }
+        else if ([_currentElement isEqualToString:@"slash:comments"])
+        {
+            [nbcomments_ appendString:string];
+            [nbcomments_ setString: [self cleaningString:nbcomments_]];
+        }
     }
 }
 
@@ -193,6 +200,7 @@
             [item_ setObject:link_ forKey:@"link"];
             [item_ setObject:message_ forKey:@"message"];
             [item_ setObject:[[id_ componentsSeparatedByString:@"="] objectAtIndex:1] forKey:@"id"];
+            [item_ setObject:nbcomments_ forKey:@"nbcomments"];
             
             [self.XMLData addObject:item_];
         }

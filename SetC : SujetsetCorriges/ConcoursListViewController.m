@@ -64,9 +64,30 @@
     return 40;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return [listeSection_.allKeys objectAtIndex:section];
+//}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return [listeSection_.allKeys objectAtIndex:section];
+    UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)];
+    viewSection.backgroundColor = [UIColor colorWithWhite:0.45 alpha:1.0];
+    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 25)];
+    labelSection.backgroundColor = [UIColor clearColor];
+    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    labelSection.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+    labelSection.shadowColor = [UIColor blackColor];
+    labelSection.shadowOffset = CGSizeMake(0, 1);
+    labelSection.text = [listeSection_.allKeys objectAtIndex:section];
+    [viewSection addSubview:labelSection];
+    
+    return viewSection;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 25;
 }
 
 
@@ -78,15 +99,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"concoursCell";
+    ConcoursCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ConcoursCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [[listeSection_ objectForKey:[listeSection_.allKeys objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]];
+    cell.concoursLabel.text = [[listeSection_ objectForKey:[listeSection_.allKeys objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]];
     
     return cell;
 }
@@ -95,7 +116,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     /*PageSujetViewController *pageVC = [[PageSujetViewController alloc] initWithNibName:@"PageSujetViewController" bundle:nil];
     pageVC.concours = cell.textLabel.text;
@@ -104,8 +125,8 @@
     
     [self.revealSideViewController popViewControllerWithNewCenterController:n animated:YES];*/
     
-    VariableStore *obj=[VariableStore getInstance];
-    obj.concours = cell.textLabel.text;
+    VariableStore *obj = [VariableStore getInstance];
+    obj.concours = [[listeSection_ objectForKey:[listeSection_.allKeys objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]];
     
     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsCorrigesNavigation"];
     

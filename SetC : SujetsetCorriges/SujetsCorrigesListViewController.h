@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EpreuveCell.h"
 
 @interface SujetsCorrigesListViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {

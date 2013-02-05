@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3F04F5FD167F25BC009EF9DB /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F04F5FC167F25BC009EF9DB /* CommentsViewController.m */; };
 		3F45810216C00F320017BD9A /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F45810116C00F320017BD9A /* NewsCell.m */; };
+		3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */; };
+		3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */; };
 		3FFA184D16C02B8000D6E085 /* NewsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184B16C02B8000D6E085 /* NewsBackground.png */; };
 		3FFA184E16C02B8000D6E085 /* NewsBackgroundHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */; };
 		9127A147167D36FD00D1EB09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A146167D36FD00D1EB09 /* UIKit.framework */; };
@@ -83,6 +85,10 @@
 		3F04F5FC167F25BC009EF9DB /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		3F45810016C00F310017BD9A /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
 		3F45810116C00F320017BD9A /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
+		3F7BCE0C16C1BDB50084ACFD /* EpreuveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EpreuveCell.h; sourceTree = "<group>"; };
+		3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpreuveCell.m; sourceTree = "<group>"; };
+		3F7BCE0F16C1C6370084ACFD /* ConcoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcoursCell.h; sourceTree = "<group>"; };
+		3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcoursCell.m; sourceTree = "<group>"; };
 		3FFA184B16C02B8000D6E085 /* NewsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackground.png; sourceTree = "<group>"; };
 		3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackgroundHighlighted.png; sourceTree = "<group>"; };
 		9127A142167D36FD00D1EB09 /* SetC : SujetsetCorriges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SetC : SujetsetCorriges.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -365,6 +371,10 @@
 				9127A1D7167D4BBE00D1EB09 /* ConcoursListViewController.m */,
 				9127A1D9167D4D7300D1EB09 /* VariableStore.h */,
 				9127A1DA167D4D7300D1EB09 /* VariableStore.m */,
+				3F7BCE0C16C1BDB50084ACFD /* EpreuveCell.h */,
+				3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */,
+				3F7BCE0F16C1C6370084ACFD /* ConcoursCell.h */,
+				3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */,
 			);
 			name = "Sujets et Corriges";
 			sourceTree = "<group>";
@@ -582,6 +592,8 @@
 				9127A1FF167DFF8100D1EB09 /* SimuListViewController.m in Sources */,
 				3F04F5FD167F25BC009EF9DB /* CommentsViewController.m in Sources */,
 				3F45810216C00F320017BD9A /* NewsCell.m in Sources */,
+				3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */,
+				3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

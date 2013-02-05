@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nbcommentsLabel;
 
 @end

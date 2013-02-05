@@ -43,7 +43,7 @@
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="dateLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1j-bR-tdE">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="KiF-ya-gSa"/>
+                                                <constraint firstAttribute="height" constant="21" id="K0K-3r-sRF"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.6005859375" green="0.6005859375" blue="0.6005859375" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,6 +62,16 @@
                                             <color key="shadowColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                             <size key="shadowOffset" width="0.0" height="1"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="nbcommentsLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E90-Go-Nhr">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="09e-sz-hir"/>
+                                                <constraint firstAttribute="height" constant="21" id="KW6-l8-ujC"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -69,13 +79,16 @@
                                     <constraint firstItem="Tmb-cx-ysm" firstAttribute="top" secondItem="gss-lc-6bP" secondAttribute="top" constant="7" id="39B-M3-Q22"/>
                                     <constraint firstItem="FWv-hF-V6x" firstAttribute="centerX" secondItem="gss-lc-6bP" secondAttribute="centerX" type="default" id="5jv-3b-2H6"/>
                                     <constraint firstItem="Tmb-cx-ysm" firstAttribute="trailing" secondItem="c1j-bR-tdE" secondAttribute="trailing" type="default" id="819-uE-a6D"/>
-                                    <constraint firstAttribute="bottom" secondItem="c1j-bR-tdE" secondAttribute="bottom" constant="10" id="CQm-xy-gnN"/>
                                     <constraint firstItem="Tmb-cx-ysm" firstAttribute="leading" secondItem="gss-lc-6bP" secondAttribute="leading" constant="20" type="default" id="Vk0-xb-VGS"/>
+                                    <constraint firstAttribute="bottom" secondItem="E90-Go-Nhr" secondAttribute="bottom" constant="9" id="VxN-xt-fAk"/>
+                                    <constraint firstAttribute="trailing" secondItem="E90-Go-Nhr" secondAttribute="trailing" constant="40" id="bfO-CQ-iZU"/>
+                                    <constraint firstItem="E90-Go-Nhr" firstAttribute="baseline" secondItem="c1j-bR-tdE" secondAttribute="baseline" type="default" id="esO-eE-ka1"/>
                                     <constraint firstItem="c1j-bR-tdE" firstAttribute="leading" secondItem="gss-lc-6bP" secondAttribute="leading" constant="20" type="default" id="iHf-pq-Mtb"/>
                                     <constraint firstItem="FWv-hF-V6x" firstAttribute="centerY" secondItem="gss-lc-6bP" secondAttribute="centerY" type="default" id="tGj-gV-scG"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dateLabel" destination="c1j-bR-tdE" id="iby-ac-59S"/>
+                                    <outlet property="nbcommentsLabel" destination="E90-Go-Nhr" id="DAe-ZO-oc9"/>
                                     <outlet property="titleLabel" destination="Tmb-cx-ysm" id="4E5-rQ-GiD"/>
                                 </connections>
                             </tableViewCell>
@@ -450,7 +463,7 @@
                     <view key="view" contentMode="scaleToFill" id="W63-dk-8uL">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Sujets et Corriges" id="ESK-FX-XwN">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="9e3-P2-GTk"/>
@@ -478,7 +491,40 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="UC7-Kz-hLa">
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="epreuveCell" id="gMp-hm-a9Q" customClass="EpreuveCell">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="epreuveLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xd-Rc-tB6">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="260" id="ENd-lT-jR5"/>
+                                                        <constraint firstAttribute="height" constant="23" id="ZeA-4f-JF0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="shadowColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                    <size key="shadowOffset" width="0.0" height="1"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.92000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="9Xd-Rc-tB6" firstAttribute="centerX" secondItem="gMp-hm-a9Q" secondAttribute="centerX" type="default" id="2kd-qc-J8e"/>
+                                            <constraint firstItem="9Xd-Rc-tB6" firstAttribute="centerY" secondItem="gMp-hm-a9Q" secondAttribute="centerY" type="default" id="biY-H4-Gj5"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="epreuveLabel" destination="9Xd-Rc-tB6" id="4de-8H-4hV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -620,16 +666,36 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3Oj-Kc-TKQ">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.29999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.55000000000000004" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QyJ-8m-8hp">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="concoursCell" id="QyJ-8m-8hp" customClass="ConcoursCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="concoursLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlJ-Tz-ROh">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="163" id="9rN-zV-Ixm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NlJ-Tz-ROh" firstAttribute="centerY" secondItem="QyJ-8m-8hp" secondAttribute="centerY" type="default" id="367-Wg-AYW"/>
+                                    <constraint firstItem="NlJ-Tz-ROh" firstAttribute="leading" secondItem="QyJ-8m-8hp" secondAttribute="leading" constant="13" id="b1R-an-DUa"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="concoursLabel" destination="NlJ-Tz-ROh" id="Wq5-72-vza"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -724,11 +790,23 @@
                 <relationship kind="outlet" name="writeButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
+        <class className="ConcoursCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConcoursCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="concoursLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="ConcoursListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ConcoursListViewController.h"/>
         </class>
         <class className="ECSlidingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
+        </class>
+        <class className="EpreuveCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EpreuveCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="epreuveLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -737,6 +815,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nbcommentsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

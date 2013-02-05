@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConcoursCell.h"
 
 @interface ConcoursListViewController : UITableViewController
 {

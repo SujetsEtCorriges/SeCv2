@@ -54,6 +54,7 @@
 	NSMutableString *link_;
     NSMutableString *message_;
     NSMutableString *id_;
+    NSMutableString *nbcomments_;
 }
 
 

@@ -31,7 +31,6 @@
     concours_ = obj.concours;
     filiere_ = obj.filiere;
     
-    
     if ([concours_ isEqualToString:@"aucun"])
     {
         [tableSuj_ setHidden:YES];
@@ -162,16 +161,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"epreuveCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    EpreuveCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[EpreuveCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     NSDictionary *sujcor = [[tabSujCorRangeParAnnee_ objectForKey:[tabAnneeOrdre_ objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", [sujcor objectForKey:kNom], [sujcor objectForKey:kEpreuve]];
+    cell.epreuveLabel.text = [NSString stringWithFormat:@"%@ - %@", [sujcor objectForKey:kNom], [sujcor objectForKey:kEpreuve]];
     
     return cell;
 }
