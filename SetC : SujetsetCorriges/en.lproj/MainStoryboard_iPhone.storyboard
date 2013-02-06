@@ -621,24 +621,48 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CentraleSupelec.png" translatesAutoresizingMaskIntoConstraints="NO" id="HbE-fD-pDu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9cH-VD-6D0"/>
+                                    <constraint firstAttribute="width" constant="220" id="frH-w1-f4k"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="FenteLeft.png" translatesAutoresizingMaskIntoConstraints="NO" id="1cl-Tb-oHm">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ur2-P8-HPg"/>
+                                    <constraint firstAttribute="width" constant="15" id="usk-Vd-UIz"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="FenteRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="tgh-ze-Nww">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="Dmd-JG-BA0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96334901147959184" green="0.96334901147959184" blue="0.96334901147959184" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="7" id="1a9-je-6ov"/>
                             <constraint firstAttribute="trailing" secondItem="udj-mv-20Z" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2c0-xd-GBh"/>
-                            <constraint firstItem="TZa-vT-VcQ" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="80" id="5vh-HC-eWo"/>
+                            <constraint firstItem="udj-mv-20Z" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="145" id="3dz-F9-UcC"/>
+                            <constraint firstAttribute="trailing" secondItem="tgh-ze-Nww" secondAttribute="trailing" constant="47" id="4hy-Lh-y1f"/>
+                            <constraint firstItem="HbE-fD-pDu" firstAttribute="centerX" secondItem="TZa-vT-VcQ" secondAttribute="centerX" type="default" id="9sb-CG-xdx"/>
                             <constraint firstItem="R51-oz-Aj6" firstAttribute="baseline" secondItem="dc7-Vp-3r5" secondAttribute="baseline" type="default" id="AUa-l4-wfx"/>
+                            <constraint firstItem="pWV-5k-CGt" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="190" id="Bv0-NA-AV7"/>
                             <constraint firstItem="aRv-JW-Df5" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DPS-xR-eM4"/>
+                            <constraint firstItem="TZa-vT-VcQ" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="100" id="Eh3-MG-OSx"/>
                             <constraint firstAttribute="trailing" secondItem="dc7-Vp-3r5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="J76-wj-7Li"/>
-                            <constraint firstItem="udj-mv-20Z" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="125" id="Mhk-KA-mo1"/>
+                            <constraint firstItem="tgh-ze-Nww" firstAttribute="bottom" secondItem="1cl-Tb-oHm" secondAttribute="bottom" type="default" id="Otd-oD-eOK"/>
+                            <constraint firstAttribute="bottom" secondItem="R51-oz-Aj6" secondAttribute="bottom" constant="107" id="RMv-Tl-Cc9"/>
+                            <constraint firstItem="HbE-fD-pDu" firstAttribute="centerY" secondItem="1cl-Tb-oHm" secondAttribute="centerY" type="default" id="Rn2-5W-fw4"/>
                             <constraint firstItem="pWV-5k-CGt" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UVh-xm-ekx"/>
                             <constraint firstAttribute="trailing" secondItem="pWV-5k-CGt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XZb-vO-ybJ"/>
-                            <constraint firstItem="aRv-JW-Df5" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="215" id="Ya3-QQ-wYs"/>
-                            <constraint firstItem="pWV-5k-CGt" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="170" id="cVi-C3-0NO"/>
+                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="47" id="dHD-aj-ZX5"/>
                             <constraint firstItem="udj-mv-20Z" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dnG-Tm-4ot"/>
+                            <constraint firstAttribute="bottom" secondItem="aRv-JW-Df5" secondAttribute="bottom" constant="195" id="ghH-vK-Gev"/>
                             <constraint firstAttribute="trailing" secondItem="aRv-JW-Df5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ght-9L-MtA"/>
-                            <constraint firstAttribute="bottom" secondItem="R51-oz-Aj6" secondAttribute="bottom" constant="112" id="iy5-qG-raP"/>
                             <constraint firstAttribute="trailing" secondItem="TZa-vT-VcQ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ncg-zs-gKR"/>
                             <constraint firstItem="R51-oz-Aj6" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rEf-zH-Wzg"/>
+                            <constraint firstItem="tgh-ze-Nww" firstAttribute="top" secondItem="1cl-Tb-oHm" secondAttribute="top" type="default" id="sbe-tH-Cgg"/>
                             <constraint firstItem="TZa-vT-VcQ" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wCM-jj-YlI"/>
                         </constraints>
                     </view>
@@ -749,6 +773,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CentraleSupelec.png" width="440" height="100"/>
+        <image name="FenteLeft.png" width="150" height="640"/>
+        <image name="FenteRight.png" width="150" height="640"/>
         <image name="NewsBackground.png" width="640" height="150"/>
         <image name="NewsBackgroundHighlighted.png" width="640" height="150"/>
         <image name="first" width="16" height="16"/>
