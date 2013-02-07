@@ -22,6 +22,10 @@
 @synthesize epreuve = epreuve_;
 @synthesize corrigePartiel = corrigePartiel_;
 
+@synthesize sujetButton = sujetButton_;
+@synthesize corrigeButton = corrigeButton_;
+@synthesize bannerConcours = bannerConcours_;
+
 
 - (void)viewDidLoad
 {
@@ -31,6 +35,27 @@
     self.filiereLabel.text = filiere_;
     self.epreuveLabel.text = epreuve_;
     self.anneeLabel.text = annee_;
+    
+    NSLog(@"Sujet : %@", lienSujet_);
+    NSLog(@"Corrigé : %@", lienCorrige_);
+    NSLog(@"Partiel : %i",corrigePartiel_);
+    
+    if(corrigePartiel_ == 1)
+    {
+        corrigeButton_.titleLabel.text = @"Corrigé partiel";
+    }
+    
+    if ([lienSujet_ isEqualToString:@""])
+    {
+        //sujetButton_.titleLabel.text = @"Aucun sujet";
+        [sujetButton_ setEnabled:NO];
+        
+    }
+    if ([lienCorrige_ isEqualToString:@""])
+    {
+        //corrigeButton_ setTitl.titleLabel.text = @"Aucun corrigé";
+        [corrigeButton_ setEnabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,4 +64,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setBannerConcours:nil];
+    [super viewDidUnload];
+}
 @end

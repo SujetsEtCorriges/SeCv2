@@ -177,8 +177,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     /*
     DetailEpreuveViewController *detailVC = [[DetailEpreuveViewController alloc] initWithNibName:@"DetailEpreuveViewController" bundle:nil];
     detailVC.concours = concours_;
@@ -193,6 +191,7 @@
     [self.navigationController pushViewController:detailVC animated:YES];*/
 
     [self performSegueWithIdentifier: @"pushToSujetsCorrigesView" sender: self];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

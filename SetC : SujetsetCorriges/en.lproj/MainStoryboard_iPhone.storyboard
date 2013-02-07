@@ -456,7 +456,7 @@
             </objects>
             <point key="canvasLocation" x="1070" y="3043"/>
         </scene>
-        <!--Sujets Corriges Page View Controller - Sujets et Corriges-->
+        <!--Sujets Corriges Page View Controller - Sujets et Corrigés-->
         <scene sceneID="uDz-Wr-VMU">
             <objects>
                 <viewController id="Hcp-Pn-wHA" customClass="SujetsCorrigesPageViewController" sceneMemberID="viewController">
@@ -465,7 +465,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sujets et Corriges" id="ESK-FX-XwN">
+                    <navigationItem key="navigationItem" title="Sujets et Corrigés" id="ESK-FX-XwN">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="9e3-P2-GTk"/>
                         <barButtonItem key="leftBarButtonItem" title="Concours" id="5mt-Hi-Uyw">
                             <connections>
@@ -544,7 +544,7 @@
             </objects>
             <point key="canvasLocation" x="1936" y="1451"/>
         </scene>
-        <!--Sujets Corriges Details View Controller - Résumé-->
+        <!--Sujets Corriges Details View Controller - Epreuve-->
         <scene sceneID="AGB-Ww-VYR">
             <objects>
                 <viewController id="UCu-Zq-bpc" customClass="SujetsCorrigesDetailsViewController" sceneMemberID="viewController">
@@ -614,7 +614,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="disabled">
+                                <state key="disabled" title="Aucun corrigé">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -623,55 +623,56 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CentraleSupelec.png" translatesAutoresizingMaskIntoConstraints="NO" id="HbE-fD-pDu">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="9cH-VD-6D0"/>
-                                    <constraint firstAttribute="width" constant="220" id="frH-w1-f4k"/>
+                                    <constraint firstAttribute="width" constant="260" id="k95-yh-wcg"/>
+                                    <constraint firstAttribute="height" constant="60" id="uhw-GR-zmu"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="FenteLeft.png" translatesAutoresizingMaskIntoConstraints="NO" id="1cl-Tb-oHm">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="ur2-P8-HPg"/>
-                                    <constraint firstAttribute="width" constant="15" id="usk-Vd-UIz"/>
+                                    <constraint firstAttribute="width" constant="30" id="bqc-qo-ZCh"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="FenteRight.png" translatesAutoresizingMaskIntoConstraints="NO" id="tgh-ze-Nww">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="Dmd-JG-BA0"/>
+                                    <constraint firstAttribute="width" constant="30" id="Hqq-i9-GiF"/>
+                                    <constraint firstAttribute="height" constant="70" id="ghe-Uy-saP"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.96334901147959184" green="0.96334901147959184" blue="0.96334901147959184" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="7" id="1a9-je-6ov"/>
+                            <constraint firstItem="HbE-fD-pDu" firstAttribute="centerX" secondItem="TZa-vT-VcQ" secondAttribute="centerX" type="default" id="0go-3e-XjU"/>
                             <constraint firstAttribute="trailing" secondItem="udj-mv-20Z" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2c0-xd-GBh"/>
                             <constraint firstItem="udj-mv-20Z" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="145" id="3dz-F9-UcC"/>
-                            <constraint firstAttribute="trailing" secondItem="tgh-ze-Nww" secondAttribute="trailing" constant="47" id="4hy-Lh-y1f"/>
-                            <constraint firstItem="HbE-fD-pDu" firstAttribute="centerX" secondItem="TZa-vT-VcQ" secondAttribute="centerX" type="default" id="9sb-CG-xdx"/>
+                            <constraint firstItem="tgh-ze-Nww" firstAttribute="bottom" secondItem="1cl-Tb-oHm" secondAttribute="bottom" type="default" id="9Ui-B4-bfs"/>
                             <constraint firstItem="R51-oz-Aj6" firstAttribute="baseline" secondItem="dc7-Vp-3r5" secondAttribute="baseline" type="default" id="AUa-l4-wfx"/>
                             <constraint firstItem="pWV-5k-CGt" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="190" id="Bv0-NA-AV7"/>
                             <constraint firstItem="aRv-JW-Df5" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DPS-xR-eM4"/>
-                            <constraint firstItem="TZa-vT-VcQ" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="100" id="Eh3-MG-OSx"/>
+                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="top" secondItem="tgh-ze-Nww" secondAttribute="top" type="default" id="Dme-nt-1Eq"/>
                             <constraint firstAttribute="trailing" secondItem="dc7-Vp-3r5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="J76-wj-7Li"/>
-                            <constraint firstItem="tgh-ze-Nww" firstAttribute="bottom" secondItem="1cl-Tb-oHm" secondAttribute="bottom" type="default" id="Otd-oD-eOK"/>
+                            <constraint firstAttribute="trailing" secondItem="tgh-ze-Nww" secondAttribute="trailing" constant="24" id="KWf-dG-QBs"/>
+                            <constraint firstItem="TZa-vT-VcQ" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="100" id="Mbb-4w-CbV"/>
+                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="centerY" secondItem="HbE-fD-pDu" secondAttribute="centerY" type="default" id="Obd-cY-zZj"/>
                             <constraint firstAttribute="bottom" secondItem="R51-oz-Aj6" secondAttribute="bottom" constant="107" id="RMv-Tl-Cc9"/>
-                            <constraint firstItem="HbE-fD-pDu" firstAttribute="centerY" secondItem="1cl-Tb-oHm" secondAttribute="centerY" type="default" id="Rn2-5W-fw4"/>
                             <constraint firstItem="pWV-5k-CGt" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UVh-xm-ekx"/>
+                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="24" id="Umm-zY-Aed"/>
                             <constraint firstAttribute="trailing" secondItem="pWV-5k-CGt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XZb-vO-ybJ"/>
-                            <constraint firstItem="1cl-Tb-oHm" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="47" id="dHD-aj-ZX5"/>
+                            <constraint firstItem="tgh-ze-Nww" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="12" id="dQb-iS-r0j"/>
                             <constraint firstItem="udj-mv-20Z" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dnG-Tm-4ot"/>
                             <constraint firstAttribute="bottom" secondItem="aRv-JW-Df5" secondAttribute="bottom" constant="195" id="ghH-vK-Gev"/>
                             <constraint firstAttribute="trailing" secondItem="aRv-JW-Df5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ght-9L-MtA"/>
                             <constraint firstAttribute="trailing" secondItem="TZa-vT-VcQ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ncg-zs-gKR"/>
                             <constraint firstItem="R51-oz-Aj6" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rEf-zH-Wzg"/>
-                            <constraint firstItem="tgh-ze-Nww" firstAttribute="top" secondItem="1cl-Tb-oHm" secondAttribute="top" type="default" id="sbe-tH-Cgg"/>
                             <constraint firstItem="TZa-vT-VcQ" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wCM-jj-YlI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Résumé" id="cBE-Ml-6hZ">
+                    <navigationItem key="navigationItem" title="Epreuve" id="cBE-Ml-6hZ">
                         <barButtonItem key="backBarButtonItem" title="Retour" id="Lf1-HU-cIb"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="anneeLabel" destination="pWV-5k-CGt" id="deb-9H-dXt"/>
+                        <outlet property="bannerConcours" destination="HbE-fD-pDu" id="nCO-hJ-kUk"/>
                         <outlet property="concoursLabel" destination="TZa-vT-VcQ" id="6Rp-sB-7fY"/>
                         <outlet property="corrigeButton" destination="dc7-Vp-3r5" id="OnO-JJ-yCq"/>
                         <outlet property="epreuveLabel" destination="aRv-JW-Df5" id="Zkl-bZ-n6E"/>
@@ -773,7 +774,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CentraleSupelec.png" width="440" height="100"/>
+        <image name="CentraleSupelec.png" width="520" height="120"/>
         <image name="FenteLeft.png" width="150" height="640"/>
         <image name="FenteRight.png" width="150" height="640"/>
         <image name="NewsBackground.png" width="640" height="150"/>
@@ -856,6 +857,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesDetailsViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="anneeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bannerConcours" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="concoursLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="corrigeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="epreuveLabel" candidateClass="UILabel"/>

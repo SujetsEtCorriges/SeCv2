@@ -107,14 +107,17 @@
         else if ([_currentElement isEqualToString:kSujet])
         {
             [currentSujet_ appendString:string];
+            [currentSujet_ setString: [self cleaningString:currentSujet_]];
         }
         else if ([_currentElement isEqualToString:kCorrige])
         {
             [currentCorrige_ appendString:string];
+            [currentCorrige_ setString: [self cleaningString:currentCorrige_]];
         }
         else if ([_currentElement isEqualToString:kCorrigePartiel])
         {
             [currentCorrigePartiel_ appendString:string];
+            [currentCorrigePartiel_ setString: [self cleaningString:currentCorrigePartiel_]];
         }
         else if ([_currentElement isEqualToString:kNom])
         {

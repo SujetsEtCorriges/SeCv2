@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface SujetsCorrigesDetailsViewController : UIViewController
 {
     
 }
 
-//données
+// Données
 @property (strong, nonatomic) NSString *lienSujet;
 @property (strong, nonatomic) NSString *lienCorrige;
 @property (nonatomic, assign) int corrigePartiel;
@@ -22,14 +23,17 @@
 @property (strong, nonatomic) NSString *filiere;
 @property (strong, nonatomic) NSString *epreuve;
 
-//UILabel
+// UILabel
 @property (strong, nonatomic) IBOutlet UILabel *concoursLabel;
 @property (strong, nonatomic) IBOutlet UILabel *anneeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *filiereLabel;
 @property (strong, nonatomic) IBOutlet UILabel *epreuveLabel;
 
-//UIButton
+// UIButton
 @property (strong, nonatomic) IBOutlet UIButton *sujetButton;
 @property (strong, nonatomic) IBOutlet UIButton *corrigeButton;
+
+// UIImage
+@property (strong, nonatomic) IBOutlet UIImageView *bannerConcours;
 
 @end
