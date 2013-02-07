@@ -68,4 +68,19 @@
     [self setBannerConcours:nil];
     [super viewDidUnload];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"modalToViewerSujet"])
+    {
+        ViewerViewController *destViewController = segue.destinationViewController;
+        destViewController.lienString = lienSujet_;
+    }
+    else if ([segue.identifier isEqualToString:@"modalToViewerCorrige"])
+    {
+        ViewerViewController *destViewController = segue.destinationViewController;
+        destViewController.lienString = lienCorrige_;
+    }
+}
+
 @end

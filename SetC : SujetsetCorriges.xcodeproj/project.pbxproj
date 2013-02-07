@@ -14,6 +14,7 @@
 		3F45810216C00F320017BD9A /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F45810116C00F320017BD9A /* NewsCell.m */; };
 		3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */; };
 		3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */; };
+		3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBFCD616C46393007ABD8E /* ViewerViewController.m */; };
 		3FFA184D16C02B8000D6E085 /* NewsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184B16C02B8000D6E085 /* NewsBackground.png */; };
 		3FFA184E16C02B8000D6E085 /* NewsBackgroundHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */; };
 		9127A147167D36FD00D1EB09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A146167D36FD00D1EB09 /* UIKit.framework */; };
@@ -95,6 +96,8 @@
 		3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpreuveCell.m; sourceTree = "<group>"; };
 		3F7BCE0F16C1C6370084ACFD /* ConcoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcoursCell.h; sourceTree = "<group>"; };
 		3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcoursCell.m; sourceTree = "<group>"; };
+		3FEBFCD516C46393007ABD8E /* ViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerViewController.h; sourceTree = "<group>"; };
+		3FEBFCD616C46393007ABD8E /* ViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewerViewController.m; sourceTree = "<group>"; };
 		3FFA184B16C02B8000D6E085 /* NewsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackground.png; sourceTree = "<group>"; };
 		3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackgroundHighlighted.png; sourceTree = "<group>"; };
 		9127A142167D36FD00D1EB09 /* SetC : SujetsetCorriges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SetC : SujetsetCorriges.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +381,8 @@
 				9127A1F2167DEDB400D1EB09 /* SujetsCorrigesDetailsViewController.m */,
 				9127A1D6167D4BBE00D1EB09 /* ConcoursListViewController.h */,
 				9127A1D7167D4BBE00D1EB09 /* ConcoursListViewController.m */,
+				3FEBFCD516C46393007ABD8E /* ViewerViewController.h */,
+				3FEBFCD616C46393007ABD8E /* ViewerViewController.m */,
 				9127A1D9167D4D7300D1EB09 /* VariableStore.h */,
 				9127A1DA167D4D7300D1EB09 /* VariableStore.m */,
 				3F7BCE0C16C1BDB50084ACFD /* EpreuveCell.h */,
@@ -606,6 +611,7 @@
 				3F45810216C00F320017BD9A /* NewsCell.m in Sources */,
 				3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */,
 				3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */,
+				3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
