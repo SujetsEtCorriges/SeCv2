@@ -581,7 +581,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Epreuve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRv-JW-Df5">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Xf7-EQ-7oi"/>
+                                    <constraint firstAttribute="height" constant="25" type="user" id="Xf7-EQ-7oi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -658,16 +658,16 @@
                             <constraint firstAttribute="trailing" secondItem="dc7-Vp-3r5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="J76-wj-7Li"/>
                             <constraint firstAttribute="trailing" secondItem="tgh-ze-Nww" secondAttribute="trailing" constant="24" id="KWf-dG-QBs"/>
                             <constraint firstItem="TZa-vT-VcQ" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="100" id="Mbb-4w-CbV"/>
+                            <constraint firstItem="aRv-JW-Df5" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="235" type="user" id="N2d-qL-p4x"/>
                             <constraint firstItem="1cl-Tb-oHm" firstAttribute="centerY" secondItem="HbE-fD-pDu" secondAttribute="centerY" type="default" id="Obd-cY-zZj"/>
-                            <constraint firstAttribute="bottom" secondItem="R51-oz-Aj6" secondAttribute="bottom" constant="107" id="RMv-Tl-Cc9"/>
                             <constraint firstItem="pWV-5k-CGt" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UVh-xm-ekx"/>
                             <constraint firstItem="1cl-Tb-oHm" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="24" id="Umm-zY-Aed"/>
                             <constraint firstAttribute="trailing" secondItem="pWV-5k-CGt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XZb-vO-ybJ"/>
                             <constraint firstItem="tgh-ze-Nww" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="12" id="dQb-iS-r0j"/>
                             <constraint firstItem="udj-mv-20Z" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dnG-Tm-4ot"/>
-                            <constraint firstAttribute="bottom" secondItem="aRv-JW-Df5" secondAttribute="bottom" constant="195" id="ghH-vK-Gev"/>
                             <constraint firstAttribute="trailing" secondItem="aRv-JW-Df5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ght-9L-MtA"/>
                             <constraint firstAttribute="trailing" secondItem="TZa-vT-VcQ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ncg-zs-gKR"/>
+                            <constraint firstItem="R51-oz-Aj6" firstAttribute="top" secondItem="IPO-qo-8ET" secondAttribute="top" constant="305" type="user" id="ohE-ZE-vvP"/>
                             <constraint firstItem="R51-oz-Aj6" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="rEf-zH-Wzg"/>
                             <constraint firstItem="TZa-vT-VcQ" firstAttribute="leading" secondItem="IPO-qo-8ET" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wCM-jj-YlI"/>
                         </constraints>
@@ -704,28 +704,59 @@
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nmP-az-zeA">
                                 <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="syy-dd-jUf"/>
-                                    <barButtonItem systemItem="stop" id="O3J-uF-Dqj">
+                                    <barButtonItem style="plain" systemItem="rewind" id="tHf-pL-Wlm">
                                         <connections>
-                                            <action selector="closeViewer:" destination="XyT-Go-1Q0" id="mlx-pw-NKx"/>
+                                            <action selector="goBack:" destination="XyT-Go-1Q0" id="dxO-6U-7Uv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="fastForward" id="kBW-ZB-3kd">
+                                        <connections>
+                                            <action selector="goForward:" destination="XyT-Go-1Q0" id="Kd3-GL-iQn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="R5B-Hg-1OM"/>
+                                    <barButtonItem style="plain" systemItem="refresh" id="5aH-Ef-dQd">
+                                        <connections>
+                                            <action selector="refresh:" destination="XyT-Go-1Q0" id="cVE-BA-OHO"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJv-Nz-V42">
+                                <items>
+                                    <navigationItem title="Viewer" id="yX5-mY-9ix">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="action" id="CeZ-GH-sbG"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="2Jh-M8-cKN">
+                                            <connections>
+                                                <action selector="closeViewer:" destination="XyT-Go-1Q0" id="JSQ-1x-G6k"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="nJv-Nz-V42" firstAttribute="top" secondItem="4zN-c2-LOR" secondAttribute="top" type="default" id="1tR-UE-tcm"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="31J-PO-O0j"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="Kgj-U2-EUM"/>
+                            <constraint firstItem="nJv-Nz-V42" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="O5S-xZ-QaF"/>
+                            <constraint firstItem="nJv-Nz-V42" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="Qmb-z4-P7A"/>
+                            <constraint firstItem="nmP-az-zeA" firstAttribute="top" secondItem="tkm-MB-08w" secondAttribute="bottom" type="default" id="TvB-MM-bB7"/>
                             <constraint firstItem="tkm-MB-08w" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="XlT-Eh-udJ"/>
-                            <constraint firstItem="nmP-az-zeA" firstAttribute="top" secondItem="4zN-c2-LOR" secondAttribute="top" type="default" id="caX-m8-K2k"/>
-                            <constraint firstItem="tkm-MB-08w" firstAttribute="bottom" secondItem="4zN-c2-LOR" secondAttribute="bottom" type="default" id="ebC-Wa-6k0"/>
+                            <constraint firstItem="nJv-Nz-V42" firstAttribute="bottom" secondItem="tkm-MB-08w" secondAttribute="top" type="default" id="gDB-vs-LLz"/>
+                            <constraint firstItem="nmP-az-zeA" firstAttribute="bottom" secondItem="4zN-c2-LOR" secondAttribute="bottom" type="default" id="jww-s1-3dF"/>
                             <constraint firstItem="tkm-MB-08w" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="pDI-dF-HuQ"/>
-                            <constraint firstItem="nmP-az-zeA" firstAttribute="bottom" secondItem="tkm-MB-08w" secondAttribute="top" type="default" id="yJ5-AN-lFe"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="O3J-uF-Dqj" id="HR6-9Y-Une"/>
+                        <outlet property="actionButton" destination="CeZ-GH-sbG" id="8rb-jB-GM2"/>
+                        <outlet property="closeButton" destination="2Jh-M8-cKN" id="dfa-oS-E7f"/>
+                        <outlet property="goBackButton" destination="tHf-pL-Wlm" id="KCh-uE-SdP"/>
+                        <outlet property="goForwardButton" destination="kBW-ZB-3kd" id="IoY-HI-lCD"/>
+                        <outlet property="navBar" destination="nJv-Nz-V42" id="cAA-Wg-FpO"/>
+                        <outlet property="refreshButton" destination="5aH-Ef-dQd" id="HH4-ge-ouc"/>
+                        <outlet property="toolBar" destination="nmP-az-zeA" id="3wK-06-XR1"/>
                         <outlet property="viewerWebView" destination="tkm-MB-08w" id="wHe-Ob-xyD"/>
                     </connections>
                 </viewController>
@@ -922,6 +953,9 @@
         </class>
         <class className="SujetsCorrigesPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesPageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="affichageConcours:"/>
+            </relationships>
         </class>
         <class className="SujetsCorrigesViewController" superclassName="ECSlidingViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesViewController.h"/>
@@ -930,7 +964,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewerViewController.h"/>
             <relationships>
                 <relationship kind="action" name="closeViewer:"/>
+                <relationship kind="action" name="goBack:"/>
+                <relationship kind="action" name="goForward:"/>
+                <relationship kind="action" name="refresh:"/>
+                <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="goBackButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="goForwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="viewerWebView" candidateClass="UIWebView"/>
             </relationships>
         </class>

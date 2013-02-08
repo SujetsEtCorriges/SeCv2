@@ -75,11 +75,15 @@
     {
         ViewerViewController *destViewController = segue.destinationViewController;
         destViewController.lienString = lienSujet_;
+        destViewController.titleFile = [NSString stringWithFormat:@"Sujet %@",concours_];
+        destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     }
     else if ([segue.identifier isEqualToString:@"modalToViewerCorrige"])
     {
         ViewerViewController *destViewController = segue.destinationViewController;
         destViewController.lienString = lienCorrige_;
+        destViewController.titleFile = [NSString stringWithFormat:@"Corrigé %@",concours_];
+        destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     }
 }
 
