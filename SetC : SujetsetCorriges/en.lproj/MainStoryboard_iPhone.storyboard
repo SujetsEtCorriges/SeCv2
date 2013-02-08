@@ -721,11 +721,16 @@
                                         </connections>
                                     </barButtonItem>
                                 </items>
+                                <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJv-Nz-V42">
                                 <items>
                                     <navigationItem title="Viewer" id="yX5-mY-9ix">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="action" id="CeZ-GH-sbG"/>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="action" id="CeZ-GH-sbG">
+                                            <connections>
+                                                <action selector="openInSafari:" destination="XyT-Go-1Q0" id="ghO-bL-Z1K"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="2Jh-M8-cKN">
                                             <connections>
                                                 <action selector="closeViewer:" destination="XyT-Go-1Q0" id="JSQ-1x-G6k"/>
@@ -734,6 +739,9 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IgB-bA-or7">
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -741,16 +749,19 @@
                             <constraint firstItem="nmP-az-zeA" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="31J-PO-O0j"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="Kgj-U2-EUM"/>
                             <constraint firstItem="nJv-Nz-V42" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="O5S-xZ-QaF"/>
+                            <constraint firstItem="IgB-bA-or7" firstAttribute="centerY" secondItem="nmP-az-zeA" secondAttribute="centerY" type="default" id="QeJ-BM-PIn"/>
                             <constraint firstItem="nJv-Nz-V42" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="Qmb-z4-P7A"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="top" secondItem="tkm-MB-08w" secondAttribute="bottom" type="default" id="TvB-MM-bB7"/>
                             <constraint firstItem="tkm-MB-08w" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="XlT-Eh-udJ"/>
                             <constraint firstItem="nJv-Nz-V42" firstAttribute="bottom" secondItem="tkm-MB-08w" secondAttribute="top" type="default" id="gDB-vs-LLz"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="bottom" secondItem="4zN-c2-LOR" secondAttribute="bottom" type="default" id="jww-s1-3dF"/>
                             <constraint firstItem="tkm-MB-08w" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="pDI-dF-HuQ"/>
+                            <constraint firstAttribute="trailing" secondItem="IgB-bA-or7" secondAttribute="trailing" constant="43" id="ueS-yW-p51"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="CeZ-GH-sbG" id="8rb-jB-GM2"/>
+                        <outlet property="activityView" destination="IgB-bA-or7" id="Enl-o8-vz4"/>
                         <outlet property="closeButton" destination="2Jh-M8-cKN" id="dfa-oS-E7f"/>
                         <outlet property="goBackButton" destination="tHf-pL-Wlm" id="KCh-uE-SdP"/>
                         <outlet property="goForwardButton" destination="kBW-ZB-3kd" id="IoY-HI-lCD"/>
@@ -772,9 +783,9 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.29999999999999999" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.55000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.20000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="concoursCell" id="QyJ-8m-8hp" customClass="ConcoursCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ConcoursCell" id="QyJ-8m-8hp" customClass="ConcoursCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -953,9 +964,6 @@
         </class>
         <class className="SujetsCorrigesPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesPageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="affichageConcours:"/>
-            </relationships>
         </class>
         <class className="SujetsCorrigesViewController" superclassName="ECSlidingViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesViewController.h"/>
@@ -966,8 +974,10 @@
                 <relationship kind="action" name="closeViewer:"/>
                 <relationship kind="action" name="goBack:"/>
                 <relationship kind="action" name="goForward:"/>
+                <relationship kind="action" name="openInSafari:"/>
                 <relationship kind="action" name="refresh:"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="activityView" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="goBackButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="goForwardButton" candidateClass="UIBarButtonItem"/>

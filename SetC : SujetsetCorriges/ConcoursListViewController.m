@@ -73,6 +73,26 @@
 {
     UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)];
     viewSection.backgroundColor = [UIColor colorWithWhite:0.45 alpha:1.0];
+    
+    CAGradientLayer *shadowSection = [CAGradientLayer layer];
+    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.40 alpha:1.0].CGColor,(id)[UIColor colorWithWhite:0.45 alpha:1.0].CGColor,nil];
+    CGRect frameShadow = viewSection.frame;
+    frameShadow.size.height = 20;
+    shadowSection.frame = frameShadow;
+    shadowSection.startPoint = CGPointMake(0.5, 0);
+    shadowSection.endPoint = CGPointMake(0.5,1);
+    [viewSection.layer addSublayer:shadowSection];
+    
+    CALayer *lineTop = [CALayer layer];
+    lineTop.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
+    lineTop.frame = CGRectMake(0, 0, 320, 1);
+    [viewSection.layer addSublayer:lineTop];
+    
+    CALayer *lineBottom = [CALayer layer];
+    lineBottom.backgroundColor = [UIColor colorWithWhite:0.30 alpha:1.0].CGColor;
+    lineBottom.frame = CGRectMake(0, 24, 320, 1);
+    [viewSection.layer addSublayer:lineBottom];
+    
     UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 25)];
     labelSection.backgroundColor = [UIColor clearColor];
     labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
@@ -99,7 +119,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"concoursCell";
+    static NSString *CellIdentifier = @"ConcoursCell";
     ConcoursCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)

@@ -17,6 +17,7 @@
 @synthesize lienString = lienString_;
 @synthesize titleFile = titleFile_;
 @synthesize subtitleFile = subtitleFile_;
+@synthesize activityView = activityView_;
 @synthesize viewerWebView = viewerWebView_;
 @synthesize navBar = navBar_;
 @synthesize closeButton = closeButton_;
@@ -40,14 +41,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    [titleButton_ setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-//                                          //[UIColor colorWithRed:220.0/255.0 green:104.0/255.0 blue:1.0/255.0 alpha:1.0], UITextAttributeTextColor,
-//                                          //[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0], UITextAttributeTextShadowColor,
-//                                          //[NSValue valueWithUIOffset:UIOffsetMake(0, 1)], UITextAttributeTextShadowOffset,
-//                                          [UIFont fontWithName:@"Helvetica" size:10.0], UITextAttributeFont,
-//                                          nil]
-//                                forState:UIControlStateNormal];
-    //titleButton_.title = titleFile_;
     UILabel *navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 200, 18)];
     navTitleLabel.backgroundColor = [UIColor clearColor];
     navTitleLabel.textAlignment = UITextAlignmentCenter;
@@ -74,7 +67,8 @@
     
     [navBar_.topItem setTitleView:viewTitle];
     
-    //navBar_.topItem. title = titleFile_;
+    //activityView_ = [[UIActivityIndicatorView alloc] init];
+    //activityView_.hidesWhenStopped = YES;
     
     viewerWebView_.delegate = self;
     NSURL *urlAddress = [NSURL URLWithString: lienString_];
@@ -101,8 +95,27 @@
     [self setGoBackButton:nil];
     [self setGoForwardButton:nil];
     [self setRefreshButton:nil];
+    [self setActivityView:nil];
     [super viewDidUnload];
 }
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    //refreshButton_.customView = activityView_;
+    [activityView_ startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //refreshButton_ setStyle:UIBarButtonSystemItemRefresh
+    [activityView_ stopAnimating];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [activityView_ stopAnimating];
+}
+
 - (IBAction)closeViewer:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
@@ -121,6 +134,27 @@
 - (IBAction)refresh:(id)sender
 {
     [viewerWebView_ reload];
+}
+
+- (IBAction)openInSafari:(id)sender
+{
+    UIActionSheet *chgtApp = [[UIActionSheet alloc]
+                              initWithTitle:@"Ouvrir la page actuelle dans Safari ?"
+                              delegate:self
+                              cancelButtonTitle:@"Annuler"
+                              destructiveButtonTitle:nil
+                              otherButtonTitles:@"Ok", nil];
+    chgtApp.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    
+    [chgtApp showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        [[UIApplication sharedApplication] openURL:viewerWebView_.request.URL];
+    }
 }
 
 @end
