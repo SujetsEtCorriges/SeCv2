@@ -788,7 +788,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJv-Nz-V42">
                                 <items>
                                     <navigationItem title="Viewer" id="yX5-mY-9ix">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="2LP-ik-7cX">
+                                        <barButtonItem key="leftBarButtonItem" title="Save" id="2LP-ik-7cX">
                                             <connections>
                                                 <action selector="saveFile:" destination="XyT-Go-1Q0" id="f8p-bN-KXz"/>
                                             </connections>
@@ -1031,6 +1031,9 @@
         </class>
         <class className="SujetsCorrigesPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesPageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="affichageConcours:"/>
+            </relationships>
         </class>
         <class className="SujetsCorrigesViewController" superclassName="ECSlidingViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesViewController.h"/>

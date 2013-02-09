@@ -52,11 +52,22 @@
         goForwardButton_.enabled = NO;
         actionButton_.enabled = NO;
         urlAddress = [NSURL fileURLWithPath:lienString_];
+        
+        [self changeSaveButtonIntoSaved];
     }
     else
     {
         urlAddress = [NSURL URLWithString: lienString_];
         pdfFile = [[NSMutableData alloc] init];
+        
+        paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        documentPath = [paths objectAtIndex:0];
+        filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+        {
+            [self changeSaveButtonIntoSaved];
+        }
     }
     
     savingHUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -64,6 +75,14 @@
     savingHUD.mode = MBProgressHUDModeAnnularDeterminate;
     savingHUD.labelText = @"Enregistrement...";
     [self.view addSubview:savingHUD];
+    
+//    errorHUD = [[MBProgressHUD alloc] initWithView:self.view];
+//    errorHUD.delegate = self;
+//    errorHUD.mode = MBProgressHUDModeCustomView;
+//    errorHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+//    errorHUD.mode = MBProgressHUDModeCustomView;
+//    errorHUD.labelText = @"Fichier déjà enregistré";
+//    [self.view addSubview:errorHUD];
     
     UILabel *navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 200, 18)];
     navTitleLabel.backgroundColor = [UIColor clearColor];
@@ -190,8 +209,10 @@
 {
     //[NSThread detachNewThreadSelector:@selector(showHUD) toTarget:self withObject:nil];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [paths objectAtIndex:0];
+    [savingHUD show:YES];
+    
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString *documentPath = [paths objectAtIndex:0];
     BOOL isDir = NO;
     NSError *errorDirectory;
     //NSError *errorData;
@@ -201,7 +222,8 @@
     {
         [[NSFileManager defaultManager] createDirectoryAtPath:documentPath withIntermediateDirectories:NO attributes:nil error:&errorDirectory];
     }
-    NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
+    
+    //NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
     //webView.request.URL contains current URL of UIWebView, don't forget to set outlet for it
     //NSData *pdfFile = [NSData dataWithContentsOfURL:[NSURL URLWithString:lienString_]];
     //[pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
@@ -209,11 +231,8 @@
     
     //[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
-    NSURLRequest *postRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:lienString_]];
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    [savingHUD show:YES];
-    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:postRequest delegate:self];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:lienString_]];
+    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
 	[urlConnection start];
 	//[urlConnection release];
 
@@ -238,11 +257,13 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [paths objectAtIndex:0];
-    NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString *documentPath = [paths objectAtIndex:0];
+    //NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
     NSError *errorData;
     [pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
+    
+    [self changeSaveButtonIntoSaved];
     
     savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
 	savingHUD.mode = MBProgressHUDModeCustomView;
@@ -253,15 +274,24 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	[savingHUD hide:YES];
+    savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+	savingHUD.mode = MBProgressHUDModeCustomView;
+    savingHUD.labelText = @"Erreur";
+	[savingHUD hide:YES afterDelay:2];
 }
 
-- (void)showHUD
+- (void)changeSaveButtonIntoSaved
 {
-    @autoreleasepool
-    {
-        [savingHUD show:YES];
-    }
+    saveButton_.title = @"Saved";
+    saveButton_.enabled = NO;
 }
+
+//- (void)showHUD
+//{
+//    @autoreleasepool
+//    {
+//        [savingHUD show:YES];
+//    }
+//}
 
 @end

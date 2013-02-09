@@ -183,12 +183,16 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSString *filePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:[indexPath row]]];
         
+        NSArray *arrayTitleFile = [[[arrayDocuments objectAtIndex:[indexPath row]] stringByDeletingPathExtension] componentsSeparatedByString:@" - "];
+        NSString *titleFile = [arrayTitleFile objectAtIndex:0];
+        NSString *subtitleFile = [arrayTitleFile objectAtIndex:1];
+        
         ViewerViewController *destViewController = segue.destinationViewController;
         destViewController.isLocalFile = YES;
         destViewController.lienString = filePath;
-        destViewController.titleFile = @"TEST";
-        //destViewController.titleFile = [NSString stringWithFormat:@"Sujet %@",concours_];
-        //destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
+        //destViewController.titleFile = @"TEST";
+        destViewController.titleFile = titleFile;
+        destViewController.subtitleFile = subtitleFile;
     }
 }
 
