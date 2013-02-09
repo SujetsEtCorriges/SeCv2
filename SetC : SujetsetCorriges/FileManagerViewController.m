@@ -59,7 +59,7 @@
         NSString *currentDocumentPath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
         NSDictionary *FileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:currentDocumentPath error:&AttributesError];
         NSNumber *FileSizeNumber = [FileAttributes objectForKey:NSFileSize];
-        long FileSize = [FileSizeNumber longValue]/1024;
+        long FileSize = [FileSizeNumber longValue];
         FileSizeNumber = [NSNumber numberWithLong:FileSize];
         
         //NSLog(@"File: %@, Size: %ld", URL, FileSize);
@@ -89,14 +89,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [arrayDocuments count];
 }
@@ -108,7 +106,21 @@
     
     // Configure the cell...
     cell.textLabel.text = [arrayDocuments objectAtIndex:[indexPath row]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Ko",[[arraySize objectAtIndex:[indexPath row]] stringValue]];
+    float FileSize = [[arraySize objectAtIndex:[indexPath row]] floatValue];
+    NSString *fileSizeString;
+    if (FileSize < 1024)
+    {
+        fileSizeString = [NSString stringWithFormat:@"%f octets",FileSize];
+    }
+    else if (FileSize < 1024*1024)
+    {
+        fileSizeString = [NSString stringWithFormat:@"%@ Ko",[NSString stringWithFormat:@"%.02f", FileSize/1024]];
+    }
+    else
+    {
+        fileSizeString = [NSString stringWithFormat:@"%@ Mo",[NSString stringWithFormat:@"%.02f", (FileSize/1024)/1024]];
+    }
+    cell.detailTextLabel.text = fileSizeString;
     
     return cell;
 }
