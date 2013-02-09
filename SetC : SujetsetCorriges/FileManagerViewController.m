@@ -14,6 +14,8 @@
 
 @implementation FileManagerViewController
 
+@synthesize editButton = editButton_;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -171,7 +173,17 @@
      */
     
     //[self performSegueWithIdentifier: @"modalToViewerFromFile" sender: self];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isEditing] == YES)
+    {
+        
+    }
+    else {
+        // Do Something else.
+        [self performSegueWithIdentifier: @"modalToViewerFromFile" sender: self];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -194,6 +206,67 @@
         destViewController.titleFile = titleFile;
         destViewController.subtitleFile = subtitleFile;
     }
+}
+
+- (void)viewDidUnload
+{
+    [self setEditButton:nil];
+    [super viewDidUnload];
+}
+- (IBAction)enterEditMode:(id)sender
+{
+    if ([self.tableView isEditing])
+    {
+        [self.tableView setAllowsMultipleSelectionDuringEditing:NO];
+        // If the tableView is already in edit mode, turn it off. Also change the title of the button to reflect the intended verb (‘Edit’, in this case).
+        [self.tableView setEditing:NO animated:YES];
+        [editButton_ setTitle:@"Modifier"];
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    else
+    {
+        [self.tableView setAllowsMultipleSelectionDuringEditing:YES];
+        [editButton_ setTitle:@"Annuler"];
+        [editButton_ setStyle:UIBarButtonItemStyleDone];
+        
+        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Supprimer" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteDocuments)];
+        deleteButton.tintColor = [UIColor redColor];
+        self.navigationItem.rightBarButtonItem = deleteButton;
+        
+        // Turn on edit mode
+        
+        [self.tableView setEditing:YES animated:YES];
+    }
+}
+
+- (void)deleteDocuments
+{
+    NSError *deleteError;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths objectAtIndex:0];
+    
+    NSMutableArray *cellIndicesToBeDeleted = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; i++) {
+        NSIndexPath *p = [NSIndexPath indexPathForRow:i inSection:0];
+        if ([[self.tableView cellForRowAtIndexPath:p] isSelected])
+        {
+            [cellIndicesToBeDeleted addObject:p];
+            
+            NSString *documentToDeletePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
+            [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
+            [arrayDocuments removeObjectAtIndex:i];
+            [arraySize removeObjectAtIndex:i];
+        }
+    }
+    
+    [self.tableView deleteRowsAtIndexPaths:cellIndicesToBeDeleted
+                     withRowAnimation:UITableViewRowAnimationLeft];
+    [self enterEditMode:nil];
+}
+
+- (void)exitEditingMode
+{
+    [self.tableView setEditing:NO animated:YES];
 }
 
 @end

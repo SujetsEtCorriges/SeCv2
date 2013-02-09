@@ -457,13 +457,20 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="XyT-Go-1Q0" kind="modal" identifier="modalToViewerFromFile" id="iku-VI-KHT"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Documents" id="NaP-pJ-l6i"/>
+                    <navigationItem key="navigationItem" title="Documents" id="NaP-pJ-l6i">
+                        <barButtonItem key="leftBarButtonItem" title="Modifier" id="5zW-Uc-7WZ">
+                            <connections>
+                                <action selector="enterEditMode:" destination="8ks-L8-rbB" id="cWU-k8-vHW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="5zW-Uc-7WZ" id="3c6-Zk-7CK"/>
+                        <segue destination="XyT-Go-1Q0" kind="modal" identifier="modalToViewerFromFile" id="yyX-lv-Glz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OX-Oe-Aj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -993,6 +1000,10 @@
         </class>
         <class className="FileManagerViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FileManagerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="enterEditMode:"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -1066,6 +1077,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iku-VI-KHT"/>
+        <segue reference="yyX-lv-Glz"/>
     </inferredMetricsTieBreakers>
 </document>

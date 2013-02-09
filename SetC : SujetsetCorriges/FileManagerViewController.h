@@ -10,10 +10,12 @@
 #import "ViewerViewController.h"
 
 @interface FileManagerViewController : UITableViewController
-
 {
     NSMutableArray * arrayDocuments;
     NSMutableArray *arraySize;
 }
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
+
+- (IBAction)enterEditMode:(id)sender;
 
 @end
