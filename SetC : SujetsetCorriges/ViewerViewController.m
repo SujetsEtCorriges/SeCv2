@@ -56,6 +56,7 @@
     else
     {
         urlAddress = [NSURL URLWithString: lienString_];
+        pdfFile = [[NSMutableData alloc] init];
     }
     
     savingHUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -106,6 +107,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void)viewDidUnload {
@@ -182,13 +188,13 @@
 
 - (IBAction)saveFile:(id)sender
 {
-    [NSThread detachNewThreadSelector:@selector(showHUD) toTarget:self withObject:nil];
+    //[NSThread detachNewThreadSelector:@selector(showHUD) toTarget:self withObject:nil];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [paths objectAtIndex:0];
     BOOL isDir = NO;
     NSError *errorDirectory;
-    NSError *errorData;
+    //NSError *errorData;
 
     //You must check if this directory exist every time
     if (! [[NSFileManager defaultManager] fileExistsAtPath:documentPath isDirectory:&isDir] && isDir   == NO)
@@ -197,10 +203,57 @@
     }
     NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
     //webView.request.URL contains current URL of UIWebView, don't forget to set outlet for it
-    NSData *pdfFile = [NSData dataWithContentsOfURL:[NSURL URLWithString:lienString_]];
+    //NSData *pdfFile = [NSData dataWithContentsOfURL:[NSURL URLWithString:lienString_]];
+    //[pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
+    //NSLog(@"File saved");
+    
+    //[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    NSURLRequest *postRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:lienString_]];
+    NSURLResponse *response = nil;
+    NSError *error = nil;
+    [savingHUD show:YES];
+    NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:postRequest delegate:self];
+	[urlConnection start];
+	//[urlConnection release];
+
+    //pdfFile = [urlConnection sendSynchronousRequest:postRequest returningResponse:&response error:&error];
+//    NSError *errorData;
+//    [pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [pdfFile setLength:0];
+    expectedLength = [response expectedContentLength];
+	currentLength = 0;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [pdfFile appendData:data];
+    currentLength += [data length];
+	savingHUD.progress = currentLength / (float)expectedLength;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
+    NSError *errorData;
     [pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
+    
+    savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+	savingHUD.mode = MBProgressHUDModeCustomView;
+    savingHUD.labelText = @"Réussi";
+	[savingHUD hide:YES afterDelay:2];
     NSLog(@"File saved");
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+	[savingHUD hide:YES];
 }
 
 - (void)showHUD

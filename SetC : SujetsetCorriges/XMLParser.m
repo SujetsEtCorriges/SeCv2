@@ -19,7 +19,7 @@
     
     typeParse_ = @"sujcor";
     
-    NSData* list=[theData dataUsingEncoding:NSUTF8StringEncoding];
+    NSData* list = [theData dataUsingEncoding:NSUTF8StringEncoding];
     
     textParser_ = [[NSXMLParser alloc] initWithData:list];
     

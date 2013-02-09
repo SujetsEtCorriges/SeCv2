@@ -12,6 +12,10 @@
 @interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MBProgressHUDDelegate>
 {
     MBProgressHUD *savingHUD;
+    long long expectedLength;
+    float currentLength;
+    
+    NSMutableData *pdfFile;
 }
 
 @property (assign, nonatomic) BOOL isLocalFile;
