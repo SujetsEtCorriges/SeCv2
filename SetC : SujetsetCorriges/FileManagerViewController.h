@@ -12,7 +12,8 @@
 @interface FileManagerViewController : UITableViewController
 
 {
-    NSArray * arrayDocuments;
+    NSMutableArray * arrayDocuments;
+    NSMutableArray *arraySize;
 }
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
+@interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MBProgressHUDDelegate>
+{
+    MBProgressHUD *savingHUD;
+}
 
 @property (assign, nonatomic) BOOL isLocalFile;
 @property (strong, nonatomic) NSString *lienString;

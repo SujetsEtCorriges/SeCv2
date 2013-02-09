@@ -43,13 +43,26 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    NSURL *urlAddress;
+    
     if(isLocalFile_)
     {
         saveButton_.enabled = NO;
         goBackButton_.enabled = NO;
         goForwardButton_.enabled = NO;
         actionButton_.enabled = NO;
+        urlAddress = [NSURL fileURLWithPath:lienString_];
     }
+    else
+    {
+        urlAddress = [NSURL URLWithString: lienString_];
+    }
+    
+    savingHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    savingHUD.delegate = self;
+    savingHUD.mode = MBProgressHUDModeAnnularDeterminate;
+    savingHUD.labelText = @"Enregistrement...";
+    [self.view addSubview:savingHUD];
     
     UILabel *navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 200, 18)];
     navTitleLabel.backgroundColor = [UIColor clearColor];
@@ -81,12 +94,11 @@
     //activityView_.hidesWhenStopped = YES;
     
     viewerWebView_.delegate = self;
-    NSURL *urlAddress = [NSURL URLWithString: lienString_];
     
 	// Faire une requête sur cette URL
 	NSURLRequest *requestObject = [NSURLRequest requestWithURL:urlAddress];
-    
-	// Charger la requête dans la UIWebView
+
+    // Charger la requête dans la UIWebView
 	[viewerWebView_ loadRequest:requestObject];
 }
 
@@ -170,20 +182,33 @@
 
 - (IBAction)saveFile:(id)sender
 {
+    [NSThread detachNewThreadSelector:@selector(showHUD) toTarget:self withObject:nil];
+    
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [paths objectAtIndex:0];
     BOOL isDir = NO;
-    NSError *error;
+    NSError *errorDirectory;
+    NSError *errorData;
+
     //You must check if this directory exist every time
     if (! [[NSFileManager defaultManager] fileExistsAtPath:documentPath isDirectory:&isDir] && isDir   == NO)
     {
-        [[NSFileManager defaultManager] createDirectoryAtPath:documentPath withIntermediateDirectories:NO attributes:nil error:&error];
+        [[NSFileManager defaultManager] createDirectoryAtPath:documentPath withIntermediateDirectories:NO attributes:nil error:&errorDirectory];
     }
-    NSString *filePath = [documentPath stringByAppendingPathComponent:@"test.pdf"];
+    NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
     //webView.request.URL contains current URL of UIWebView, don't forget to set outlet for it
     NSData *pdfFile = [NSData dataWithContentsOfURL:[NSURL URLWithString:lienString_]];
-    [pdfFile writeToFile:filePath atomically:YES];
+    [pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
     NSLog(@"File saved");
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+- (void)showHUD
+{
+    @autoreleasepool
+    {
+        [savingHUD show:YES];
+    }
 }
 
 @end

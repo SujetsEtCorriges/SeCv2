@@ -33,6 +33,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //[self loadData];
+}
+
+- (void)loadData
+{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [paths objectAtIndex:0];
     BOOL isDir = NO;
@@ -43,8 +48,32 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:documentPath withIntermediateDirectories:NO attributes:nil error:&error];
     }
     
-    arrayDocuments = [[NSArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentPath error:&error]];
-    NSLog(@"Nombres de fichiers : %i",[arrayDocuments count]);
+    arrayDocuments = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentPath error:&error]];
+    
+    arraySize = [[NSMutableArray alloc] init];
+    for (int i=0; i<[arrayDocuments count]; i+=1)
+    {
+        NSError *AttributesError;
+        NSString *currentDocumentPath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
+        NSDictionary *FileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:currentDocumentPath error:&AttributesError];
+        NSNumber *FileSizeNumber = [FileAttributes objectForKey:NSFileSize];
+        long FileSize = [FileSizeNumber longValue]/1024;
+        FileSizeNumber = [NSNumber numberWithLong:FileSize];
+        
+        //NSLog(@"File: %@, Size: %ld", URL, FileSize);
+        [arraySize addObject:FileSizeNumber];
+    }
+    
+    NSLog(@"Nombre de fichiers : %i",[arrayDocuments count]);
+    
+    [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    
+    [self loadData];
     
 }
 
@@ -77,6 +106,7 @@
     
     // Configure the cell...
     cell.textLabel.text = [arrayDocuments objectAtIndex:[indexPath row]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Ko",[[arraySize objectAtIndex:[indexPath row]] stringValue]];
     
     return cell;
 }
@@ -90,19 +120,27 @@
 }
 */
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        NSError *deleteError;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentPath = [paths objectAtIndex:0];
+        NSString *documentToDeletePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:[indexPath row]] ];
+        [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
+        [arrayDocuments removeObjectAtIndex:[indexPath row]];
+        [arraySize removeObjectAtIndex:[indexPath row]];
+        
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
