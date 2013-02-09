@@ -15,6 +15,7 @@
 		3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */; };
 		3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */; };
 		3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBFCD616C46393007ABD8E /* ViewerViewController.m */; };
+		3FF0B45016C6949D00E07D0E /* FileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */; };
 		3FFA184D16C02B8000D6E085 /* NewsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184B16C02B8000D6E085 /* NewsBackground.png */; };
 		3FFA184E16C02B8000D6E085 /* NewsBackgroundHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */; };
 		9127A147167D36FD00D1EB09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A146167D36FD00D1EB09 /* UIKit.framework */; };
@@ -98,6 +99,8 @@
 		3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcoursCell.m; sourceTree = "<group>"; };
 		3FEBFCD516C46393007ABD8E /* ViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerViewController.h; sourceTree = "<group>"; };
 		3FEBFCD616C46393007ABD8E /* ViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewerViewController.m; sourceTree = "<group>"; };
+		3FF0B44E16C6949D00E07D0E /* FileManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerViewController.h; sourceTree = "<group>"; };
+		3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManagerViewController.m; sourceTree = "<group>"; };
 		3FFA184B16C02B8000D6E085 /* NewsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackground.png; sourceTree = "<group>"; };
 		3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackgroundHighlighted.png; sourceTree = "<group>"; };
 		9127A142167D36FD00D1EB09 /* SetC : SujetsetCorriges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SetC : SujetsetCorriges.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +225,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FF0B44D16C6947300E07D0E /* Gestionnaire de fichiers */ = {
+			isa = PBXGroup;
+			children = (
+				3FF0B44E16C6949D00E07D0E /* FileManagerViewController.h */,
+				3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */,
+			);
+			name = "Gestionnaire de fichiers";
+			sourceTree = "<group>";
+		};
 		9127A137167D36FD00D1EB09 = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +274,7 @@
 				9127A177167D370B00D1EB09 /* Actualité */,
 				9127A1A6167D46AF00D1EB09 /* Sujets et Corriges */,
 				9127A1FC167DFD0400D1EB09 /* Simulateurs */,
+				3FF0B44D16C6947300E07D0E /* Gestionnaire de fichiers */,
 				9127A155167D36FD00D1EB09 /* AppDelegate.h */,
 				9127A156167D36FD00D1EB09 /* AppDelegate.m */,
 				9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */,
@@ -612,6 +625,7 @@
 				3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */,
 				3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */,
 				3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */,
+				3FF0B45016C6949D00E07D0E /* FileManagerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

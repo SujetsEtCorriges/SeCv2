@@ -14,6 +14,7 @@
 
 @implementation ViewerViewController
 
+@synthesize isLocalFile = isLocalFile_;
 @synthesize lienString = lienString_;
 @synthesize titleFile = titleFile_;
 @synthesize subtitleFile = subtitleFile_;
@@ -26,6 +27,7 @@
 @synthesize goBackButton = goBackButton_;
 @synthesize goForwardButton = goForwardButton_;
 @synthesize refreshButton = refreshButton_;
+@synthesize saveButton = saveButton_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,6 +42,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if(isLocalFile_)
+    {
+        saveButton_.enabled = NO;
+        goBackButton_.enabled = NO;
+        goForwardButton_.enabled = NO;
+        actionButton_.enabled = NO;
+    }
     
     UILabel *navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 200, 18)];
     navTitleLabel.backgroundColor = [UIColor clearColor];
@@ -96,6 +106,7 @@
     [self setGoForwardButton:nil];
     [self setRefreshButton:nil];
     [self setActivityView:nil];
+    [self setSaveButton:nil];
     [super viewDidUnload];
 }
 
@@ -155,6 +166,24 @@
     {
         [[UIApplication sharedApplication] openURL:viewerWebView_.request.URL];
     }
+}
+
+- (IBAction)saveFile:(id)sender
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentPath = [paths objectAtIndex:0];
+    BOOL isDir = NO;
+    NSError *error;
+    //You must check if this directory exist every time
+    if (! [[NSFileManager defaultManager] fileExistsAtPath:documentPath isDirectory:&isDir] && isDir   == NO)
+    {
+        [[NSFileManager defaultManager] createDirectoryAtPath:documentPath withIntermediateDirectories:NO attributes:nil error:&error];
+    }
+    NSString *filePath = [documentPath stringByAppendingPathComponent:@"test.pdf"];
+    //webView.request.URL contains current URL of UIWebView, don't forget to set outlet for it
+    NSData *pdfFile = [NSData dataWithContentsOfURL:[NSURL URLWithString:lienString_]];
+    [pdfFile writeToFile:filePath atomically:YES];
+    NSLog(@"File saved");
 }
 
 @end

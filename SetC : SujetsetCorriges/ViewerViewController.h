@@ -10,6 +10,7 @@
 
 @interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate>
 
+@property (assign, nonatomic) BOOL isLocalFile;
 @property (strong, nonatomic) NSString *lienString;
 @property (strong, nonatomic) NSString *titleFile;
 @property (strong, nonatomic) NSString *subtitleFile;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goBackButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goForwardButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
 
 - (IBAction)closeViewer:(id)sender;
@@ -29,5 +31,7 @@
 - (IBAction)goForward:(id)sender;
 - (IBAction)refresh:(id)sender;
 - (IBAction)openInSafari:(id)sender;
+- (IBAction)saveFile:(id)sender;
+
 
 @end

@@ -428,6 +428,63 @@
             </objects>
             <point key="canvasLocation" x="653" y="3043"/>
         </scene>
+        <!--File Manager View Controller - Documents-->
+        <scene sceneID="WPA-W5-IqU">
+            <objects>
+                <tableViewController id="8ks-L8-rbB" customClass="FileManagerViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dzZ-q7-8w3">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FileCell" textLabel="oFz-w4-4JL" detailTextLabel="NmB-vm-QhB" style="IBUITableViewCellStyleSubtitle" id="KEz-mb-kym">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFz-w4-4JL">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NmB-vm-QhB">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="XyT-Go-1Q0" kind="modal" identifier="modalToViewerFromFile" id="iku-VI-KHT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Documents" id="NaP-pJ-l6i"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4OX-Oe-Aj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1070" y="3917"/>
+        </scene>
+        <!--Navigation Controller - Documents-->
+        <scene sceneID="D9g-gj-fof">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="iBE-v8-7iL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Documents" id="qq8-QM-NCR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5fA-tt-QYu">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8ks-L8-rbB" kind="relationship" relationship="rootViewController" id="Tfn-Np-ojV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oRK-wm-1Kv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="3917"/>
+        </scene>
         <!--Simu List View Controller-->
         <scene sceneID="jqj-bO-a7a">
             <objects>
@@ -720,15 +777,20 @@
                                             <action selector="refresh:" destination="XyT-Go-1Q0" id="cVE-BA-OHO"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="action" id="CeZ-GH-sbG">
+                                        <connections>
+                                            <action selector="openInSafari:" destination="XyT-Go-1Q0" id="ghO-bL-Z1K"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJv-Nz-V42">
                                 <items>
                                     <navigationItem title="Viewer" id="yX5-mY-9ix">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="action" id="CeZ-GH-sbG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="2LP-ik-7cX">
                                             <connections>
-                                                <action selector="openInSafari:" destination="XyT-Go-1Q0" id="ghO-bL-Z1K"/>
+                                                <action selector="saveFile:" destination="XyT-Go-1Q0" id="f8p-bN-KXz"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="stop" id="2Jh-M8-cKN">
@@ -749,6 +811,7 @@
                             <constraint firstItem="nmP-az-zeA" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="31J-PO-O0j"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="Kgj-U2-EUM"/>
                             <constraint firstItem="nJv-Nz-V42" firstAttribute="leading" secondItem="4zN-c2-LOR" secondAttribute="leading" type="default" id="O5S-xZ-QaF"/>
+                            <constraint firstAttribute="trailing" secondItem="IgB-bA-or7" secondAttribute="trailing" constant="73" id="OxI-CW-mmX"/>
                             <constraint firstItem="IgB-bA-or7" firstAttribute="centerY" secondItem="nmP-az-zeA" secondAttribute="centerY" type="default" id="QeJ-BM-PIn"/>
                             <constraint firstItem="nJv-Nz-V42" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="Qmb-z4-P7A"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="top" secondItem="tkm-MB-08w" secondAttribute="bottom" type="default" id="TvB-MM-bB7"/>
@@ -756,10 +819,10 @@
                             <constraint firstItem="nJv-Nz-V42" firstAttribute="bottom" secondItem="tkm-MB-08w" secondAttribute="top" type="default" id="gDB-vs-LLz"/>
                             <constraint firstItem="nmP-az-zeA" firstAttribute="bottom" secondItem="4zN-c2-LOR" secondAttribute="bottom" type="default" id="jww-s1-3dF"/>
                             <constraint firstItem="tkm-MB-08w" firstAttribute="trailing" secondItem="4zN-c2-LOR" secondAttribute="trailing" type="default" id="pDI-dF-HuQ"/>
-                            <constraint firstAttribute="trailing" secondItem="IgB-bA-or7" secondAttribute="trailing" constant="43" id="ueS-yW-p51"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="SaveButton" destination="2LP-ik-7cX" id="kpH-cG-7ue"/>
                         <outlet property="actionButton" destination="CeZ-GH-sbG" id="8rb-jB-GM2"/>
                         <outlet property="activityView" destination="IgB-bA-or7" id="Enl-o8-vz4"/>
                         <outlet property="closeButton" destination="2Jh-M8-cKN" id="dfa-oS-E7f"/>
@@ -839,6 +902,7 @@
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="sHO-Ig-LoL" kind="relationship" relationship="viewControllers" id="2br-fN-D5b"/>
+                        <segue destination="iBE-v8-7iL" kind="relationship" relationship="viewControllers" id="1q3-gn-rCz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -927,6 +991,9 @@
                 <relationship kind="outlet" name="epreuveLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="FileManagerViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileManagerViewController.h"/>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
@@ -976,6 +1043,7 @@
                 <relationship kind="action" name="goForward:"/>
                 <relationship kind="action" name="openInSafari:"/>
                 <relationship kind="action" name="refresh:"/>
+                <relationship kind="action" name="saveFile:"/>
                 <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="activityView" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
@@ -983,6 +1051,7 @@
                 <relationship kind="outlet" name="goForwardButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
                 <relationship kind="outlet" name="viewerWebView" candidateClass="UIWebView"/>
             </relationships>
@@ -994,6 +1063,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YRo-Zx-l1s"/>
+        <segue reference="iku-VI-KHT"/>
     </inferredMetricsTieBreakers>
 </document>

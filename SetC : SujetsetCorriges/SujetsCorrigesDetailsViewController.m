@@ -75,6 +75,7 @@
     {
         ViewerViewController *destViewController = segue.destinationViewController;
         destViewController.lienString = lienSujet_;
+        destViewController.isLocalFile = NO;
         destViewController.titleFile = [NSString stringWithFormat:@"Sujet %@",concours_];
         destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     }
@@ -82,6 +83,7 @@
     {
         ViewerViewController *destViewController = segue.destinationViewController;
         destViewController.lienString = lienCorrige_;
+        destViewController.isLocalFile = NO;
         destViewController.titleFile = [NSString stringWithFormat:@"Corrigé %@",concours_];
         destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     }
