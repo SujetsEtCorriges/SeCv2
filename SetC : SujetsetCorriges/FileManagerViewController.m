@@ -172,27 +172,54 @@
     return [[dictionaryDocuments allKeys] count];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return [[dictionaryDocuments allKeys] objectAtIndex:section];
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return [[dictionaryDocuments allKeys] objectAtIndex:section];
+    return 30;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)];
-//    viewSection.backgroundColor = [UIColor colorWithWhite:0.45 alpha:1.0];
-//    
-//    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 25)];
-//    labelSection.backgroundColor = [UIColor clearColor];
-//    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-//    labelSection.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-//    labelSection.shadowColor = [UIColor blackColor];
-//    labelSection.shadowOffset = CGSizeMake(0, 1);
-//    labelSection.text = [[dictionaryDocuments allKeys] objectAtIndex:section];
-//    [viewSection addSubview:labelSection];
-//    
-//    return viewSection;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    viewSection.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1.0];
+    
+    CAGradientLayer *shadowSection = [CAGradientLayer layer];
+    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.65 alpha:1.0].CGColor,(id)[UIColor colorWithWhite:0.75 alpha:1.0].CGColor,nil];
+    CGRect frameShadow = viewSection.frame;
+    frameShadow.size.height = 25;
+    shadowSection.frame = frameShadow;
+    shadowSection.startPoint = CGPointMake(0.5, 0);
+    shadowSection.endPoint = CGPointMake(0.5,1);
+    [viewSection.layer addSublayer:shadowSection];
+    
+    UIImageView *iconConcours = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sectionCCP.png"]];
+    [viewSection addSubview:iconConcours];
+    
+    CALayer *lineTop = [CALayer layer];
+    lineTop.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.6].CGColor;
+    lineTop.frame = CGRectMake(0, 0, 320, 1);
+    [viewSection.layer addSublayer:lineTop];
+    
+    CALayer *lineBottom = [CALayer layer];
+    lineBottom.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
+    lineBottom.frame = CGRectMake(0, 29, 320, 1);
+    [viewSection.layer addSublayer:lineBottom];
+    
+    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 300, 30)];
+    labelSection.backgroundColor = [UIColor clearColor];
+    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    labelSection.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    labelSection.shadowColor = [UIColor blackColor];
+    labelSection.shadowOffset = CGSizeMake(0, 1);
+    labelSection.text = [[dictionaryDocuments allKeys] objectAtIndex:section];
+    [viewSection addSubview:labelSection];
+    
+    return viewSection;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
