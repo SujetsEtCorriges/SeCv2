@@ -15,6 +15,13 @@
 @implementation ViewerViewController
 
 @synthesize isLocalFile = isLocalFile_;
+
+@synthesize type = type_;
+@synthesize concours = concours_;
+@synthesize epreuve = epreuve_;
+@synthesize filiere = filiere_;
+@synthesize annee = annee_;
+
 @synthesize lienString = lienString_;
 @synthesize titleFile = titleFile_;
 @synthesize subtitleFile = subtitleFile_;
@@ -62,13 +69,16 @@
         
         paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         documentPath = [paths objectAtIndex:0];
-        filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
+        filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@ - %@ - %@ - %@.pdf", type_, concours_, epreuve_, filiere_, annee_ ]];
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
         {
             [self changeSaveButtonIntoSaved];
         }
     }
+    
+    titleFile_ = [NSString stringWithFormat:@"%@ %@",type_,concours_];
+    subtitleFile_ = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     
     savingHUD = [[MBProgressHUD alloc] initWithView:self.view];
     savingHUD.delegate = self;

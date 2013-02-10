@@ -52,21 +52,99 @@
     
     arrayDocuments = [[NSMutableArray alloc] initWithArray:[[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentPath error:&error]];
     
-    arraySize = [[NSMutableArray alloc] init];
+//    arraySize = [[NSMutableArray alloc] init];
+//    for (int i=0; i<[arrayDocuments count]; i+=1)
+//    {
+//        NSError *AttributesError;
+//        NSString *currentDocumentPath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
+//        NSDictionary *FileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:currentDocumentPath error:&AttributesError];
+//        NSNumber *FileSizeNumber = [FileAttributes objectForKey:NSFileSize];
+//        long FileSize = [FileSizeNumber longValue];
+//        FileSizeNumber = [NSNumber numberWithLong:FileSize];
+//        
+//        //NSLog(@"File: %@, Size: %ld", URL, FileSize);
+//        [arraySize addObject:FileSizeNumber];
+//    }
+    
+    NSLog(@"Nombre de fichiers : %i",[arrayDocuments count]);
+//    for (int i=0; i<[arrayDocuments count]; i+=1) {
+//        NSLog(@"éléments arrayDocuments: %@", [arrayDocuments objectAtIndex:i]);
+//    }
+    
+    
+    
+    dictionaryDocuments = [[NSMutableDictionary alloc] init];
+    dictionaryCurrentDocument = [[NSMutableDictionary alloc] init];
+    dictionaryCurrentConcours = [[NSMutableDictionary alloc] init];
+    
+    arrayCurrentConcours = [[NSMutableArray alloc] init];
+    
     for (int i=0; i<[arrayDocuments count]; i+=1)
     {
+        [dictionaryCurrentDocument removeAllObjects];
         NSError *AttributesError;
-        NSString *currentDocumentPath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
+        NSString *currentDocumentPath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i]];
         NSDictionary *FileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:currentDocumentPath error:&AttributesError];
         NSNumber *FileSizeNumber = [FileAttributes objectForKey:NSFileSize];
         long FileSize = [FileSizeNumber longValue];
         FileSizeNumber = [NSNumber numberWithLong:FileSize];
         
         //NSLog(@"File: %@, Size: %ld", URL, FileSize);
-        [arraySize addObject:FileSizeNumber];
+        //[arraySize addObject:FileSizeNumber];
+        
+        NSArray *arrayTitleFile = [[[arrayDocuments objectAtIndex:i] stringByDeletingPathExtension] componentsSeparatedByString:@" - "];
+        NSString *currentType = [arrayTitleFile objectAtIndex:0];
+        NSString *currentConcours = [arrayTitleFile objectAtIndex:1];
+        NSString *currentEpreuve = [arrayTitleFile objectAtIndex:2];
+        NSString *currentFiliere = [arrayTitleFile objectAtIndex:3];
+        NSString *currentAnnee = [arrayTitleFile objectAtIndex:4];
+        
+        [dictionaryCurrentDocument setObject:[arrayDocuments objectAtIndex:i] forKey:@"name"];
+        [dictionaryCurrentDocument setObject:currentDocumentPath forKey:@"path"];
+        [dictionaryCurrentDocument setObject:currentType forKey:@"type"];
+        [dictionaryCurrentDocument setObject:currentConcours forKey:@"concours"];
+        [dictionaryCurrentDocument setObject:currentEpreuve forKey:@"epreuve"];
+        [dictionaryCurrentDocument setObject:currentFiliere forKey:@"filiere"];
+        [dictionaryCurrentDocument setObject:currentAnnee forKey:@"annee"];
+        [dictionaryCurrentDocument setObject:FileSizeNumber forKey:@"size"];
+        
+//        for (NSString *key in dictionaryCurrentDocument) {
+//            NSString *chaine = [dictionaryCurrentDocument objectForKey:key];
+//            NSLog(@"éléments %i : %@ = %@", i+1,key,chaine);
+//        }
+        
+        //[dictionaryDocuments setObject:[dictionaryCurrentDocument copy] forKey:[arrayDocuments objectAtIndex:i]];
+        
+        
+        if([dictionaryDocuments objectForKey:currentConcours] == nil)
+        {
+            NSLog(@"currentconcours = nil");
+            //[dictionaryCurrentConcours setObject:[dictionaryCurrentDocument copy] forKey:[arrayDocuments objectAtIndex:i]];
+            //[dictionaryDocuments setObject:[dictionaryCurrentConcours copy] forKey:currentConcours];
+            [arrayCurrentConcours removeAllObjects];
+            [arrayCurrentConcours addObject:[dictionaryCurrentDocument copy]];
+            //[dictionaryDocuments setObject:[arrayCurrentConcours copy] forKey:currentConcours];
+            [dictionaryDocuments setObject:[[NSMutableArray alloc] initWithArray:arrayCurrentConcours] forKey:currentConcours];
+        }
+        else
+        {
+            NSLog(@"currentconcours exists");
+            //[[dictionaryDocuments objectForKey:currentConcours] setObject:[dictionaryCurrentDocument copy] forKey:[arrayDocuments objectAtIndex:i]];
+            
+            [[dictionaryDocuments objectForKey:currentConcours] addObject:[dictionaryCurrentDocument copy]];
+        }
     }
     
-    NSLog(@"Nombre de fichiers : %i",[arrayDocuments count]);
+    //arrayConcours = [[NSMutableArray alloc] initWithArray:[dictionaryDocuments allKeys]];
+//    NSLog(@"Nb fichiers dans dico : %i",[dictionaryDocuments count]);
+//    NSLog(@"All keys : %@",[dictionaryDocuments allKeys]);
+
+    
+//    for (NSString *key in dictionaryDocuments) {
+//        double number = [dictionaryDocuments objectForKey:key];
+//        NSLog(@"fichiers: %f", number);
+//    }
+    
     
     [self.tableView reloadData];
 }
@@ -90,13 +168,37 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    NSLog(@"Nb sections : %i",[[dictionaryDocuments allKeys] count]);
+    return [[dictionaryDocuments allKeys] count];
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [[dictionaryDocuments allKeys] objectAtIndex:section];
+}
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)];
+//    viewSection.backgroundColor = [UIColor colorWithWhite:0.45 alpha:1.0];
+//    
+//    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 25)];
+//    labelSection.backgroundColor = [UIColor clearColor];
+//    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+//    labelSection.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+//    labelSection.shadowColor = [UIColor blackColor];
+//    labelSection.shadowOffset = CGSizeMake(0, 1);
+//    labelSection.text = [[dictionaryDocuments allKeys] objectAtIndex:section];
+//    [viewSection addSubview:labelSection];
+//    
+//    return viewSection;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [arrayDocuments count];
+    NSLog(@"Nb rows : %i",[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:section]] count]);
+    return [[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:section]] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,8 +207,29 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [arrayDocuments objectAtIndex:[indexPath row]];
-    float FileSize = [[arraySize objectAtIndex:[indexPath row]] floatValue];
+    //cell.textLabel.text = [arrayDocuments objectAtIndex:[indexPath row]];
+    //float FileSize = [[arraySize objectAtIndex:[indexPath row]] floatValue];
+    
+    //NSLog(@"éléments arrayDocuments dans cellule: %@", [arrayDocuments objectAtIndex:[indexPath row]]);
+    
+    NSString *concoursForRow = [[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]];
+    NSLog(@"Concours : %@",concoursForRow);
+    
+    NSDictionary *dictionaryCurrentCell = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]];
+    
+    //NSDictionary *dictionaryCurrentCell = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]] ; //[arrayDocuments objectAtIndex:[indexPath row]]]];
+    
+//    for (NSString *key in dictionaryCurrentCell) {
+//        NSString *chaine = [dictionaryCurrentCell objectForKey:key];
+//        NSLog(@"éléments %i : %@ = %@", [indexPath row]+1,key,chaine);
+//    }
+    
+    cell.textLabel.text = [dictionaryCurrentCell objectForKey:@"name"];
+    float FileSize = [[dictionaryCurrentCell objectForKey:@"size"] floatValue];
+    
+    //cell.textLabel.text = [[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:[indexPath row]]] objectForKey:@"name"];
+    //float FileSize = [[[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:[indexPath row]]] objectForKey:@"size"] floatValue];
+    
     NSString *fileSizeString;
     if (FileSize < 1024)
     {
@@ -138,19 +261,35 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
         // Delete the row from the data source
         NSError *deleteError;
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentPath = [paths objectAtIndex:0];
-        NSString *documentToDeletePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:[indexPath row]] ];
-        [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
-        [arrayDocuments removeObjectAtIndex:[indexPath row]];
-        [arraySize removeObjectAtIndex:[indexPath row]];
+        //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        //NSString *documentPath = [paths objectAtIndex:0];
+        //NSString *documentToDeletePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:[indexPath row]]];
+        //NSString *documentToDeletePath = [[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:[indexPath row]]] objectForKey:@"path"];
+        NSDictionary *dictionaryCellToDelete = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]];
+        NSString *documentToDeletePath = [dictionaryCellToDelete objectForKey:@"path"];
         
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
+        [[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] removeObjectAtIndex:[indexPath row]];
+        if([[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] count] == 0)
+        {
+            NSLog(@"Concours vide");
+            [dictionaryDocuments removeObjectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]];
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:[indexPath section]] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        else
+        {
+        //[arrayDocuments removeObjectAtIndex:[indexPath row]];
+        //[arraySize removeObjectAtIndex:[indexPath row]];
+        
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
@@ -202,21 +341,25 @@
 {
     if ([segue.identifier isEqualToString:@"modalToViewerFromFile"])
     {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentPath = [paths objectAtIndex:0];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSString *filePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:[indexPath row]]];
+        //NSString *filePath = [[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:[indexPath row]]] objectForKey:@"path"];
+        NSDictionary *dictionarySelectedCell = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]];
+        NSString *filePath = [dictionarySelectedCell objectForKey:@"path"];
         
-        NSArray *arrayTitleFile = [[[arrayDocuments objectAtIndex:[indexPath row]] stringByDeletingPathExtension] componentsSeparatedByString:@" - "];
-        NSString *titleFile = [arrayTitleFile objectAtIndex:0];
-        NSString *subtitleFile = [arrayTitleFile objectAtIndex:1];
+        
+        //NSArray *arrayTitleFile = [[[arrayDocuments objectAtIndex:[indexPath row]] stringByDeletingPathExtension] componentsSeparatedByString:@" - "];
+        NSArray *arrayTitleFile = [[[dictionarySelectedCell objectForKey:@"name"] stringByDeletingPathExtension] componentsSeparatedByString:@" - "];
         
         ViewerViewController *destViewController = segue.destinationViewController;
+        
+        destViewController.type = [arrayTitleFile objectAtIndex:0];
+        destViewController.concours = [arrayTitleFile objectAtIndex:1];
+        destViewController.epreuve = [arrayTitleFile objectAtIndex:2];
+        destViewController.filiere = [arrayTitleFile objectAtIndex:3];
+        destViewController.annee = [arrayTitleFile objectAtIndex:4];
+        
         destViewController.isLocalFile = YES;
         destViewController.lienString = filePath;
-        //destViewController.titleFile = @"TEST";
-        destViewController.titleFile = titleFile;
-        destViewController.subtitleFile = subtitleFile;
     }
 }
 
@@ -253,26 +396,133 @@
 
 - (void)deleteDocuments
 {
-    NSError *deleteError;
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentPath = [paths objectAtIndex:0];
+    //NSError *deleteError;
+    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //NSString *documentPath = [paths objectAtIndex:0];
     
-    NSMutableArray *cellIndicesToBeDeleted = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; i++) {
-        NSIndexPath *p = [NSIndexPath indexPathForRow:i inSection:0];
-        if ([[self.tableView cellForRowAtIndexPath:p] isSelected])
+    //NSMutableArray *cellIndicesToBeDeleted = [[NSMutableArray alloc] init];
+    //NSMutableArray *documentToDeleteArray = [[NSMutableArray alloc] init];
+    //NSMutableIndexSet *indexSetToDelete = [NSMutableIndexSet indexSet];
+    
+//    for (int i = 0; i < [self.tableView numberOfRowsInSection:0]; i++) {
+//        NSIndexPath *p = [NSIndexPath indexPathForRow:i inSection:0];
+//        
+//        if ([[self.tableView cellForRowAtIndexPath:p] isSelected])
+//        {
+//            [cellIndicesToBeDeleted addObject:p];
+//            
+//            //NSString *documentToDeletePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
+//            NSString *documentToDeletePath = [[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:i]] objectForKey:@"path"];
+//            
+//            [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
+//            //[dictionaryDocuments removeObjectForKey:[arrayDocuments objectAtIndex:i]];
+//            //[arrayDocuments removeObjectAtIndex:i];
+//            //[arraySize removeObjectAtIndex:i];
+//            
+//            [documentToDeleteArray addObject:[arrayDocuments objectAtIndex:i]];
+//            [indexSetToDelete addIndex:i];
+//        }
+//    }
+    
+//    NSArray *arraySelectedPaths = [self.tableView indexPathsForSelectedRows];
+//    
+//    for (int i=0; i < [arraySelectedPaths count]; i+=1)
+//    {
+//        NSIndexPath *indexPath = [arraySelectedPaths objectAtIndex:i];
+//        NSError *deleteError;
+//        NSDictionary *dictionaryCellToDelete = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]];
+//        NSString *documentToDeletePath = [dictionaryCellToDelete objectForKey:@"path"];
+//        
+//        [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
+//        
+//        [[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] removeObjectAtIndex:[indexPath row]];
+//        if([[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] count] == 0)
+//        {
+//            NSLog(@"Concours vide");
+//            [dictionaryDocuments removeObjectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]];
+//            //[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:[indexPath section]] withRowAnimation:UITableViewRowAnimationFade];
+//        }
+//        else
+//        {
+//            //[arrayDocuments removeObjectAtIndex:[indexPath row]];
+//            //[arraySize removeObjectAtIndex:[indexPath row]];
+//            
+//            //[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        }
+//    }
+    
+    NSMutableArray *arrayPathsToDelete = [[NSMutableArray alloc] init];
+    NSMutableArray *arraySectionsToDelete = [[NSMutableArray alloc] init];
+    NSMutableIndexSet *currentIndexSetToDelete = [NSMutableIndexSet indexSet];
+    NSMutableIndexSet *indexSetSectionsToDelete = [NSMutableIndexSet indexSet];
+    
+    for (int section=0; section < [self.tableView numberOfSections]; section+=1)
+    {
+        //[arrayPathsToDelete removeAllObjects];
+        [currentIndexSetToDelete removeAllIndexes];
+        
+        for (int row=0; row < [self.tableView numberOfRowsInSection:section]; row+=1)
         {
-            [cellIndicesToBeDeleted addObject:p];
+            NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:row inSection:section];
             
-            NSString *documentToDeletePath = [documentPath stringByAppendingPathComponent:[arrayDocuments objectAtIndex:i] ];
-            [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
-            [arrayDocuments removeObjectAtIndex:i];
-            [arraySize removeObjectAtIndex:i];
+            if ([[self.tableView cellForRowAtIndexPath:currentIndexPath] isSelected])
+            {
+                NSError *deleteError;
+                NSDictionary *dictionaryCellToDelete = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[currentIndexPath section]]] objectAtIndex:[currentIndexPath row]]];
+                NSString *documentToDeletePath = [dictionaryCellToDelete objectForKey:@"path"];
+                
+                [[NSFileManager defaultManager] removeItemAtPath:documentToDeletePath error:&deleteError];
+                
+                [arrayPathsToDelete addObject:currentIndexPath];
+                [currentIndexSetToDelete addIndex:[currentIndexPath row]];
+                
+                //[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] removeObjectAtIndex:[indexPath row]];
+                
+            }
+        }
+        
+        [[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:section]] removeObjectsAtIndexes:currentIndexSetToDelete];
+        NSLog(@"Nb fichiers : %i",[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:section]] count]);
+        
+//        if([[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:section]] count] == 0)
+//        {
+//            NSLog(@"Concours vide");
+//
+//            [arraySectionsToDelete addObject:[[dictionaryDocuments allKeys] objectAtIndex:section]];
+//            [indexSetSectionsToDelete addIndex:section];
+//            
+//            //[tableView deleteSections:[NSIndexSet indexSetWithIndex:[indexPath section]] withRowAnimation:UITableViewRowAnimationFade];
+//        }
+//        else
+//        {
+//            //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        }
+    }
+    
+    [self.tableView deleteRowsAtIndexPaths:arrayPathsToDelete
+                          withRowAnimation:UITableViewRowAnimationFade];
+    
+    for (int section=0; section < [self.tableView numberOfSections]; section+=1)
+    {
+        if([[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:section]] count] == 0)
+        {
+            NSLog(@"Concours vide");
+            
+            [arraySectionsToDelete addObject:[[dictionaryDocuments allKeys] objectAtIndex:section]];
+            [indexSetSectionsToDelete addIndex:section];
+            
+            //[tableView deleteSections:[NSIndexSet indexSetWithIndex:[indexPath section]] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        else
+        {
+            //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }
     }
     
-    [self.tableView deleteRowsAtIndexPaths:cellIndicesToBeDeleted
-                     withRowAnimation:UITableViewRowAnimationLeft];
+    [dictionaryDocuments removeObjectsForKeys:arraySectionsToDelete];
+    
+    [self.tableView deleteSections:indexSetSectionsToDelete withRowAnimation:UITableViewRowAnimationFade];
+    
     [self enterEditMode:nil];
 }
 

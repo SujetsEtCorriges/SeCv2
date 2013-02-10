@@ -23,6 +23,13 @@
 }
 
 @property (assign, nonatomic) BOOL isLocalFile;
+
+@property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSString *concours;
+@property (strong, nonatomic) NSString *epreuve;
+@property (strong, nonatomic) NSString *filiere;
+@property (strong, nonatomic) NSString *annee;
+
 @property (strong, nonatomic) NSString *lienString;
 @property (strong, nonatomic) NSString *titleFile;
 @property (strong, nonatomic) NSString *subtitleFile;

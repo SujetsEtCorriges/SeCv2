@@ -74,18 +74,33 @@
     if ([segue.identifier isEqualToString:@"modalToViewerSujet"])
     {
         ViewerViewController *destViewController = segue.destinationViewController;
+        
+        destViewController.type = @"Sujet";
+        destViewController.concours = concours_;
+        destViewController.filiere = filiere_;
+        destViewController.annee = annee_;
+        destViewController.epreuve = epreuve_;
+
+        
         destViewController.lienString = lienSujet_;
         destViewController.isLocalFile = NO;
-        destViewController.titleFile = [NSString stringWithFormat:@"Sujet %@",concours_];
-        destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
+        //destViewController.titleFile = [NSString stringWithFormat:@"Sujet %@",concours_];
+        //destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     }
     else if ([segue.identifier isEqualToString:@"modalToViewerCorrige"])
     {
         ViewerViewController *destViewController = segue.destinationViewController;
+        
+        destViewController.type = @"Corrigé";
+        destViewController.concours = concours_;
+        destViewController.filiere = filiere_;
+        destViewController.annee = annee_;
+        destViewController.epreuve = epreuve_;
+        
         destViewController.lienString = lienCorrige_;
         destViewController.isLocalFile = NO;
-        destViewController.titleFile = [NSString stringWithFormat:@"Corrigé %@",concours_];
-        destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
+        //destViewController.titleFile = [NSString stringWithFormat:@"Corrigé %@",concours_];
+        //destViewController.subtitleFile = [NSString stringWithFormat:@"%@ %@ %@",epreuve_,filiere_,annee_];
     }
 }
 

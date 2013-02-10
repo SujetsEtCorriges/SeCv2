@@ -12,7 +12,13 @@
 @interface FileManagerViewController : UITableViewController
 {
     NSMutableArray * arrayDocuments;
-    NSMutableArray *arraySize;
+    //NSMutableArray *arraySize;
+    
+    NSMutableDictionary *dictionaryDocuments;
+    NSMutableDictionary *dictionaryCurrentDocument;
+    NSMutableDictionary *dictionaryCurrentConcours;
+    
+    NSMutableArray *arrayCurrentConcours;
 }
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
