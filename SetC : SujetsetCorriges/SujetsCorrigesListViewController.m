@@ -41,15 +41,25 @@
     shadowConcours.endPoint = CGPointMake(0.5,1);
     [viewShadowConcours.layer addSublayer:shadowConcours];
     
-    UILabel *labelConcours = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, viewShadowConcours.frame.size.width, 30)];
+    UILabel *labelConcours = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, viewShadowConcours.frame.size.width, 20)];
     labelConcours.backgroundColor = [UIColor clearColor];
     labelConcours.textColor = [UIColor whiteColor];
-    labelConcours.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+    labelConcours.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     labelConcours.textAlignment = UITextAlignmentCenter;
     labelConcours.shadowColor = [UIColor blackColor];
     labelConcours.shadowOffset = CGSizeMake(0, 1);
     labelConcours.text = concours_;
     [viewShadowConcours addSubview:labelConcours];
+    
+    UILabel *labelMatiere = [[UILabel alloc] initWithFrame:CGRectMake(0, 25, viewShadowConcours.frame.size.width, 16)];
+    labelMatiere.backgroundColor = [UIColor clearColor];
+    labelMatiere.textColor = [UIColor whiteColor];
+    labelMatiere.font = [UIFont fontWithName:@"Helvetica" size:12];
+    labelMatiere.textAlignment = UITextAlignmentCenter;
+    labelMatiere.shadowColor = [UIColor blackColor];
+    labelMatiere.shadowOffset = CGSizeMake(0, 1);
+    labelMatiere.text = @"Matière";
+    [viewShadowConcours addSubview:labelMatiere];
     
     [self.view addSubview:viewShadowConcours];
     
