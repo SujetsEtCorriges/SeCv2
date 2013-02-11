@@ -75,6 +75,12 @@
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     [self.slidingViewController setAnchorRightRevealAmount:200.0f];
+    
+    if ([concours_ isEqualToString:@"aucun"])
+    {
+        [self.slidingViewController anchorTopViewTo:ECRight];
+    }
+    
 }
 
 - (IBAction)affichageConcours:(id)sender
@@ -206,6 +212,9 @@
 - (void) changeFiliere:(id)sender
 {
     [menu_ dismissWithClickedButtonIndex:0 animated:YES];
+    
+    VariableStore *obj = [VariableStore getInstance];
+    obj.filiere = filiere_;
     
     [self createContentPages];
     

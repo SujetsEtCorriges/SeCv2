@@ -45,7 +45,7 @@
     labelConcours.backgroundColor = [UIColor clearColor];
     labelConcours.textColor = [UIColor whiteColor];
     labelConcours.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-    labelConcours.textAlignment = UITextAlignmentCenter;
+    labelConcours.textAlignment = NSTextAlignmentCenter;
     labelConcours.shadowColor = [UIColor blackColor];
     labelConcours.shadowOffset = CGSizeMake(0, 1);
     labelConcours.text = concours_;
@@ -55,7 +55,7 @@
     labelMatiere.backgroundColor = [UIColor clearColor];
     labelMatiere.textColor = [UIColor whiteColor];
     labelMatiere.font = [UIFont fontWithName:@"Helvetica" size:12];
-    labelMatiere.textAlignment = UITextAlignmentCenter;
+    labelMatiere.textAlignment = NSTextAlignmentCenter;
     labelMatiere.shadowColor = [UIColor blackColor];
     labelMatiere.shadowOffset = CGSizeMake(0, 1);
     labelMatiere.text = @"Matière";
@@ -75,14 +75,16 @@
         introView_ = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, hauteurFenetre)];
         introView_.backgroundColor = [UIColor colorWithWhite:0.96 alpha:1.0];
         
-        introLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(0, round(introView_.frame.size.height/4), introView_.frame.size.width, round(introView_.frame.size.height/3))];
+        introLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, introView_.frame.size.width-200, hauteurFenetre)];
+        
         introLabel_.backgroundColor = [UIColor clearColor];
-        introLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+        introLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         introLabel_.textColor = [UIColor darkGrayColor];
         introLabel_.shadowColor = [UIColor colorWithWhite:1.0 alpha:1.0];
         introLabel_.shadowOffset = CGSizeMake(0,1);
         introLabel_.text = @"Sélectionnez un concours";
-        introLabel_.textAlignment = UITextAlignmentCenter;
+        introLabel_.numberOfLines = 0;
+        introLabel_.lineBreakMode = NSLineBreakByWordWrapping;
         
         [introView_ addSubview:introLabel_];
         [self.view addSubview:introView_];

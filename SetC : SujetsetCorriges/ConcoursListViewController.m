@@ -147,6 +147,7 @@
     
     VariableStore *obj = [VariableStore getInstance];
     obj.concours = [[listeSection_ objectForKey:[listeSection_.allKeys objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]];
+    obj.filiere = @"MP";
     
     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsCorrigesNavigation"];
     
