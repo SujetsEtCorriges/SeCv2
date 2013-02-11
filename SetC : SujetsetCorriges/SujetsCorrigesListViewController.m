@@ -35,7 +35,7 @@
     viewShadowConcours.backgroundColor = [UIColor clearColor];
     
     CAGradientLayer *shadowConcours = [CAGradientLayer layer];
-    shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:1].CGColor,(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,nil];
+    shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.8].CGColor,(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,nil];
     shadowConcours.frame = viewShadowConcours.frame;
     shadowConcours.startPoint = CGPointMake(0.5, 0);
     shadowConcours.endPoint = CGPointMake(0.5,1);

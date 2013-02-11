@@ -570,8 +570,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="bu2-i5-acq" firstAttribute="bottom" secondItem="W63-dk-8uL" secondAttribute="bottom" type="default" id="YQl-Ql-KQd"/>
                             <constraint firstItem="bu2-i5-acq" firstAttribute="centerX" secondItem="W63-dk-8uL" secondAttribute="centerX" type="default" id="aK3-8s-S9u"/>
-                            <constraint firstAttribute="bottom" secondItem="bu2-i5-acq" secondAttribute="bottom" constant="8" id="dS9-uM-DdI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sujets et Corrigés" id="ESK-FX-XwN">

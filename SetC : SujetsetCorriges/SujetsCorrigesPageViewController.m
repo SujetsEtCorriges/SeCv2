@@ -379,7 +379,8 @@
     
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [self setPageControl:nil];
     [super viewDidUnload];
 }
