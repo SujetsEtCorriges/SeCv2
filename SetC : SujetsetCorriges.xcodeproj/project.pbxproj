@@ -14,6 +14,7 @@
 		3F1D769D16C819FA00020FDC /* sectionCCP.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D769B16C819F900020FDC /* sectionCCP.png */; };
 		3F1D769E16C819FA00020FDC /* sectionCCP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D769C16C819FA00020FDC /* sectionCCP@2x.png */; };
 		3F45810216C00F320017BD9A /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F45810116C00F320017BD9A /* NewsCell.m */; };
+		3F47442816C846500005CE67 /* FileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F47442716C846500005CE67 /* FileCell.m */; };
 		3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */; };
 		3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */; };
 		3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBFCD616C46393007ABD8E /* ViewerViewController.m */; };
@@ -97,6 +98,8 @@
 		3F1D769C16C819FA00020FDC /* sectionCCP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sectionCCP@2x.png"; sourceTree = "<group>"; };
 		3F45810016C00F310017BD9A /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
 		3F45810116C00F320017BD9A /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
+		3F47442616C846500005CE67 /* FileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCell.h; sourceTree = "<group>"; };
+		3F47442716C846500005CE67 /* FileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCell.m; sourceTree = "<group>"; };
 		3F7BCE0C16C1BDB50084ACFD /* EpreuveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EpreuveCell.h; sourceTree = "<group>"; };
 		3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpreuveCell.m; sourceTree = "<group>"; };
 		3F7BCE0F16C1C6370084ACFD /* ConcoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcoursCell.h; sourceTree = "<group>"; };
@@ -234,6 +237,8 @@
 			children = (
 				3FF0B44E16C6949D00E07D0E /* FileManagerViewController.h */,
 				3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */,
+				3F47442616C846500005CE67 /* FileCell.h */,
+				3F47442716C846500005CE67 /* FileCell.m */,
 			);
 			name = "Gestionnaire de fichiers";
 			sourceTree = "<group>";
@@ -634,6 +639,7 @@
 				3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */,
 				3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */,
 				3FF0B45016C6949D00E07D0E /* FileManagerViewController.m in Sources */,
+				3F47442816C846500005CE67 /* FileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

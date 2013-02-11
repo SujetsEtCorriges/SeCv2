@@ -185,18 +185,20 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    viewSection.backgroundColor = [UIColor colorWithWhite:0.75 alpha:1.0];
+    //viewSection.backgroundColor = [UIColor colorWithWhite:0.75 alpha:0.7];
+    viewSection.backgroundColor = [UIColor clearColor];
     
     CAGradientLayer *shadowSection = [CAGradientLayer layer];
-    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.65 alpha:1.0].CGColor,(id)[UIColor colorWithWhite:0.75 alpha:1.0].CGColor,nil];
+    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.65 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.75 alpha:0.7].CGColor,nil];
     CGRect frameShadow = viewSection.frame;
-    frameShadow.size.height = 25;
+    //frameShadow.size.height = 25;
     shadowSection.frame = frameShadow;
     shadowSection.startPoint = CGPointMake(0.5, 0);
     shadowSection.endPoint = CGPointMake(0.5,1);
     [viewSection.layer addSublayer:shadowSection];
     
     UIImageView *iconConcours = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sectionCCP.png"]];
+    iconConcours.alpha = 0.7;
     [viewSection addSubview:iconConcours];
     
     CALayer *lineTop = [CALayer layer];
@@ -211,7 +213,7 @@
     
     UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 300, 30)];
     labelSection.backgroundColor = [UIColor clearColor];
-    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
     labelSection.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     labelSection.shadowColor = [UIColor blackColor];
     labelSection.shadowOffset = CGSizeMake(0, 1);
@@ -231,7 +233,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FileCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    FileCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     //cell.textLabel.text = [arrayDocuments objectAtIndex:[indexPath row]];
@@ -239,20 +241,20 @@
     
     //NSLog(@"éléments arrayDocuments dans cellule: %@", [arrayDocuments objectAtIndex:[indexPath row]]);
     
-    NSString *concoursForRow = [[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]];
-    NSLog(@"Concours : %@",concoursForRow);
+    //NSString *concoursForRow = [[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]];
+    //NSLog(@"Concours : %@",concoursForRow);
     
     NSDictionary *dictionaryCurrentCell = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]];
     
-    //NSDictionary *dictionaryCurrentCell = [[NSDictionary alloc] initWithDictionary:[[dictionaryDocuments objectForKey:[[dictionaryDocuments allKeys] objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]]] ; //[arrayDocuments objectAtIndex:[indexPath row]]]];
+    NSString *type = [dictionaryCurrentCell objectForKey:@"type"];
+    //NSString *concours = [dictionaryCurrentCell objectForKey:@"concours"];
+    NSString *epreuve = [dictionaryCurrentCell objectForKey:@"epreuve"];
+    NSString *filiere = [dictionaryCurrentCell objectForKey:@"filiere"];
+    NSString *annee = [dictionaryCurrentCell objectForKey:@"annee"];
+    NSString *size = [dictionaryCurrentCell objectForKey:@"size"];
     
-//    for (NSString *key in dictionaryCurrentCell) {
-//        NSString *chaine = [dictionaryCurrentCell objectForKey:key];
-//        NSLog(@"éléments %i : %@ = %@", [indexPath row]+1,key,chaine);
-//    }
-    
-    cell.textLabel.text = [dictionaryCurrentCell objectForKey:@"name"];
-    float FileSize = [[dictionaryCurrentCell objectForKey:@"size"] floatValue];
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@", type, epreuve, filiere, annee];
+    float FileSize = [size floatValue];
     
     //cell.textLabel.text = [[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:[indexPath row]]] objectForKey:@"name"];
     //float FileSize = [[[dictionaryDocuments objectForKey:[arrayDocuments objectAtIndex:[indexPath row]]] objectForKey:@"size"] floatValue];
@@ -270,7 +272,7 @@
     {
         fileSizeString = [NSString stringWithFormat:@"%@ Mo",[NSString stringWithFormat:@"%.02f", (FileSize/1024)/1024]];
     }
-    cell.detailTextLabel.text = fileSizeString;
+    cell.sizeLabel.text = fileSizeString;
     
     return cell;
 }

@@ -4,28 +4,15 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "382212824.296875"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "247"
-         endingLineNumber = "247"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "382212824.296875"
+         timestampString = "382296690.397206"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "511"
-         endingLineNumber = "511"
+         startingLineNumber = "513"
+         endingLineNumber = "513"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "382212824.296875"
+         timestampString = "382296690.397206"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "529"
-         endingLineNumber = "529"
+         startingLineNumber = "531"
+         endingLineNumber = "531"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,24 +34,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "382212824.296875"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "549"
-         endingLineNumber = "549"
-         landmarkName = "-deleteDocuments"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "382212824.296875"
+         timestampString = "382296690.397206"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "551"
          endingLineNumber = "551"
+         landmarkName = "-deleteDocuments"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
+         timestampString = "382296690.397206"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "553"
+         endingLineNumber = "553"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>

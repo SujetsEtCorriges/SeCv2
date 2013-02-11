@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "ViewerViewController.h"
+#import "FileCell.h"
 
 @interface FileManagerViewController : UITableViewController
 {
