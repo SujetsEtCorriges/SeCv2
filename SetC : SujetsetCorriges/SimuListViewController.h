@@ -18,6 +18,8 @@
     NSArray *filiereCPGETab_;
     
     IBOutlet UIScrollView *scrollViewConcours_;
+    IBOutlet UIBarButtonItem *startButton;
 }
+- (IBAction)startButtonPushed:(id)sender;
 
 @end

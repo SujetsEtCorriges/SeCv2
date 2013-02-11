@@ -426,7 +426,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e2G-z3-edq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="3043"/>
+            <point key="canvasLocation" x="645" y="2859"/>
         </scene>
         <!--File Manager View Controller - Documents-->
         <scene sceneID="WPA-W5-IqU">
@@ -502,7 +502,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4OX-Oe-Aj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="3917"/>
+            <point key="canvasLocation" x="1062" y="3637"/>
         </scene>
         <!--Navigation Controller - Documents-->
         <scene sceneID="D9g-gj-fof">
@@ -518,7 +518,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRK-wm-1Kv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="3917"/>
+            <point key="canvasLocation" x="645" y="3637"/>
         </scene>
         <!--Simu List View Controller - Simulateurs-->
         <scene sceneID="jqj-bO-a7a">
@@ -538,15 +538,22 @@
                             <constraint firstAttribute="bottom" secondItem="RTS-YY-Kui" secondAttribute="bottom" constant="247" id="yLP-7Z-ZMZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Simulateurs" id="a4T-8Y-LcD"/>
+                    <navigationItem key="navigationItem" title="Simulateurs" id="a4T-8Y-LcD">
+                        <barButtonItem key="rightBarButtonItem" title="Démarrer" id="No4-J2-KBp">
+                            <connections>
+                                <action selector="startButtonPushed:" destination="arL-vC-QXt" id="RnE-gU-AJ7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="scrollViewConcours_" destination="RTS-YY-Kui" id="Kgk-0v-vpV"/>
+                        <outlet property="startButton" destination="No4-J2-KBp" id="xm4-Fs-g67"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUy-jz-mkQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="3043"/>
+            <point key="canvasLocation" x="1062" y="2859"/>
         </scene>
         <!--Sujets Corriges Page View Controller - Sujets et Corrigés-->
         <scene sceneID="uDz-Wr-VMU">
@@ -1057,7 +1064,9 @@
         <class className="SimuListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SimuListViewController.h"/>
             <relationships>
+                <relationship kind="action" name="startButtonPushed:"/>
                 <relationship kind="outlet" name="scrollViewConcours_" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="SujetsCorrigesDetailsViewController" superclassName="UIViewController">
@@ -1112,6 +1121,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ye5-Av-adq"/>
+        <segue reference="yyX-lv-Glz"/>
     </inferredMetricsTieBreakers>
 </document>

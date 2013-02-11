@@ -31,6 +31,30 @@
     concours_ = obj.concours;
     filiere_ = obj.filiere;
     
+    UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    viewShadowConcours.backgroundColor = [UIColor clearColor];
+    
+    CAGradientLayer *shadowConcours = [CAGradientLayer layer];
+    shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:1].CGColor,(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,nil];
+    shadowConcours.frame = viewShadowConcours.frame;
+    shadowConcours.startPoint = CGPointMake(0.5, 0);
+    shadowConcours.endPoint = CGPointMake(0.5,1);
+    [viewShadowConcours.layer addSublayer:shadowConcours];
+    
+    UILabel *labelConcours = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, viewShadowConcours.frame.size.width, 30)];
+    labelConcours.backgroundColor = [UIColor clearColor];
+    labelConcours.textColor = [UIColor whiteColor];
+    labelConcours.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+    labelConcours.textAlignment = UITextAlignmentCenter;
+    labelConcours.shadowColor = [UIColor blackColor];
+    labelConcours.shadowOffset = CGSizeMake(0, 1);
+    labelConcours.text = concours_;
+    [viewShadowConcours addSubview:labelConcours];
+    
+    [self.view addSubview:viewShadowConcours];
+    
+    [tableSuj_ setContentInset:UIEdgeInsetsMake(30,0,0,0)];
+    
     if ([concours_ isEqualToString:@"aucun"])
     {
         [tableSuj_ setHidden:YES];

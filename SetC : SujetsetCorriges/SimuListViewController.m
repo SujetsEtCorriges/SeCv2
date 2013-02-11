@@ -66,4 +66,10 @@
                        initWithObjects:@"MP", @"PC", @"PSI", nil];
 }
 
+- (void)viewDidUnload {
+    startButton = nil;
+    [super viewDidUnload];
+}
+- (IBAction)startButtonPushed:(id)sender {
+}
 @end
