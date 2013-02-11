@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (strong, nonatomic) NSArray *pageContent;
 @property (strong, nonatomic) NSString *concours;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 
 
 @end

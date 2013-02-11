@@ -27,6 +27,8 @@
 @synthesize pageContent = pageContent_;
 @synthesize concours = concours_;
 
+@synthesize pageControl = pageControl_;
+
 
 - (void)viewDidLoad
 {
@@ -100,6 +102,9 @@
     
     [self addChildViewController:pageController_];
     [[self view] addSubview:[pageController_ view]];
+    
+    [self.view addSubview:pageControl_];
+    
     [pageController_ didMoveToParentViewController:self];
 }
 
@@ -121,6 +126,7 @@
 
 - (NSUInteger)indexOfViewController:(SujetsCorrigesListViewController *)viewController
 {
+    pageControl_.currentPage = [self.pageContent indexOfObject:viewController.listeSujCor];
     return [self.pageContent indexOfObject:viewController.listeSujCor];
 }
 
@@ -368,6 +374,13 @@
             pageContent_ = [[NSArray alloc] initWithArray:pageStrings];
         }
     }
+    
+    pageControl_.numberOfPages = [self.pageContent count];
+    
 }
 
+- (void)viewDidUnload {
+    [self setPageControl:nil];
+    [super viewDidUnload];
+}
 @end
