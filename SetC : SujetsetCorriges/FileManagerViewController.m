@@ -145,8 +145,9 @@
 //        NSLog(@"fichiers: %f", number);
 //    }
     
-    
     [self.tableView reloadData];
+    
+    [editButton_ setEnabled:([arrayDocuments count] != 0)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -189,7 +190,8 @@
     viewSection.backgroundColor = [UIColor clearColor];
     
     CAGradientLayer *shadowSection = [CAGradientLayer layer];
-    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.65 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.75 alpha:0.7].CGColor,nil];
+    //shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.65 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.75 alpha:0.7].CGColor,nil];
+    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:14/255.0f green:156/255.0f blue:255/255.0f alpha:0.7].CGColor,(id)[UIColor colorWithRed:77/255.0f green:182/255.0f blue:255/255.0f alpha:0.7].CGColor,nil];
     CGRect frameShadow = viewSection.frame;
     //frameShadow.size.height = 25;
     shadowSection.frame = frameShadow;
@@ -354,12 +356,21 @@
     
     //[self performSegueWithIdentifier: @"modalToViewerFromFile" sender: self];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    FileCell *cell = (FileCell *)[tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        
+        //[cell setSelected:![cell isSelected] animated:YES];
+//        if ([cell isSelected])
+//        {
+//            [cell setSelected:NO animated:NO];
+//        }
+//        else
+//        {
+//            [cell setSelected:YES animated:NO];
+//        }
     }
-    else {
+    else
+    {
         // Do Something else.
         [self performSegueWithIdentifier: @"modalToViewerFromFile" sender: self];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -397,6 +408,7 @@
     [self setEditButton:nil];
     [super viewDidUnload];
 }
+
 - (IBAction)enterEditMode:(id)sender
 {
     if ([self.tableView isEditing])
@@ -405,6 +417,7 @@
         // If the tableView is already in edit mode, turn it off. Also change the title of the button to reflect the intended verb (‘Edit’, in this case).
         [self.tableView setEditing:NO animated:YES];
         [editButton_ setTitle:@"Modifier"];
+        [editButton_ setStyle:UIBarButtonItemStyleBordered];
         self.navigationItem.rightBarButtonItem = nil;
     }
     else

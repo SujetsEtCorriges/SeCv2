@@ -43,22 +43,22 @@
 //    return self;
 //}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-    nameLabel_.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
-    sizeLabel_.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
-}
-
-- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
-{
-    [super setSelected:highlighted animated:animated];
-    
-    // Configure the view for the selected state
-    nameLabel_.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
-    sizeLabel_.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
-}
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+//{
+//    [super setSelected:selected animated:animated];
+//
+//    // Configure the view for the selected state
+//    nameLabel_.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
+//    sizeLabel_.shadowColor = selected ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
+//}
+//
+//- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+//{
+//    [super setSelected:highlighted animated:animated];
+//    
+//    // Configure the view for the selected state
+//    nameLabel_.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
+//    sizeLabel_.shadowColor = highlighted ? [UIColor clearColor] : [UIColor colorWithWhite:1.0 alpha:0.5];
+//}
 
 @end
