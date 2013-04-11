@@ -23,7 +23,7 @@
 @protocol XMLParserDelegate <NSObject>
 
 - (void) xmlParser:(XMLParser*)parser didFinishParsing:(NSArray*)array;
-- (void) xmlParser:(XMLParser *)parser didFailWithError:(NSArray *)error;
+- (void) xmlParser:(XMLParser *)parser didFailWithError:(NSError *)error;
 
 @end
 

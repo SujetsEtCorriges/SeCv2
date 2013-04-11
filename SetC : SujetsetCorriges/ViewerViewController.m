@@ -96,7 +96,7 @@
     
     UILabel *navTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 2, 200, 18)];
     navTitleLabel.backgroundColor = [UIColor clearColor];
-    navTitleLabel.textAlignment = UITextAlignmentCenter;
+    navTitleLabel.textAlignment = NSTextAlignmentCenter;
     navTitleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
     navTitleLabel.textColor = [UIColor whiteColor];
     navTitleLabel.shadowColor = [UIColor blackColor];
@@ -105,7 +105,7 @@
     
     UILabel *navSubtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 200, 14)];
     navSubtitleLabel.backgroundColor = [UIColor clearColor];
-    navSubtitleLabel.textAlignment = UITextAlignmentCenter;
+    navSubtitleLabel.textAlignment = NSTextAlignmentCenter;
     navSubtitleLabel.font = [UIFont fontWithName:@"Helvetica" size:10.0];
     navSubtitleLabel.textColor = [UIColor whiteColor];
     navSubtitleLabel.shadowColor = [UIColor blackColor];
@@ -176,7 +176,7 @@
 
 - (IBAction)closeViewer:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)goBack:(id)sender
