@@ -268,12 +268,17 @@
 
 - (void) xmlParser:(XMLParser *)parser didFinishParsing:(NSArray *)array
 {
-    
+    NSLog(@"finish");
 }
 
 - (void) xmlParser:(XMLParser *)parser didFailWithError:(NSArray *)error
 {
     
+}
+
+- (void) parseEnd
+{
+    NSLog(@"finish");
 }
 
 

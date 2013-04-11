@@ -9,6 +9,10 @@
 #import "SimuListViewController.h"
 
 @interface SimuListViewController ()
+{
+    NSUInteger page;
+    NSUInteger oldPage;
+}
 
 @end
 
@@ -29,11 +33,14 @@
     
     [self initTabs];
     
+    oldPage = 1;
+    page = 1;
+    
     CGFloat paperWidth = 320;
     CGFloat tailleIcone = 60;
     
-    NSUInteger numberOfPapers = [concoursTab_ count];
-    for (NSUInteger i = 0; i < numberOfPapers; i++)
+    //initialisation de la scrollView Concours
+    for (NSUInteger i = 0; i < [concoursTab_ count]; i++)
     {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((paperWidth)*i + 130, 0, tailleIcone, tailleIcone)];
         
@@ -43,9 +50,15 @@
         imageView.image = imageTemp;
         [scrollViewConcours_ addSubview:imageView];
     }
-    
-    CGSize contentSize = CGSizeMake((paperWidth)*numberOfPapers, scrollViewConcours_.bounds.size.height);
+    CGSize contentSize = CGSizeMake((paperWidth)*[concoursTab_ count], scrollViewConcours_.bounds.size.height);
     scrollViewConcours_.contentSize = contentSize;
+    scrollViewConcours_.delegate = self;
+    
+    
+    [self fillFiliereScrollViewWithArray:filiereCPGETab_];
+    
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,10 +79,64 @@
                        initWithObjects:@"MP", @"PC", @"PSI", nil];
 }
 
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     startButton = nil;
     [super viewDidUnload];
 }
-- (IBAction)startButtonPushed:(id)sender {
+
+- (IBAction)startButtonPushed:(id)sender
+{
+    
 }
+
+- (void)fillFiliereScrollViewWithArray:(NSArray *)array
+{
+    for (NSUInteger i=0; i<[array count]; i++)
+    {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(320*i, 0,scrollViewFiliere_.frame.size.width, scrollViewFiliere_.frame.size.height)];
+        label.text = [array objectAtIndex:i];
+        label.textAlignment = NSTextAlignmentCenter;
+        
+        [scrollViewFiliere_ addSubview:label];
+    }
+    CGSize contentSize = CGSizeMake(320*[array count], scrollViewFiliere_.frame.size.height);
+    scrollViewFiliere_.contentSize = contentSize;
+    scrollViewFiliere_.delegate = self;
+}
+
+
+
+#pragma mark - UIScrollView Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{    
+    if (scrollView.tag == 100)
+    {
+        CGFloat pageWidth = scrollView.frame.size.width;
+        page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    }
+    
+    NSLog(@"page :%d, old page: %d", page, oldPage);
+    
+    if (scrollView.tag == 100 && [[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"] && oldPage != page)
+    {
+        [self fillFiliereScrollViewWithArray:filiereBacTab_];
+    }
+    else if (scrollView.tag == 100 && ![[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"] && oldPage != page)
+    {
+        [self fillFiliereScrollViewWithArray:filiereCPGETab_];
+    }
+    
+    if (oldPage != page)
+    {
+        CGRect frame = scrollView.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        [scrollViewFiliere_ scrollRectToVisible:frame animated:YES];
+        oldPage = page;
+    }
+}
+
+
+
 @end

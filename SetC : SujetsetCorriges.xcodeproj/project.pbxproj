@@ -728,11 +728,13 @@
 		9127A175167D36FD00D1EB09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Prefix.pch";
 				INFOPLIST_FILE = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -740,11 +742,13 @@
 		9127A176167D36FD00D1EB09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Prefix.pch";
 				INFOPLIST_FILE = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
