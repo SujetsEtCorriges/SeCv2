@@ -213,21 +213,19 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    //dispatch_async(dispatch_get_main_queue(), ^(void)
-                   //{
-    NSLog(@"finish");
-    [self.delegate xmlParser:self didFinishParsing:[NSArray arrayWithArray:self.XMLData]];
-                   //});
-    //[self.delegate parseEnd];
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+                   {
+                       [self.delegate xmlParser:self didFinishParsing:[NSArray arrayWithArray:self.XMLData]];
+                   });
         
 }
 
 - (void) informDelegateOfError:(NSError*)error
 {
-    /*dispatch_async(dispatch_get_main_queue(), ^(void)
-                   {*/
-    [self.delegate xmlParser:self didFailWithError:error];
-                   //});
+    dispatch_async(dispatch_get_main_queue(), ^(void)
+                   {
+                       [self.delegate xmlParser:self didFailWithError:error];
+                   });
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
