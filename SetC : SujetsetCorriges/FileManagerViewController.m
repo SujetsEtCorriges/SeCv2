@@ -180,18 +180,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 30;
+    return 25;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    float heightSection = 25;
+    UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, heightSection)];
     //viewSection.backgroundColor = [UIColor colorWithWhite:0.75 alpha:0.7];
     viewSection.backgroundColor = [UIColor clearColor];
     
     CAGradientLayer *shadowSection = [CAGradientLayer layer];
-    //shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.65 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.75 alpha:0.7].CGColor,nil];
-    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:14/255.0f green:156/255.0f blue:255/255.0f alpha:0.7].CGColor,(id)[UIColor colorWithRed:77/255.0f green:182/255.0f blue:255/255.0f alpha:0.7].CGColor,nil];
+    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.35 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.45 alpha:0.7].CGColor,nil];
+    //shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:14/255.0f green:156/255.0f blue:255/255.0f alpha:0.7].CGColor,(id)[UIColor colorWithRed:77/255.0f green:182/255.0f blue:255/255.0f alpha:0.7].CGColor,nil];
     CGRect frameShadow = viewSection.frame;
     //frameShadow.size.height = 25;
     shadowSection.frame = frameShadow;
@@ -210,12 +211,12 @@
     
     CALayer *lineBottom = [CALayer layer];
     lineBottom.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
-    lineBottom.frame = CGRectMake(0, 29, 320, 1);
+    lineBottom.frame = CGRectMake(0, heightSection-1, 320, 1);
     [viewSection.layer addSublayer:lineBottom];
     
-    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 300, 30)];
+    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 300, heightSection)];
     labelSection.backgroundColor = [UIColor clearColor];
-    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
+    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
     labelSection.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     labelSection.shadowColor = [UIColor blackColor];
     labelSection.shadowOffset = CGSizeMake(0, 1);
