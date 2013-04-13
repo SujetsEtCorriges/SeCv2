@@ -209,7 +209,7 @@
 {
     newsData_ = parser_.XMLData;
     [self.tableView reloadData];
-    //self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [pull finishedLoading];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
