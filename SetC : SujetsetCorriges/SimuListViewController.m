@@ -126,7 +126,7 @@
         CGFloat pageWidth = 140;
         page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         
-        if (oldPage != page) //si changement de concours
+        if (oldPage != page && page<[concoursTab_ count]) //si changement de concours
         {
             NSLog(@"%d",page);
             
