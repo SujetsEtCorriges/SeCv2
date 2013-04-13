@@ -60,6 +60,7 @@
         actionButton_.enabled = NO;
         urlAddress = [NSURL fileURLWithPath:lienString_];
         
+        
         [self changeSaveButtonIntoSaved];
     }
     else

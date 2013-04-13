@@ -13,6 +13,9 @@
     NSUInteger page;
     NSUInteger oldPage;
 }
+ 
+@property (nonatomic, strong) IBOutlet UIView *scrollsView;
+@property (nonatomic, strong) IBOutlet CPGEView *optionView;
 
 @end
 
@@ -21,7 +24,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -32,6 +36,7 @@
     [super viewDidLoad];
     
     [self initTabs];
+    [self displayOptionsCPGE];
     
     oldPage = 1;
     page = 1;
@@ -48,6 +53,7 @@
         UIImage *imageTemp = [UIImage imageWithContentsOfFile:path];
         
         imageView.image = imageTemp;
+        imageView.tag = i;
         [scrollViewConcours_ addSubview:imageView];
     }
     CGSize contentSize = CGSizeMake((paperWidth)*[concoursTab_ count], scrollViewConcours_.bounds.size.height);
@@ -114,13 +120,34 @@
         
         if (oldPage != page) //si changement de concours
         {
+            
+            //Zoom algorithm
+            UIImageView *imageViewZoom = (UIImageView *)[scrollView viewWithTag:page];
+            imageViewZoom.frame = CGRectMake(imageViewZoom.frame.origin.x, imageViewZoom.frame.origin.y, 70, 70);
+            
+            UIImageView *imageViewOld = (UIImageView *)[scrollView viewWithTag:oldPage];
+            imageViewOld.frame = CGRectMake(imageViewOld.frame.origin.x, imageViewOld.frame.origin.y, 60, 60);
+            
+            
+            
+            [self removeOptionsFromView];
             //on met à jour les filières
             if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
+            {
                 [self fillFiliereScrollViewWithArray:filiereBacTab_];
+            }
+                
             else if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Banque PT"])
+            {
                 [self fillFiliereScrollViewWithArray:[[NSArray alloc] initWithObjects:@"PT", nil]];
+                [self displayOptionsCPGE];
+            } 
             else if (![[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
+            {
                 [self fillFiliereScrollViewWithArray:filiereCPGETab_];
+                [self displayOptionsCPGE];
+            }
+                
             
             CGRect frame = scrollView.frame;
             frame.origin.x = 0;
@@ -132,6 +159,29 @@
     }
 }
 
+
+#pragma mark - Display option of concours
+- (void)displayOptionsCPGE
+{
+    //animmation sur la cellule
+    _optionView = [[CPGEView alloc] initCPGEViewAtPosition:_scrollsView.bounds.size.height];
+    _optionView.delegate = self;
+    [self.view addSubview:_optionView];
+    
+    NSLog(@"%f", _scrollsView.bounds.size.height);
+}
+
+-(void)removeOptionsFromView
+{
+    [_optionView removeFromSuperview];
+}
+
+
+#pragma mark - CPGEViewDelegate
+-(void)statutCPGEChanged:(NSString *)statut
+{
+    NSLog(@"changed : %@", statut);
+}
 
 
 @end

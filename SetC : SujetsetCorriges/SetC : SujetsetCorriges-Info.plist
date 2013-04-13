@@ -20,7 +20,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.SujetsetCorriges.sec.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.SujetsetCorriges.sec</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

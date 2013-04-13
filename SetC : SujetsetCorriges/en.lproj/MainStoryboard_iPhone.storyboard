@@ -93,16 +93,19 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BKb-cl-hIt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
                                 <subviews>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="NewsBackground.png" id="Csr-Ps-8DV">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                     </imageView>
                                     <webView contentMode="scaleToFill" id="NM6-Kz-FLH">
                                         <rect key="frame" x="0.0" y="95" width="320" height="360"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </webView>
                                     <view contentMode="scaleToFill" id="zih-VP-z0V">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Titre" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fLl-oa-cAj">
                                                 <rect key="frame" x="20" y="8" width="280" height="54"/>
@@ -427,13 +430,27 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="RTS-YY-Kui">
-                                <rect key="frame" x="0.0" y="104" width="320" height="70"/>
-                            </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1fj-fw-jQ6">
-                                <rect key="frame" x="0.0" y="232" width="320" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
+                            <view contentMode="scaleToFill" restorationIdentifier="" id="phK-7z-oaR" userLabel="Scrolls View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1fj-fw-jQ6" userLabel="Filiere ScrollView">
+                                        <rect key="frame" x="0.0" y="99" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="RTS-YY-Kui" userLabel="Concours ScrollView">
+                                        <rect key="frame" x="0.0" y="11" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
+                            </view>
+                            <view contentMode="scaleToFill" id="r6a-cy-74w" userLabel="Options View" customClass="CPGEView">
+                                <rect key="frame" x="0.0" y="198" width="320" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -446,8 +463,10 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="optionView" destination="r6a-cy-74w" id="jOg-iK-A66"/>
                         <outlet property="scrollViewConcours_" destination="RTS-YY-Kui" id="Kgk-0v-vpV"/>
                         <outlet property="scrollViewFiliere_" destination="1fj-fw-jQ6" id="lTA-t1-Y1D"/>
+                        <outlet property="scrollsView" destination="phK-7z-oaR" id="d6X-pH-BSm"/>
                         <outlet property="startButton" destination="No4-J2-KBp" id="xm4-Fs-g67"/>
                     </connections>
                 </viewController>
@@ -844,6 +863,14 @@
         <class className="ActuViewController" superclassName="ECSlidingViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuViewController.h"/>
         </class>
+        <class className="CPGEView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPGEView.h"/>
+            <relationships>
+                <relationship kind="action" name="valueChanged:"/>
+                <relationship kind="outlet" name="lStatut" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sgRedoublant" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
         <class className="CommentsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CommentsViewController.h"/>
             <relationships>
@@ -903,8 +930,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SimuListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="startButtonPushed:"/>
+                <relationship kind="outlet" name="optionView" candidateClass="CPGEView"/>
                 <relationship kind="outlet" name="scrollViewConcours_" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="scrollViewFiliere_" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="scrollsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="startButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>

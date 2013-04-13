@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPGEView.h"
 
-@interface SimuListViewController : UIViewController <UIScrollViewDelegate, UIScrollViewAccessibilityDelegate>
+@interface SimuListViewController : UIViewController <UIScrollViewDelegate, UIScrollViewAccessibilityDelegate, CPGEViewDelegate>
 {
     NSMutableArray *itemArray_;
     NSArray *concoursTab_;
@@ -21,6 +22,7 @@
     IBOutlet UIScrollView *scrollViewFiliere_;
     IBOutlet UIBarButtonItem *startButton;
 }
+
 - (IBAction)startButtonPushed:(id)sender;
 
 @end
