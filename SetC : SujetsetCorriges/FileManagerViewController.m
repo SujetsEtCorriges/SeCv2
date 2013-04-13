@@ -189,16 +189,17 @@
     UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, heightSection)];
     //viewSection.backgroundColor = [UIColor colorWithWhite:0.75 alpha:0.7];
     viewSection.backgroundColor = [UIColor clearColor];
+    viewSection.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
     
-    CAGradientLayer *shadowSection = [CAGradientLayer layer];
-    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.35 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.45 alpha:0.7].CGColor,nil];
-    //shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:14/255.0f green:156/255.0f blue:255/255.0f alpha:0.7].CGColor,(id)[UIColor colorWithRed:77/255.0f green:182/255.0f blue:255/255.0f alpha:0.7].CGColor,nil];
-    CGRect frameShadow = viewSection.frame;
-    //frameShadow.size.height = 25;
-    shadowSection.frame = frameShadow;
-    shadowSection.startPoint = CGPointMake(0.5, 0);
-    shadowSection.endPoint = CGPointMake(0.5,1);
-    [viewSection.layer addSublayer:shadowSection];
+//    CAGradientLayer *shadowSection = [CAGradientLayer layer];
+//    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.75 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.85 alpha:0.7].CGColor,nil];
+//    //shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithRed:14/255.0f green:156/255.0f blue:255/255.0f alpha:0.7].CGColor,(id)[UIColor colorWithRed:77/255.0f green:182/255.0f blue:255/255.0f alpha:0.7].CGColor,nil];
+//    CGRect frameShadow = viewSection.frame;
+//    //frameShadow.size.height = 25;
+//    shadowSection.frame = frameShadow;
+//    shadowSection.startPoint = CGPointMake(0.5, 0);
+//    shadowSection.endPoint = CGPointMake(0.5,1);
+//    [viewSection.layer addSublayer:shadowSection];
     
     UIImageView *iconConcours = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sectionCCP.png"]];
     iconConcours.alpha = 0.7;
@@ -207,19 +208,20 @@
     CALayer *lineTop = [CALayer layer];
     lineTop.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.6].CGColor;
     lineTop.frame = CGRectMake(0, 0, 320, 1);
-    [viewSection.layer addSublayer:lineTop];
+    //[viewSection.layer addSublayer:lineTop];
     
     CALayer *lineBottom = [CALayer layer];
     lineBottom.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
     lineBottom.frame = CGRectMake(0, heightSection-1, 320, 1);
-    [viewSection.layer addSublayer:lineBottom];
+    //[viewSection.layer addSublayer:lineBottom];
     
-    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, 300, heightSection)];
+    UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 300, heightSection)];
     labelSection.backgroundColor = [UIColor clearColor];
-    labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-    labelSection.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
-    labelSection.shadowColor = [UIColor blackColor];
-    labelSection.shadowOffset = CGSizeMake(0, 1);
+    labelSection.font = [UIFont fontWithName:@"Helvetica" size:14];
+    //labelSection.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    labelSection.textColor = [UIColor colorWithWhite:0.45 alpha:1];
+    //labelSection.shadowColor = [UIColor blackColor];
+    //labelSection.shadowOffset = CGSizeMake(0, 1);
     labelSection.text = [[dictionaryDocuments allKeys] objectAtIndex:section];
     [viewSection addSubview:labelSection];
     

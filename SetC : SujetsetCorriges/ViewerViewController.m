@@ -121,10 +121,21 @@
     
     [navBar_.topItem setTitleView:viewTitle];
     
+    frameNavBarVisible = navBar_.frame;
+    
+    frameNavBarHidden = frameNavBarVisible;
+    frameNavBarHidden.origin.y = frameNavBarHidden.origin.y - 20;
+    
+    frameToolBarVisible = toolBar_.frame;
+    
+    frameToolBarHidden = frameToolBarVisible;
+    frameToolBarHidden.origin.y = frameToolBarHidden.origin.y + 20;
+    
     //activityView_ = [[UIActivityIndicatorView alloc] init];
     //activityView_.hidesWhenStopped = YES;
     
     viewerWebView_.delegate = self;
+    viewerWebView_.scrollView.delegate = self;
     
 	// Faire une requête sur cette URL
 	NSURLRequest *requestObject = [NSURLRequest requestWithURL:urlAddress];
@@ -304,5 +315,29 @@
 //        [savingHUD show:YES];
 //    }
 //}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"Drag");
+    [self hideBars];
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
+{
+    NSLog(@"Zoom");
+    [self hideBars];
+}
+
+- (void)displayBars
+{
+    navBar_.frame = frameNavBarVisible;
+    toolBar_.frame = frameToolBarVisible;
+}
+
+- (void)hideBars
+{
+    navBar_.frame = frameNavBarHidden;
+    toolBar_.frame = frameToolBarHidden;
+}
 
 @end
