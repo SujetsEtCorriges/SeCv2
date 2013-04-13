@@ -41,13 +41,20 @@
     oldPage = 1;
     page = 1;
     
-    CGFloat paperWidth = 320;
+    CGFloat paperWidth = 140;
     CGFloat tailleIcone = 60;
     
     //initialisation de la scrollView Concours
     for (NSUInteger i = 0; i < [concoursTab_ count]; i++)
     {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((paperWidth)*i + 130, 0, tailleIcone, tailleIcone)];
+        if (i == 0)
+            tailleIcone = 70;
+        else
+            tailleIcone = 60;
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((paperWidth)*i + 40, 0, tailleIcone, tailleIcone)];
+        
+        //UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(130*(i+1), 0, tailleIcone, tailleIcone)];
         
         NSString *path = [[NSBundle mainBundle] pathForResource:[concoursTab_ objectAtIndex:i] ofType:@"png"];
         UIImage *imageTemp = [UIImage imageWithContentsOfFile:path];
@@ -115,11 +122,13 @@
 {
     if (scrollView.tag == 100) //si l'utilisateur scroll les concours
     {
-        CGFloat pageWidth = scrollView.frame.size.width;
+        //CGFloat pageWidth = scrollView.frame.size.width;
+        CGFloat pageWidth = 140;
         page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         
         if (oldPage != page) //si changement de concours
         {
+            NSLog(@"%d",page);
             
             //Zoom algorithm
             UIImageView *imageViewZoom = (UIImageView *)[scrollView viewWithTag:page];
@@ -166,9 +175,7 @@
     //animmation sur la cellule
     _optionView = [[CPGEView alloc] initCPGEViewAtPosition:_scrollsView.bounds.size.height];
     _optionView.delegate = self;
-    [self.view addSubview:_optionView];
-    
-    NSLog(@"%f", _scrollsView.bounds.size.height);
+    [self.view addSubview:_optionView];    
 }
 
 -(void)removeOptionsFromView
@@ -180,7 +187,7 @@
 #pragma mark - CPGEViewDelegate
 -(void)statutCPGEChanged:(NSString *)statut
 {
-    NSLog(@"changed : %@", statut);
+    //NSLog(@"changed : %@", statut);
 }
 
 

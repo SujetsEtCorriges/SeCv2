@@ -746,14 +746,14 @@
 		9127A175167D36FD00D1EB09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Prefix.pch";
 				INFOPLIST_FILE = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C25E80CA-5550-4C71-A153-C36F4F3B69FD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C25E80CA-5550-4C71-A153-C36F4F3B69FD";
 				WRAPPER_EXTENSION = app;
 			};
@@ -762,14 +762,14 @@
 		9127A176167D36FD00D1EB09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Prefix.pch";
 				INFOPLIST_FILE = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C25E80CA-5550-4C71-A153-C36F4F3B69FD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C25E80CA-5550-4C71-A153-C36F4F3B69FD";
 				WRAPPER_EXTENSION = app;
 			};
