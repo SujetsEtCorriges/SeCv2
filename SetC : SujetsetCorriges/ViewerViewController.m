@@ -121,15 +121,25 @@
     
     [navBar_.topItem setTitleView:viewTitle];
     
+    // Définition des fenêtres pour le mode plein écran
     frameNavBarVisible = navBar_.frame;
-    
     frameNavBarHidden = frameNavBarVisible;
-    frameNavBarHidden.origin.y = frameNavBarHidden.origin.y - 20;
-    
+    frameNavBarHidden.origin.y -= (frameNavBarHidden.size.height+[UIApplication sharedApplication].statusBarFrame.size.height);
     frameToolBarVisible = toolBar_.frame;
-    
     frameToolBarHidden = frameToolBarVisible;
-    frameToolBarHidden.origin.y = frameToolBarHidden.origin.y + 20;
+    frameToolBarHidden.origin.y += frameToolBarHidden.size.height;
+    frameWebViewSmall = viewerWebView_.frame;
+    frameWebViewLarge = frameWebViewSmall;
+    frameWebViewLarge.origin.y -= (frameNavBarHidden.size.height+[UIApplication sharedApplication].statusBarFrame.size.height);
+    frameWebViewLarge.size.height += (frameNavBarHidden.size.height + [UIApplication sharedApplication].statusBarFrame.size.height + frameToolBarHidden.size.height);
+    
+    // Détection du double tap
+    UITapGestureRecognizer *singleFingerDTap = [[UITapGestureRecognizer alloc]
+                                                initWithTarget:self action:@selector(doubleTapDetecte)];
+    singleFingerDTap.numberOfTapsRequired = 2;
+    singleFingerDTap.delegate = self;
+    [viewerWebView_ addGestureRecognizer:singleFingerDTap];
+    
     
     //activityView_ = [[UIActivityIndicatorView alloc] init];
     //activityView_.hidesWhenStopped = YES;
@@ -328,16 +338,49 @@
     [self hideBars];
 }
 
+- (void)doubleTapDetecte
+{
+    NSLog(@"Double Tap");
+    if (navBar_.frame.origin.y == frameNavBarHidden.origin.y)
+    {
+        [self displayBars];
+    }
+    else
+    {
+        [self hideBars];
+    }
+}
+
 - (void)displayBars
 {
+    [UIView beginAnimations:@"Display Bars" context:nil];
+    [UIView setAnimationDuration:0.4];
+    
     navBar_.frame = frameNavBarVisible;
     toolBar_.frame = frameToolBarVisible;
+    viewerWebView_.frame = frameWebViewSmall;
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    [UIView commitAnimations];
 }
 
 - (void)hideBars
 {
+    [UIView beginAnimations:@"Hide Bars" context:nil];
+    [UIView setAnimationDuration:0.4];
+    
     navBar_.frame = frameNavBarHidden;
     toolBar_.frame = frameToolBarHidden;
+    viewerWebView_.frame = frameWebViewLarge;
+    [UIApplication sharedApplication].statusBarHidden = YES;
+    
+    [UIView commitAnimations];
+}
+
+#pragma mark Gesture recognizer delegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MBProgressHUDDelegate, UIScrollViewDelegate>
+@interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MBProgressHUDDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     MBProgressHUD *savingHUD;
     //MBProgressHUD *errorHUD;
@@ -25,6 +25,8 @@
     CGRect frameNavBarVisible;
     CGRect frameToolBarHidden;
     CGRect frameToolBarVisible;
+    CGRect frameWebViewLarge;
+    CGRect frameWebViewSmall;
 }
 
 @property (assign, nonatomic) BOOL isLocalFile;
