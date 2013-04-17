@@ -27,9 +27,6 @@
 		9127A151167D36FD00D1EB09 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9127A14F167D36FD00D1EB09 /* InfoPlist.strings */; };
 		9127A153167D36FD00D1EB09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A152167D36FD00D1EB09 /* main.m */; };
 		9127A157167D36FD00D1EB09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A156167D36FD00D1EB09 /* AppDelegate.m */; };
-		9127A159167D36FD00D1EB09 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A158167D36FD00D1EB09 /* Default.png */; };
-		9127A15B167D36FD00D1EB09 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A15A167D36FD00D1EB09 /* Default@2x.png */; };
-		9127A15D167D36FD00D1EB09 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A15C167D36FD00D1EB09 /* Default-568h@2x.png */; };
 		9127A160167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */; };
 		9127A163167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9127A161167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard */; };
 		9127A166167D36FD00D1EB09 /* ActuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A165167D36FD00D1EB09 /* ActuViewController.m */; };
@@ -578,9 +575,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9127A151167D36FD00D1EB09 /* InfoPlist.strings in Resources */,
-				9127A159167D36FD00D1EB09 /* Default.png in Resources */,
-				9127A15B167D36FD00D1EB09 /* Default@2x.png in Resources */,
-				9127A15D167D36FD00D1EB09 /* Default-568h@2x.png in Resources */,
 				9127A160167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard in Resources */,
 				9127A163167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard in Resources */,
 				9127A168167D36FD00D1EB09 /* first.png in Resources */,
