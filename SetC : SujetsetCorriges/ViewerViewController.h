@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MBProgressHUDDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface ViewerViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate, MBProgressHUDDelegate, UIScrollViewDelegate>
 {
     MBProgressHUD *savingHUD;
     //MBProgressHUD *errorHUD;

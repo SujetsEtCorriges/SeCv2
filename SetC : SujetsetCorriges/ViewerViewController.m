@@ -133,12 +133,20 @@
     frameWebViewLarge.origin.y -= (frameNavBarHidden.size.height+[UIApplication sharedApplication].statusBarFrame.size.height);
     frameWebViewLarge.size.height += (frameNavBarHidden.size.height + [UIApplication sharedApplication].statusBarFrame.size.height + frameToolBarHidden.size.height);
     
-    // Détection du double tap
-    UITapGestureRecognizer *singleFingerDTap = [[UITapGestureRecognizer alloc]
-                                                initWithTarget:self action:@selector(doubleTapDetecte)];
-    singleFingerDTap.numberOfTapsRequired = 2;
-    singleFingerDTap.delegate = self;
-    [viewerWebView_ addGestureRecognizer:singleFingerDTap];
+    // Détection du tap
+    UITapGestureRecognizer *doubleTapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                          initWithTarget:self action:nil];
+    doubleTapGestureRecognizer.numberOfTapsRequired = 2;
+    
+    //tapGestureRecognizer.delegate = self;
+    [viewerWebView_ addGestureRecognizer:doubleTapGestureRecognizer];
+    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc]
+                                                initWithTarget:self action:@selector(detectTap)];
+    singleFingerTap.numberOfTapsRequired = 1;
+    //singleFingerTap.delegate = self;
+    [singleFingerTap requireGestureRecognizerToFail: doubleTapGestureRecognizer];
+    [viewerWebView_ addGestureRecognizer:singleFingerTap];
     
     
     //activityView_ = [[UIActivityIndicatorView alloc] init];
@@ -338,9 +346,9 @@
     [self hideBars];
 }
 
-- (void)doubleTapDetecte
+- (void)detectTap
 {
-    NSLog(@"Double Tap");
+    NSLog(@"Tap");
     if (navBar_.frame.origin.y == frameNavBarHidden.origin.y)
     {
         [self displayBars];
@@ -377,10 +385,10 @@
     [UIView commitAnimations];
 }
 
-#pragma mark Gesture recognizer delegate
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    return YES;
-}
+//#pragma mark Gesture recognizer delegate
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+//{
+//    return YES;
+//}
 
 @end

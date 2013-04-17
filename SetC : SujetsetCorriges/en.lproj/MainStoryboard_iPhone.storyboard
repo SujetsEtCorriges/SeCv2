@@ -670,11 +670,13 @@
                         <subviews>
                             <webView multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" id="tkm-MB-08w">
                                 <rect key="frame" x="0.0" y="44" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.96334901149999996" green="0.96334901149999996" blue="0.96334901149999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="nmP-az-zeA">
                                 <rect key="frame" x="0.0" y="504" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="rewind" id="tHf-pL-Wlm">
                                         <connections>
@@ -706,6 +708,7 @@
                             </activityIndicatorView>
                             <navigationBar contentMode="scaleToFill" id="nJv-Nz-V42">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Viewer" id="yX5-mY-9ix">
                                         <barButtonItem key="leftBarButtonItem" title="Save" id="2LP-ik-7cX">
@@ -864,7 +867,6 @@
         <class className="CPGEView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CPGEView.h"/>
             <relationships>
-                <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="lStatut" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="sgRedoublant" candidateClass="UISegmentedControl"/>
             </relationships>
