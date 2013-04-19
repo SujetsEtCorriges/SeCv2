@@ -213,7 +213,7 @@
     CALayer *lineBottom = [CALayer layer];
     lineBottom.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
     lineBottom.frame = CGRectMake(0, heightSection-1, 320, 1);
-    //[viewSection.layer addSublayer:lineBottom];
+    [viewSection.layer addSublayer:lineBottom];
     
     UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 300, heightSection)];
     labelSection.backgroundColor = [UIColor clearColor];

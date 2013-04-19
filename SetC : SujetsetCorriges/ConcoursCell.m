@@ -15,7 +15,7 @@
     
     // Your code goes here!
     CALayer *line = [CALayer layer];
-    line.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
+    line.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1].CGColor;
     line.frame = CGRectMake(0, 0, 320, 1);
     
     [self.layer addSublayer:line];

@@ -74,6 +74,7 @@
     float headerHeight = 20;
     UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, headerHeight)];
     viewSection.backgroundColor = [UIColor colorWithWhite:0.45 alpha:1.0];
+    viewSection.backgroundColor = [UIColor colorWithWhite:0.35 alpha:1.0];
     
     CAGradientLayer *shadowSection = [CAGradientLayer layer];
     shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.40 alpha:1.0].CGColor,(id)[UIColor colorWithWhite:0.45 alpha:1.0].CGColor,nil];
@@ -82,24 +83,26 @@
     shadowSection.frame = frameShadow;
     shadowSection.startPoint = CGPointMake(0.5, 0);
     shadowSection.endPoint = CGPointMake(0.5,1);
-    [viewSection.layer addSublayer:shadowSection];
+    //[viewSection.layer addSublayer:shadowSection];
     
     CALayer *lineTop = [CALayer layer];
     lineTop.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3].CGColor;
     lineTop.frame = CGRectMake(0, 0, 320, 1);
-    [viewSection.layer addSublayer:lineTop];
+    //[viewSection.layer addSublayer:lineTop];
     
     CALayer *lineBottom = [CALayer layer];
     lineBottom.backgroundColor = [UIColor colorWithWhite:0.30 alpha:1.0].CGColor;
     lineBottom.frame = CGRectMake(0, headerHeight-1, 320, 1);
-    [viewSection.layer addSublayer:lineBottom];
+    //[viewSection.layer addSublayer:lineBottom];
     
     UILabel *labelSection = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, headerHeight)];
     labelSection.backgroundColor = [UIColor clearColor];
     labelSection.font = [UIFont fontWithName:@"Helvetica-Bold" size:13];
+    labelSection.font = [UIFont fontWithName:@"Helvetica" size:13];
     labelSection.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-    labelSection.shadowColor = [UIColor blackColor];
-    labelSection.shadowOffset = CGSizeMake(0, 1);
+    //labelSection.textColor = [UIColor colorWithWhite:0.25 alpha:1.0];
+    //labelSection.shadowColor = [UIColor blackColor];
+    //labelSection.shadowOffset = CGSizeMake(0, 1);
     labelSection.text = [listeSection_.allKeys objectAtIndex:section];
     [viewSection addSubview:labelSection];
     
