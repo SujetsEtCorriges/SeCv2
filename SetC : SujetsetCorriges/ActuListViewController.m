@@ -133,7 +133,17 @@
     
     cell.titleLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.dateLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
-    cell.nbcommentsLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"nbcomments"];
+    int nbComments = [[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"nbcomments"] integerValue];
+    NSString *stringNbComments;
+    if (nbComments == 0 || nbComments == 1)
+    {
+        stringNbComments = [NSString stringWithFormat:@"%i commentaire",nbComments];
+    }
+    else
+    {
+        stringNbComments = [NSString stringWithFormat:@"%i commentaires",nbComments];
+    }
+    cell.nbcommentsLabel.text = stringNbComments;
     //configuration de la cellulle titre
     //cell.textLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
     //cell.detailTextLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
