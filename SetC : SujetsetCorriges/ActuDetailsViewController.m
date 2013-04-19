@@ -21,6 +21,7 @@
 @synthesize url = url_;
 @synthesize titre = titre_;
 @synthesize idArticle = idArticle_;
+@synthesize auteur = auteur_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +39,7 @@
     
     self.titreLabel.text = self.titre;
     self.dateLabel.text = [self convertDate:self.date];
+    self.auteurLabel.text = auteur_;
     
     [self.webView.scrollView setScrollEnabled:NO];
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<html> \n"

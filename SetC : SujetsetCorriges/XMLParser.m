@@ -81,6 +81,7 @@
             message_ = [[NSMutableString alloc] init];
             id_ = [[NSMutableString alloc] init];
             nbcomments_ = [[NSMutableString alloc] init];
+            creator_ = [[NSMutableString alloc] init];
             
         }
     }
@@ -162,6 +163,11 @@
             [nbcomments_ appendString:string];
             [nbcomments_ setString: [self cleaningString:nbcomments_]];
         }
+        else if ([_currentElement isEqualToString:@"dc:creator"])
+        {
+            [creator_ appendString:string];
+            [creator_ setString: [self cleaningString:creator_]];
+        }
     }
 }
 
@@ -204,6 +210,7 @@
             [item_ setObject:message_ forKey:@"message"];
             [item_ setObject:[[id_ componentsSeparatedByString:@"="] objectAtIndex:1] forKey:@"id"];
             [item_ setObject:nbcomments_ forKey:@"nbcomments"];
+            [item_ setObject:creator_ forKey:@"author"];
             
             [self.XMLData addObject:item_];
         }

@@ -55,6 +55,7 @@
     NSMutableString *message_;
     NSMutableString *id_;
     NSMutableString *nbcomments_;
+    NSMutableString *creator_;
 }
 
 

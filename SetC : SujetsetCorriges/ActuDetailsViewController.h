@@ -27,6 +27,7 @@
 //label
 @property (strong, nonatomic) IBOutlet UILabel *titreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *auteurLabel;
 
 - (IBAction)affichagePartage:(id)sender;
 
