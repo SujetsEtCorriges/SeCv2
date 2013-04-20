@@ -20,9 +20,8 @@
 @implementation ActuListViewController
 {
     BOOL firstRefresh;
+    NSMutableArray *newsData;
 }
-
-
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -41,7 +40,9 @@
     
     //initialisation des variables
     firstRefresh = YES;
-    newsData_ = [[NSMutableArray alloc] init];
+    newsData = [[NSMutableArray alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newsLoaded:) name:@"newsLoaded" object:nil];
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
@@ -52,27 +53,28 @@
 }
 
 - (void) parseNews:(id)sender
-{
-    @autoreleasepool
+{    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    if (firstRefresh)
     {
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        if (firstRefresh)
-        {
-            MBProgressHUD *chargementHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [chargementHUD setLabelText:@"Chargement"];
-        }
-        
-        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:kURL]];
-        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        newsData_ = [json objectForKey:@"posts"];
-        [self.tableView reloadData];
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self.refreshControl endRefreshing];
-        firstRefresh = NO;
+        MBProgressHUD *chargementHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [chargementHUD setLabelText:@"Chargement"];
     }
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:kURL]];
+    NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    newsData = [[json objectForKey:@"posts"] mutableCopy];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"newsLoaded" object:nil];
+}
+
+- (void)newsLoaded:(id)sender
+{
+    [self.tableView reloadData];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.refreshControl endRefreshing];
+    firstRefresh = NO;
 }
 
 
@@ -86,7 +88,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [newsData_ count];
+    return [newsData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,18 +101,15 @@
         cell = [[NewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.titleLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.dateLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
-    int nbComments = [[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"comment_count"] integerValue];
+    cell.titleLabel.text = [[newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.dateLabel.text = [self convertDate:[[newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
+    int nbComments = [[[newsData objectAtIndex:indexPath.row] objectForKey:@"comment_count"] integerValue];
     NSString *stringNbComments;
     if (nbComments == 0 || nbComments == 1)
-    {
         stringNbComments = [NSString stringWithFormat:@"%i commentaire",nbComments];
-    }
     else
-    {
         stringNbComments = [NSString stringWithFormat:@"%i commentaires",nbComments];
-    }
+
     cell.nbcommentsLabel.text = stringNbComments;
 
     return cell;
@@ -152,12 +151,12 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ActuDetailsViewController *destViewController = segue.destinationViewController;
         
-        destViewController.url = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"url"];
-        destViewController.texte = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"content"];
-        destViewController.titre = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
-        destViewController.auteur = [[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"author"] objectForKey:@"name"];
-        destViewController.date = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
-        destViewController.idArticle = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"id"];
+        destViewController.url = [[newsData objectAtIndex:indexPath.row] objectForKey:@"url"];
+        destViewController.texte = [[newsData objectAtIndex:indexPath.row] objectForKey:@"content"];
+        destViewController.titre = [[newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
+        destViewController.auteur = [[[newsData objectAtIndex:indexPath.row] objectForKey:@"author"] objectForKey:@"name"];
+        destViewController.date = [self convertDate:[[newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
+        destViewController.idArticle = [[newsData objectAtIndex:indexPath.row] objectForKey:@"id"];
     }
 }
 

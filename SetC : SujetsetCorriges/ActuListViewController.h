@@ -11,8 +11,5 @@
 #import "NewsCell.h"
 
 @interface ActuListViewController : UITableViewController
-{
-    NSMutableArray *newsData_;
-}
 
 @end
