@@ -252,34 +252,7 @@
 
 
 
-#pragma mark - XMLParserDelegate
-- (void) parseXMLFile:(NSString*)theData
-{
-    @autoreleasepool
-    {
-        parser_ = [[XMLParser alloc] init];
-        parser_.delegate = self;
-        if ([parser_.XMLData count] == 0)
-        {
-            [parser_ parseXMLFileAtData:theData];
-        }
-    }
-}
-
-- (void) xmlParser:(XMLParser *)parser didFinishParsing:(NSArray *)array
-{
-    
-}
-
-- (void) xmlParser:(XMLParser *)parser didFailWithError:(NSArray *)error
-{
-    
-}
-
-
-
-
-//algorithme création des pages
+#pragma mark - create content pages algorithm
 - (void) createContentPages
 {
     if ([concours_ isEqualToString:@"aucun"])
@@ -296,7 +269,7 @@
         else if ([concours_ isEqualToString:@"ENAC EPL"])
             filiere_ = @"NC";
         
-        NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/gestionXML/extractXML"];
+        NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/gestionXML/extractJSON"];
         ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         [request setPostValue:concours_ forKey:@"concours"];
         [request setPostValue:filiere_ forKey:@"filiere"];
@@ -304,8 +277,8 @@
         NSError *error = [request error];
         if (!error)
         {
-            parser_ = [[XMLParser alloc] init];
-            [parser_ parseXMLFileAtData:[request responseString]];
+            NSData *response = [request responseData];
+            NSMutableArray *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:&error];
             
             //initialisation des variables temporaire
             NSDictionary *tempSujCor = [[NSDictionary alloc] init];
@@ -317,14 +290,13 @@
             //booléen pour savoir si la matière a déjà été rencontré
             BOOL found = NO;
             
-            //dictionnaire avec clé le nom de matière et pour valeur un tableau contenant les éléments XML correspondant à la matière
+            //dictionnaire avec clé le nom de matière et pour valeur un tableau contenant les éléments correspondant à la matière
             NSMutableDictionary *tabSujCor = [[NSMutableDictionary alloc] init];
             
-            //pour chaque entrée du XML
-            for (int i=0; i<[parser_.XMLData count]; i++)
+            for (int i=0; i<[json count]; i++)
             {
                 //on prend l'entrée et on enregistre la matière
-                tempSujCor = [parser_.XMLData objectAtIndex:i];
+                tempSujCor = [json objectAtIndex:i];
                 tempMatiere= [tempSujCor objectForKey:kMatiere];
                 
                 //on recherche si la matière est dans le tableau
@@ -357,7 +329,6 @@
                 else
                 {
                     //la matière existe, dans un tableau d'élément existe pour cette matière, on l'enregistre
-                    //NSMutableArray *tabElement = [[NSMutableArray alloc] init];
                     NSMutableArray *tabElement = [tabSujCor objectForKey:tempMatiere];
                     
                     //on rajoute à ce tableau l'élément actuel

@@ -10,6 +10,16 @@
 #import <QuartzCore/QuartzCore.h>
 #import "EpreuveCell.h"
 
+//sujets et corriges
+#define kItem @"item"
+#define kMatiere @"matiere"
+#define kAnnee @"annee"
+#define kEpreuve @"epreuve"
+#define kSujet @"sujet"
+#define kCorrige @"corrige"
+#define kCorrigePartiel @"corrigePartiel"
+#define kNom @"nom"
+
 @interface SujetsCorrigesListViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 {
     UILabel *introLabel_;

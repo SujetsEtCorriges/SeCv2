@@ -58,19 +58,7 @@
     
     if ([elementName isEqualToString:kItem])
     {
-        if ([typeParse_ isEqualToString:@"sujcor"])
-        {
-            item_ = [[NSMutableDictionary alloc] init];
-            
-            currentMatiere_ = [[NSMutableString alloc] init];
-            currentAnnee_ = [[NSMutableString alloc] init];
-            currentEpreuve_ = [[NSMutableString alloc] init];
-            currentSujet_ = [[NSMutableString alloc] init];
-            currentCorrige_ = [[NSMutableString alloc] init];
-            currentCorrigePartiel_ = [[NSMutableString alloc] init];
-            currentNom_ = [[NSMutableString alloc] init];
-        }
-        else if ([typeParse_ isEqualToString:@"posts"])
+        if ([typeParse_ isEqualToString:@"posts"])
         {
             item_ = [[NSMutableDictionary alloc] init];
             
@@ -89,44 +77,7 @@
 
 - (void) parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    if ([typeParse_ isEqualToString:@"sujcor"])
-    {
-        if ([_currentElement isEqualToString:kMatiere])
-        {
-            [currentMatiere_ appendString:string];
-        }
-        else if ([_currentElement isEqualToString:kAnnee])
-        {
-            [currentAnnee_ appendString:string];
-            [currentAnnee_ setString: [self cleaningString:currentAnnee_]];
-        }
-        else if ([_currentElement isEqualToString:kEpreuve])
-        {
-            [currentEpreuve_ appendString:string];
-            //[currentEpreuve_ setString: [self cleaningString:currentEpreuve_]];
-        }
-        else if ([_currentElement isEqualToString:kSujet])
-        {
-            [currentSujet_ appendString:string];
-            [currentSujet_ setString: [self cleaningString:currentSujet_]];
-        }
-        else if ([_currentElement isEqualToString:kCorrige])
-        {
-            [currentCorrige_ appendString:string];
-            [currentCorrige_ setString: [self cleaningString:currentCorrige_]];
-        }
-        else if ([_currentElement isEqualToString:kCorrigePartiel])
-        {
-            [currentCorrigePartiel_ appendString:string];
-            [currentCorrigePartiel_ setString: [self cleaningString:currentCorrigePartiel_]];
-        }
-        else if ([_currentElement isEqualToString:kNom])
-        {
-            [currentNom_ appendString:string];
-            [currentNom_ setString: [self cleaningString:currentNom_]];
-        }
-    }
-    else if ([typeParse_ isEqualToString:@"posts"])
+   if ([typeParse_ isEqualToString:@"posts"])
     {
         if ([_currentElement isEqualToString:@"title"])
         {
@@ -189,19 +140,7 @@
 {
     if ([elementName isEqualToString:kItem])
     {
-        if ([typeParse_ isEqualToString:@"sujcor"])
-        {
-            [item_ setObject:currentMatiere_ forKey:kMatiere];
-            [item_ setObject:currentAnnee_ forKey:kAnnee];
-            [item_ setObject:currentEpreuve_ forKey:kEpreuve];
-            [item_ setObject:currentSujet_ forKey:kSujet];
-            [item_ setObject:currentCorrige_ forKey:kCorrige];
-            [item_ setObject:currentCorrigePartiel_ forKey:kCorrigePartiel];
-            [item_ setObject:currentNom_ forKey:kNom];
-            
-            [self.XMLData addObject:item_];
-        }
-        else if ([typeParse_ isEqualToString:@"posts"])
+        if ([typeParse_ isEqualToString:@"posts"])
         {
             [item_ setObject:title_ forKey:@"title"];
             [item_ setObject:date_ forKey:@"date"];

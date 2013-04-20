@@ -8,15 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-//sujets et corriges
 #define kItem @"item"
-#define kMatiere @"matiere"
-#define kAnnee @"annee"
-#define kEpreuve @"epreuve"
-#define kSujet @"sujet"
-#define kCorrige @"corrige"
-#define kCorrigePartiel @"corrigePartiel"
-#define kNom @"nom"
+
 
 @class XMLParser;
 
@@ -37,15 +30,6 @@
     NSMutableDictionary *item_;
     
     NSString *_currentElement;
-    
-    //parse sujet et corrigé
-    NSMutableString *currentMatiere_;
-    NSMutableString *currentAnnee_;
-    NSMutableString *currentEpreuve_;
-    NSMutableString *currentSujet_;
-    NSMutableString *currentCorrige_;
-    NSMutableString *currentCorrigePartiel_;
-    NSMutableString *currentNom_;
     
     //parse wordpress
     NSMutableString *title_;

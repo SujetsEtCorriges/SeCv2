@@ -49,21 +49,13 @@
     [headerConcours_.layer addSublayer:shadowConcours];
     
     if(corrigePartiel_ == 1)
-    {
         corrigeButton_.titleLabel.text = @"Corrigé partiel";
-    }
     
-    if ([lienSujet_ isEqualToString:@""])
-    {
-        //sujetButton_.titleLabel.text = @"Aucun sujet";
+    if ([lienSujet_ isEqual: [NSNull null]])
         [sujetButton_ setEnabled:NO];
-        
-    }
-    if ([lienCorrige_ isEqualToString:@""])
-    {
-        //corrigeButton_ setTitl.titleLabel.text = @"Aucun corrigé";
+    
+    if ([lienCorrige_ isEqual: [NSNull null]])
         [corrigeButton_ setEnabled:NO];
-    }
 }
 
 - (void)didReceiveMemoryWarning

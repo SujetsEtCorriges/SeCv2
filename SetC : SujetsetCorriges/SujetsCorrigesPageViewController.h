@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "XMLParser.h"
-
-@interface SujetsCorrigesPageViewController : UIViewController <UIPageViewControllerDataSource, XMLParserDelegate, UIPickerViewAccessibilityDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
+@interface SujetsCorrigesPageViewController : UIViewController <UIPageViewControllerDataSource, UIPickerViewAccessibilityDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 {
-    XMLParser *parser_;
-    
     //variables pour le picker view
     NSArray *tabFiliere_; //tableau des filiere
     NSString *filiere_; //filiere actuelle
