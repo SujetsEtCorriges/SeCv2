@@ -114,6 +114,8 @@
 		91B319001722C32B00EA2D86 /* forward@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91B318FC1722C32B00EA2D86 /* forward@2x.png */; };
 		91C196181718990E00FD570E /* CPGEView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C196171718990E00FD570E /* CPGEView.m */; };
 		91C1961A171899B800FD570E /* CPGEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C19619171899B800FD570E /* CPGEView.xib */; };
+		91EDB45517234B5500677799 /* spiderweb.png in Resources */ = {isa = PBXBuildFile; fileRef = 91EDB45317234B5500677799 /* spiderweb.png */; };
+		91EDB45617234B5500677799 /* spiderweb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91EDB45417234B5500677799 /* spiderweb@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -269,6 +271,8 @@
 		91C196161718990E00FD570E /* CPGEView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPGEView.h; sourceTree = "<group>"; };
 		91C196171718990E00FD570E /* CPGEView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPGEView.m; sourceTree = "<group>"; };
 		91C19619171899B800FD570E /* CPGEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPGEView.xib; sourceTree = "<group>"; };
+		91EDB45317234B5500677799 /* spiderweb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spiderweb.png; sourceTree = "<group>"; };
+		91EDB45417234B5500677799 /* spiderweb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spiderweb@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,6 +602,8 @@
 		9185EE0D17220A480014CC63 /* Partage Icons */ = {
 			isa = PBXGroup;
 			children = (
+				91EDB45317234B5500677799 /* spiderweb.png */,
+				91EDB45417234B5500677799 /* spiderweb@2x.png */,
 				9185EE22172211B90014CC63 /* envelope.png */,
 				9185EE23172211B90014CC63 /* envelope@2x.png */,
 				9185EE24172211B90014CC63 /* chat.png */,
@@ -754,6 +760,8 @@
 				91B318FE1722C32B00EA2D86 /* back@2x.png in Resources */,
 				91B318FF1722C32B00EA2D86 /* forward.png in Resources */,
 				91B319001722C32B00EA2D86 /* forward@2x.png in Resources */,
+				91EDB45517234B5500677799 /* spiderweb.png in Resources */,
+				91EDB45617234B5500677799 /* spiderweb@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

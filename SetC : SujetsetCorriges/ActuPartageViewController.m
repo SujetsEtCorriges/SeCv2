@@ -9,10 +9,7 @@
 #import "ActuPartageViewController.h"
 
 #import "ActuVariableStore.h"
-#import <Twitter/Twitter.h>
 #import <Social/Social.h>
-
-#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 
 @interface ActuPartageViewController ()
 
@@ -61,7 +58,7 @@
 - (IBAction)boutonFacebookPushed:(id)sender
 {
     SLComposeViewController *facebook = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-    [facebook addImage:[UIImage imageNamed:@"Icone117.png"]];
+    [facebook addImage:[UIImage imageNamed:@"Icone114.png"]];
     [facebook addURL:[NSURL URLWithString:urlComments_]];
     [facebook setInitialText:titreArticle_];
     [self presentViewController:facebook animated:YES completion:nil];
@@ -71,8 +68,6 @@
         NSString *title = @"Partage Facebook";
         NSString *msg;
         
-        /*if (result == SLComposeViewControllerResultCancelled)
-            msg = @"Annulation du partage sur Facebook";*/
         if (result == SLComposeViewControllerResultDone)
         {
             msg = @"L'article a été partagé sur Facebook";
@@ -81,7 +76,6 @@
             [alertView show];
         }
             
-        
         // Dismiss the controller
         [self dismissViewControllerAnimated:YES completion:nil];
     };
@@ -90,21 +84,17 @@
 
 -(IBAction)boutonTwitterPushed:(id)sender
 {
-    //TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
     SLComposeViewController *twitter = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [twitter addImage:[UIImage imageNamed:@"Icone117.png"]];
+    [twitter addImage:[UIImage imageNamed:@"Icone114.png"]];
     [twitter addURL:[NSURL URLWithString:urlComments_]];
     [twitter setInitialText:titreArticle_];
     [self presentViewController:twitter animated:YES completion:nil];
     
-    // Called when the tweet dialog has been closed
     twitter.completionHandler = ^(SLComposeViewControllerResult result)
     {
         NSString *title = @"Partage Twitter";
         NSString *msg;
         
-        /*if (result == SLComposeViewControllerResultCancelled)
-            msg = @"L'envoi du tweet a été annulé";*/
         if (result == SLComposeViewControllerResultDone)
         {
             msg = @"Tweet envoyé";
