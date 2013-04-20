@@ -60,38 +60,31 @@
 
 - (IBAction)boutonFacebookPushed:(id)sender
 {
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
+    SLComposeViewController *facebook = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+    [facebook addImage:[UIImage imageNamed:@"Icone117.png"]];
+    [facebook addURL:[NSURL URLWithString:urlComments_]];
+    [facebook setInitialText:titreArticle_];
+    [self presentViewController:facebook animated:YES completion:nil];
+    
+    facebook.completionHandler = ^(SLComposeViewControllerResult result)
     {
+        NSString *title = @"Partage Facebook";
+        NSString *msg;
         
-    }
-    else
-    {
-        SLComposeViewController *facebook = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [facebook addImage:[UIImage imageNamed:@"Icone117.png"]];
-        [facebook addURL:[NSURL URLWithString:urlComments_]];
-        [facebook setInitialText:titreArticle_];
-        [self presentViewController:facebook animated:YES completion:nil];
-        
-        facebook.completionHandler = ^(SLComposeViewControllerResult result)
+        /*if (result == SLComposeViewControllerResultCancelled)
+            msg = @"Annulation du partage sur Facebook";*/
+        if (result == SLComposeViewControllerResultDone)
         {
-            NSString *title = @"Partage Facebook";
-            NSString *msg;
+            msg = @"L'article a été partagé sur Facebook";
+            // Show alert to see how things went...
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+        }
             
-            /*if (result == SLComposeViewControllerResultCancelled)
-                msg = @"Annulation du partage sur Facebook";*/
-            if (result == SLComposeViewControllerResultDone)
-            {
-                msg = @"L'article a été partagé sur Facebook";
-                // Show alert to see how things went...
-                UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                [alertView show];
-            }
-                
-            
-            // Dismiss the controller
-            [self dismissViewControllerAnimated:YES completion:nil];
-        };
-    }
+        
+        // Dismiss the controller
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
 }
 
 

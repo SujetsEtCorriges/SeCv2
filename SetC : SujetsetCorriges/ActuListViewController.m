@@ -11,7 +11,6 @@
 #import "MBProgressHUD.h"
 #import "ActuDetailsViewController.h"
 
-#define SYSTEM_VERSION_LESS_THAN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
 #define kURL @"http://www.sujetsetcorriges.fr/api/get_recent_posts/"
 
 @interface ActuListViewController ()
@@ -20,7 +19,6 @@
 
 @implementation ActuListViewController
 {
-    PullToRefreshView *pull;
     BOOL firstRefresh;
 }
 
@@ -45,26 +43,10 @@
     firstRefresh = YES;
     newsData_ = [[NSMutableArray alloc] init];
     
-    if (SYSTEM_VERSION_LESS_THAN(@"6.0"))
-    {
-        //notification de rafraichissement
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(foregroundRefresh:)
-                                                     name:UIApplicationWillEnterForegroundNotification
-                                                   object:nil];
-        
-        //initialisation de la vue pull to refresh
-        pull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.tableView];
-        [pull setDelegate:self];
-        [self.tableView addSubview:pull];
-    }
-    else
-    {
-        UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
-        [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
-        self.refreshControl = refresh;
-    }
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
+    [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
     
     [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
 }
@@ -82,15 +64,13 @@
         
         NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:kURL]];
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        
         newsData_ = [json objectForKey:@"posts"];
         [self.tableView reloadData];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        [pull finishedLoading];
+        
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
         [self.refreshControl endRefreshing];
-        
         firstRefresh = NO;
     }
 }
@@ -182,24 +162,7 @@
 }
 
 
-//méthode pour le pull to refreshecho
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view;
-{
-    [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
-}
-
-
--(void)foregroundRefresh:(NSNotification *)notification
-{
-    self.tableView.contentOffset = CGPointMake(0, -65);
-    [pull setState:PullToRefreshViewStateLoading];
-    
-    [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
-}
-
-
-
-#pragma mark - UIRefreshControl Delegate
+#pragma mark - UIRefreshControl action
 -(void)refreshView:(UIRefreshControl *)refresh
 {
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];

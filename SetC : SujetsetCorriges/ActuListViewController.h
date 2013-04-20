@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PullToRefreshView.h"
 #import "NewsCell.h"
 
-@interface ActuListViewController : UITableViewController <PullToRefreshViewDelegate>
+@interface ActuListViewController : UITableViewController
 {
     NSMutableArray *newsData_;
 }

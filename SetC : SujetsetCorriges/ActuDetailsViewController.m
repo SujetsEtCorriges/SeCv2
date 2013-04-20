@@ -93,33 +93,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (NSString*)convertDate:(NSString*)dateEN
-{
-    //configuation de la cellule date
-    //définition des locales pour la date
-    NSLocale *frLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
-    NSLocale *usLocale = [[NSLocale alloc ] initWithLocaleIdentifier:@"en_US_POSIX" ];
-    
-    //conversion de la date en NSSDate
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:usLocale];
-    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss '+0000'"];
-    NSDate *convertedDate = [dateFormatter dateFromString:dateEN];
-    [dateFormatter setLocale:frLocale];
-    [dateFormatter setDateFormat:@"dd MMMM yyyy"];
-    NSString *convertedStringDate = [dateFormatter stringFromDate:convertedDate];
-    
-    return convertedStringDate;
-}
-
-
 - (IBAction)affichagePartage:(id)sender
 {
     [self.slidingViewController anchorTopViewTo:ECLeft];
