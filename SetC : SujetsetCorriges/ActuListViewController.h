@@ -9,16 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "PullToRefreshView.h"
-#import "XMLParser.h"
 #import "NewsCell.h"
 
-@interface ActuListViewController : UITableViewController <PullToRefreshViewDelegate, XMLParserDelegate>
+@interface ActuListViewController : UITableViewController <PullToRefreshViewDelegate>
 {
     NSMutableArray *newsData_;
-    
-    XMLParser *parser_;
 }
-
-- (IBAction)refreshNews:(id)sender;
 
 @end

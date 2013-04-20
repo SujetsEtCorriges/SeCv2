@@ -69,6 +69,8 @@
     
     
     [self fillFiliereScrollViewWithArray:filiereCPGETab_];
+    UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
+    arrowL.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,13 +106,13 @@
 {
     for (NSUInteger i=0; i<[array count]; i++)
     {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(320*i, 0,scrollViewFiliere_.frame.size.width, scrollViewFiliere_.frame.size.height)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(scrollViewFiliere_.frame.size.width*i, 0,scrollViewFiliere_.frame.size.width, scrollViewFiliere_.frame.size.height)];
         label.text = [array objectAtIndex:i];
         label.textAlignment = NSTextAlignmentCenter;
         
         [scrollViewFiliere_ addSubview:label];
     }
-    CGSize contentSize = CGSizeMake(320*[array count], scrollViewFiliere_.frame.size.height);
+    CGSize contentSize = CGSizeMake(scrollViewFiliere_.frame.size.width*[array count], scrollViewFiliere_.frame.size.height);
     scrollViewFiliere_.contentSize = contentSize;
     scrollViewFiliere_.delegate = self;
 }
@@ -149,7 +151,14 @@
             else if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Banque PT"])
             {
                 [self fillFiliereScrollViewWithArray:[[NSArray alloc] initWithObjects:@"PT", nil]];
+                UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
+                UIButton *arrowR = (UIButton *)[self.view viewWithTag:601];
+                arrowL.hidden = YES;
+                arrowR.hidden = YES;
+                
                 [self displayOptionsCPGE];
+                
+                
             } 
             else if (![[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
             {
@@ -164,8 +173,32 @@
             [scrollViewFiliere_ scrollRectToVisible:frame animated:YES];
             oldPage = page;
         }
-        
     }
+    else if (scrollView.tag == 101)
+    {
+        CGFloat pageWidth = scrollView.frame.size.width;
+        NSInteger filiere = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        
+        UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
+        UIButton *arrowR = (UIButton *)[self.view viewWithTag:601];
+        
+        if (filiere == 0)
+        {
+            arrowL.hidden = YES;
+            arrowR.hidden = NO;
+        }
+        else if (filiere == 2)
+        {
+            arrowL.hidden = NO;
+            arrowR.hidden = YES;
+        }
+        else
+        {
+            arrowL.hidden = NO;
+            arrowR.hidden = NO;
+        }
+    }
+    
 }
 
 

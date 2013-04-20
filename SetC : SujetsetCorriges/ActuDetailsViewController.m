@@ -12,6 +12,8 @@
 #import "ActuPartageViewController.h"
 #import "ActuVariableStore.h"
 
+#define kURL @"http://www.sujetsetcorriges.fr/api/get_post/?id="
+
 @interface ActuDetailsViewController ()
 
 @end
@@ -41,7 +43,7 @@
     
     // Initialisation des champs du header
     self.titreLabel.text = self.titre;
-    self.dateLabel.text = [self convertDate:self.date];
+    self.dateLabel.text = self.date;
     self.auteurLabel.text = auteur_;
     
     // Ajout de la ligne sous le header
@@ -67,7 +69,8 @@
     // On met le background transaparent et on désactive les ombres de la webView
     [self.webView setBackgroundColor: [UIColor clearColor]];
     [self.webView setOpaque:NO];
-    for (int i = 0; i < 10; i++) [[[[[self.webView subviews] objectAtIndex:0] subviews] objectAtIndex:i] setHidden:YES];
+    for (int i = 0; i < 10; i++)
+        [[[[[self.webView subviews] objectAtIndex:0] subviews] objectAtIndex:i] setHidden:YES];
 }
 
 
