@@ -86,7 +86,7 @@
         introLabel_.numberOfLines = 0;
         introLabel_.lineBreakMode = NSLineBreakByWordWrapping;
         
-        [introView_ addSubview:introLabel_];
+        //[introView_ addSubview:introLabel_];
         [self.view addSubview:introView_];
     }
     else

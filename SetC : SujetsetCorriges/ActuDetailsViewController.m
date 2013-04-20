@@ -76,7 +76,7 @@
     }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    [self.slidingViewController setAnchorLeftRevealAmount:120.0f];
+    [self.slidingViewController setAnchorLeftRevealAmount:80.0f];
 }
 
 
