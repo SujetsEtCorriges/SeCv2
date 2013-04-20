@@ -49,9 +49,21 @@
     shadowConcours.endPoint = CGPointMake(0.5,1);
     [headerConcours_.layer addSublayer:shadowConcours];
     
+    // Retouches sur la vue contenant les détails
     viewDetails_.layer.cornerRadius = 5;
     viewDetails_.layer.borderColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
     viewDetails_.layer.borderWidth = 0.5;
+    
+    // Ajout des lignes dans la vue "détails"
+    CALayer *lineBottom = [CALayer layer];
+    lineBottom.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+    lineBottom.frame = CGRectMake(10, 50, 280, 1);
+    [viewDetails_.layer addSublayer:lineBottom];
+    
+    CALayer *lineBottom2 = [CALayer layer];
+    lineBottom2.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+    lineBottom2.frame = CGRectMake(10, 95, 280, 1);
+    [viewDetails_.layer addSublayer:lineBottom2];
     
     if(corrigePartiel_ == 1)
         corrigeButton_.titleLabel.text = @"Corrigé partiel";

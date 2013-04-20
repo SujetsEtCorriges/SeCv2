@@ -636,11 +636,12 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <view contentMode="scaleToFill" id="dcW-0W-zP3">
-                                <rect key="frame" x="10" y="130" width="300" height="165"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="10" y="150" width="300" height="145"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Filiere" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="udj-mv-20Z">
                                         <rect key="frame" x="10" y="20" width="280" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -648,7 +649,7 @@
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Année" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pWV-5k-CGt">
-                                        <rect key="frame" x="10" y="70" width="280" height="25"/>
+                                        <rect key="frame" x="10" y="60" width="280" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -656,7 +657,8 @@
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Epreuve" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aRv-JW-Df5">
-                                        <rect key="frame" x="10" y="120" width="280" height="25"/>
+                                        <rect key="frame" x="10" y="100" width="280" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -667,7 +669,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R51-oz-Aj6">
-                                <rect key="frame" x="20" y="305" width="130" height="44"/>
+                                <rect key="frame" x="10" y="330" width="140" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sujet">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -684,7 +687,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dc7-Vp-3r5">
-                                <rect key="frame" x="170" y="305" width="130" height="44"/>
+                                <rect key="frame" x="170" y="330" width="140" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Corrigé">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -709,6 +713,24 @@
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="FenteRight.png" id="tgh-ze-Nww">
                                 <rect key="frame" x="265" y="12" width="30" height="70"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Détails de l'épreuve" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tUB-Sl-0Wc">
+                                <rect key="frame" x="15" y="128" width="172" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fichiers disponibles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gmc-u4-bkX">
+                                <rect key="frame" x="15" y="306" width="172" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -922,156 +944,6 @@
         <image name="stats.png" width="30" height="20"/>
         <image name="twitterbird.png" width="22" height="22"/>
     </resources>
-    <classes>
-        <class className="ActuDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="affichagePartage:"/>
-                <relationship kind="outlet" name="auteurLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="titreLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="ActuListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuListViewController.h"/>
-        </class>
-        <class className="ActuPartageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuPartageViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="boutonFacebookPushed:"/>
-                <relationship kind="action" name="boutonTwitterPushed:"/>
-            </relationships>
-        </class>
-        <class className="ActuViewController" superclassName="ECSlidingViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuViewController.h"/>
-        </class>
-        <class className="CPGEView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPGEView.h"/>
-            <relationships>
-                <relationship kind="action" name="valueChanged:"/>
-                <relationship kind="outlet" name="lStatut" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sgRedoublant" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="CommentsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommentsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="closeComments:"/>
-                <relationship kind="action" name="writeComment:"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="writeButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="ConcoursCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConcoursCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="concoursLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ConcoursListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConcoursListViewController.h"/>
-        </class>
-        <class className="ECSlidingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSlidingViewController.h"/>
-        </class>
-        <class className="EpreuveCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EpreuveCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="epreuveLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FileCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabelHSpaceLeftConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="nameLabelHSpaceRightConstraint" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="sizeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="sizeLabelHSpaceLeftConstraint" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="FileManagerViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FileManagerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="enterEditMode:"/>
-                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewsCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewsCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nbcommentsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SimuListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SimuListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startButtonPushed:"/>
-                <relationship kind="outlet" name="optionView" candidateClass="CPGEView"/>
-                <relationship kind="outlet" name="scrollViewConcours_" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="scrollViewFiliere_" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="scrollsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="startButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="SujetsCorrigesDetailsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesDetailsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="anneeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="bannerConcours" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="concoursLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="corrigeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="epreuveLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="filiereLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="headerConcours" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="sujetButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="viewDetails" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SujetsCorrigesListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableSuj" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SujetsCorrigesPageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-            </relationships>
-        </class>
-        <class className="SujetsCorrigesViewController" superclassName="ECSlidingViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SujetsCorrigesViewController.h"/>
-        </class>
-        <class className="ViewerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="closeViewer:"/>
-                <relationship kind="action" name="goBack:"/>
-                <relationship kind="action" name="goForward:"/>
-                <relationship kind="action" name="openInSafari:"/>
-                <relationship kind="action" name="refresh:"/>
-                <relationship kind="action" name="saveFile:"/>
-                <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="activityView" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="goBackButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="goForwardButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="refreshButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="viewerWebView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
