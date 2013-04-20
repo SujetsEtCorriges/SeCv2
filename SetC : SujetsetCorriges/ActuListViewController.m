@@ -14,14 +14,15 @@
 #define kURL @"http://www.sujetsetcorriges.fr/api/get_recent_posts/"
 
 @interface ActuListViewController ()
+{
+    BOOL firstRefresh;
+}
+
+@property (nonatomic, copy) NSArray *newsData;
 
 @end
 
 @implementation ActuListViewController
-{
-    BOOL firstRefresh;
-    NSMutableArray *newsData;
-}
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -40,10 +41,7 @@
     
     //initialisation des variables
     firstRefresh = YES;
-    newsData = [[NSMutableArray alloc] init];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newsLoaded:) name:@"newsLoaded" object:nil];
-    
+        
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
     [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
@@ -63,11 +61,14 @@
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:kURL]];
     NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    newsData = [[json objectForKey:@"posts"] mutableCopy];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"newsLoaded" object:nil];
+    
+    NSArray *newsArray = [json objectForKey:@"posts"];
+    _newsData = [[NSArray alloc] initWithArray:newsArray];
+    
+    [self performSelectorOnMainThread:@selector(newsLoaded) withObject:nil waitUntilDone:YES];
 }
 
-- (void)newsLoaded:(id)sender
+- (void)newsLoaded
 {
     [self.tableView reloadData];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -75,6 +76,14 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self.refreshControl endRefreshing];
     firstRefresh = NO;
+    
+    NSLocale *frLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:frLocale];
+    [formatter setDateFormat:@"dd MMMM - HH:mm:ss"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Mis à jour le %@",
+                             [formatter stringFromDate:[NSDate date]]];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
 }
 
 
@@ -88,7 +97,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [newsData count];
+    return [_newsData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,9 +110,9 @@
         cell = [[NewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.titleLabel.text = [[newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.dateLabel.text = [self convertDate:[[newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
-    int nbComments = [[[newsData objectAtIndex:indexPath.row] objectForKey:@"comment_count"] integerValue];
+    cell.titleLabel.text = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.dateLabel.text = [self convertDate:[[_newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
+    int nbComments = [[[_newsData objectAtIndex:indexPath.row] objectForKey:@"comment_count"] integerValue];
     NSString *stringNbComments;
     if (nbComments == 0 || nbComments == 1)
         stringNbComments = [NSString stringWithFormat:@"%i commentaire",nbComments];
@@ -151,12 +160,12 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         ActuDetailsViewController *destViewController = segue.destinationViewController;
         
-        destViewController.url = [[newsData objectAtIndex:indexPath.row] objectForKey:@"url"];
-        destViewController.texte = [[newsData objectAtIndex:indexPath.row] objectForKey:@"content"];
-        destViewController.titre = [[newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
-        destViewController.auteur = [[[newsData objectAtIndex:indexPath.row] objectForKey:@"author"] objectForKey:@"name"];
-        destViewController.date = [self convertDate:[[newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
-        destViewController.idArticle = [[newsData objectAtIndex:indexPath.row] objectForKey:@"id"];
+        destViewController.url = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"url"];
+        destViewController.texte = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"content"];
+        destViewController.titre = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
+        destViewController.auteur = [[[_newsData objectAtIndex:indexPath.row] objectForKey:@"author"] objectForKey:@"name"];
+        destViewController.date = [self convertDate:[[_newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
+        destViewController.idArticle = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"id"];
     }
 }
 
@@ -167,14 +176,6 @@
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];
 
     [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
-    
-    NSLocale *frLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setLocale:frLocale];
-    [formatter setDateFormat:@"dd MMMM - HH:mm:ss"];
-    NSString *lastUpdated = [NSString stringWithFormat:@"Mis à jour le %@",
-    [formatter stringFromDate:[NSDate date]]];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
 }
 
 @end

@@ -8,16 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PullToRefreshView.h"
-#import "XMLParser.h"
-#import "MBProgressHUD.h"
+@interface CommentsViewController : UITableViewController
 
-@interface CommentsViewController : UITableViewController <PullToRefreshViewDelegate, XMLParserDelegate>
-{
-    NSMutableArray *newsData_;
-    
-    XMLParser *parser_;
-}
 
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *idArticle;

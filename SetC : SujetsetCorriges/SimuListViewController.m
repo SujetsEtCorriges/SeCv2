@@ -140,19 +140,21 @@
             imageViewOld.frame = CGRectMake(imageViewOld.frame.origin.x, imageViewOld.frame.origin.y, 60, 60);
             
             
-            
             [self removeOptionsFromView];
+            
             //on met à jour les filières
+            UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
+            UIButton *arrowR = (UIButton *)[self.view viewWithTag:601];
             if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
             {
                 [self fillFiliereScrollViewWithArray:filiereBacTab_];
+                arrowL.hidden = YES;
+                arrowR.hidden = NO;
             }
                 
             else if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Banque PT"])
             {
                 [self fillFiliereScrollViewWithArray:[[NSArray alloc] initWithObjects:@"PT", nil]];
-                UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
-                UIButton *arrowR = (UIButton *)[self.view viewWithTag:601];
                 arrowL.hidden = YES;
                 arrowR.hidden = YES;
                 
@@ -163,6 +165,9 @@
             else if (![[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
             {
                 [self fillFiliereScrollViewWithArray:filiereCPGETab_];
+                arrowL.hidden = YES;
+                arrowR.hidden = NO;
+                
                 [self displayOptionsCPGE];
             }
                 

@@ -7,15 +7,23 @@
 //
 
 #import "CommentsViewController.h"
+#import "MBProgressHUD.h"
+
+#define kURL @"http://www.sujetsetcorriges.fr/api/get_post/?id="
 
 @interface CommentsViewController ()
+
+@property (nonatomic, copy) NSArray *comments;
 
 @end
 
 @implementation CommentsViewController
 {
-    PullToRefreshView *pull;
+    
+    BOOL firstRefresh;
 }
+
+
 
 @synthesize url = url_;
 @synthesize idArticle = idArticle_;
@@ -23,7 +31,8 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -32,40 +41,53 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    //notification de rafraichissement
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(foregroundRefresh:)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
     
-    //initialisation de la vue pull to refresh
-    pull = [[PullToRefreshView alloc] initWithScrollView:(UIScrollView *) self.tableView];
-    [pull setDelegate:self];
-    [self.tableView addSubview:pull];
+    firstRefresh = YES;
+        
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
+    [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
     
-    newsData_ = [[NSMutableArray alloc] init];
-    
-    //parsage des news
-    parser_ = [[XMLParser alloc] init];
-    parser_.delegate = self;
-    
-    NSString *rssURL = [NSString stringWithFormat:@"%@/feed",url_];
-    [self performSelectorInBackground:@selector(parseNews:) withObject:rssURL];
-    
-    
+    [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
 }
 
-- (void) parseNews:(NSString*)theURL
+- (void) parseNews:(id)sender
 {
-    @autoreleasepool
+    if (firstRefresh)
     {
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         MBProgressHUD *chargementHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [chargementHUD setLabelText:@"Chargement"];
-        [parser_ parseXMLFileAtURL:theURL];
     }
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kURL, idArticle_]]];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    NSArray *commentArray = [[json objectForKey:@"post"] objectForKey:@"comments"];
+    _comments = [[NSArray alloc] initWithArray:commentArray];
+    
+    [self performSelectorOnMainThread:@selector(commentLoaded) withObject:nil waitUntilDone:YES];
 }
+
+
+- (void)commentLoaded
+{
+    [self.tableView reloadData];
+    
+    if (firstRefresh)
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.refreshControl endRefreshing];
+    firstRefresh = NO;
+    
+    NSLocale *frLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:frLocale];
+    [formatter setDateFormat:@"dd MMMM - HH:mm:ss"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Mis à jour le %@",
+                             [formatter stringFromDate:[NSDate date]]];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+}
+
 
 
 - (void)viewDidUnload
@@ -89,7 +111,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [newsData_ count];
+    return [_comments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,8 +126,8 @@
     
     
     //configuration de la cellulle titre
-    cell.textLabel.text = [[newsData_ objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [self convertDate:[[newsData_ objectAtIndex:indexPath.row] objectForKey:@"date"]];
+    cell.textLabel.text = [[_comments objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.detailTextLabel.text = [self convertDate:[[_comments objectAtIndex:indexPath.row] objectForKey:@"date"]];
     
     //renvoie de la cellule
     return cell;
@@ -114,7 +136,6 @@
 
 - (NSString*)convertDate:(NSString*)dateEN
 {
-    //configuation de la cellule date
     //définition des locales pour la date
     NSLocale *frLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
     NSLocale *usLocale = [[NSLocale alloc ] initWithLocaleIdentifier:@"en_US_POSIX" ];
@@ -122,10 +143,12 @@
     //conversion de la date en NSSDate
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:usLocale];
-    [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss '+0000'"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *convertedDate = [dateFormatter dateFromString:dateEN];
+    
+    //conversion du NSDate en string FR
     [dateFormatter setLocale:frLocale];
-    [dateFormatter setDateFormat:@"dd/MM"];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
     NSString *convertedStringDate = [dateFormatter stringFromDate:convertedDate];
     
     return convertedStringDate;
@@ -165,38 +188,14 @@
     
 }
 
-
-//méthode pour le pull to refresh
-
-- (void)pullToRefreshViewShouldRefresh:(PullToRefreshView *)view;
+#pragma mark - UIRefreshControl action
+-(void)refreshView:(UIRefreshControl *)refresh
 {
-    NSString *rssURL = @"http://www.sujetsetcorriges.fr/rss";
-    [self performSelectorInBackground:@selector(parseNews:) withObject:rssURL];
-}
-
-
--(void)foregroundRefresh:(NSNotification *)notification
-{
-    self.tableView.contentOffset = CGPointMake(0, -65);
-    [pull setState:PullToRefreshViewStateLoading];
-    NSString *rssURL = @"http://www.sujetsetcorriges.fr/rss";
-    [self performSelectorInBackground:@selector(parseNews:) withObject:rssURL];
-}
-
-
-#pragma mark - XMLParserDelegate
-- (void) xmlParser:(XMLParser *)parser didFinishParsing:(NSArray *)array
-{
-    newsData_ = parser_.XMLData;
-    [self.tableView reloadData];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    [pull finishedLoading];
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-}
-
-- (void) xmlParser:(XMLParser *)parser didFailWithError:(NSArray *)error
-{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];
     
+    [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
 }
+
+
 
 @end
