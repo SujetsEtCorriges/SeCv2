@@ -187,6 +187,8 @@
     [super viewDidUnload];
 }
 
+
+#pragma mark - UIWebView Delegate
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     //refreshButton_.customView = activityView_;
@@ -247,15 +249,10 @@
 
 - (IBAction)saveFile:(id)sender
 {
-    //[NSThread detachNewThreadSelector:@selector(showHUD) toTarget:self withObject:nil];
-    
     [savingHUD show:YES];
-    
-    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentPath = [paths objectAtIndex:0];
+
     BOOL isDir = NO;
     NSError *errorDirectory;
-    //NSError *errorData;
 
     //You must check if this directory exist every time
     if (! [[NSFileManager defaultManager] fileExistsAtPath:documentPath isDirectory:&isDir] && isDir   == NO)
@@ -263,24 +260,13 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:documentPath withIntermediateDirectories:NO attributes:nil error:&errorDirectory];
     }
     
-    //NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
-    //webView.request.URL contains current URL of UIWebView, don't forget to set outlet for it
-    //NSData *pdfFile = [NSData dataWithContentsOfURL:[NSURL URLWithString:lienString_]];
-    //[pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
-    //NSLog(@"File saved");
-    
-    //[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:lienString_]];
     NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
 	[urlConnection start];
-	//[urlConnection release];
-
-    //pdfFile = [urlConnection sendSynchronousRequest:postRequest returningResponse:&response error:&error];
-//    NSError *errorData;
-//    [pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
 }
 
+
+#pragma mark - NSURLConnection Delegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     [pdfFile setLength:0];
@@ -297,9 +283,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentPath = [paths objectAtIndex:0];
-    //NSString *filePath = [documentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@ - %@.pdf",titleFile_,subtitleFile_ ]];
     NSError *errorData;
     [pdfFile writeToFile:filePath options:NSDataWritingAtomic error:&errorData];
     
@@ -326,14 +309,7 @@
     saveButton_.enabled = NO;
 }
 
-//- (void)showHUD
-//{
-//    @autoreleasepool
-//    {
-//        [savingHUD show:YES];
-//    }
-//}
-
+#pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     NSLog(@"Drag");

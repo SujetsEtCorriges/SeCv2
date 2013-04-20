@@ -47,7 +47,6 @@
 		9127A193167D39F000D1EB09 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A18F167D39F000D1EB09 /* arrow.png */; };
 		9127A194167D39F000D1EB09 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A190167D39F000D1EB09 /* arrow@2x.png */; };
 		9127A195167D39F000D1EB09 /* PullToRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A192167D39F000D1EB09 /* PullToRefreshView.m */; };
-		9127A199167D3A8B00D1EB09 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A198167D3A8B00D1EB09 /* MBProgressHUD.m */; };
 		9127A19B167D3C2900D1EB09 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A19A167D3C2900D1EB09 /* QuartzCore.framework */; };
 		9127A19E167D3F6100D1EB09 /* ActuDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A19D167D3F6100D1EB09 /* ActuDetailsViewController.m */; };
 		9127A1A1167D42D800D1EB09 /* ActuPartageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9127A1A0167D42D800D1EB09 /* ActuPartageViewController.m */; };
@@ -88,6 +87,7 @@
 		9127A226167E076100D1EB09 /* Banque PT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A21C167E076100D1EB09 /* Banque PT@2x.png */; };
 		9127A227167E076100D1EB09 /* Mines-Ponts@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A21D167E076100D1EB09 /* Mines-Ponts@2x.png */; };
 		9127A228167E076100D1EB09 /* CCP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9127A21E167E076100D1EB09 /* CCP@2x.png */; };
+		916692551722BB7F00C6C014 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 916692541722BB7F00C6C014 /* MBProgressHUD.m */; };
 		9185EE2A172211B90014CC63 /* envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185EE22172211B90014CC63 /* envelope.png */; };
 		9185EE2B172211B90014CC63 /* envelope@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185EE23172211B90014CC63 /* envelope@2x.png */; };
 		9185EE2C172211B90014CC63 /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185EE24172211B90014CC63 /* chat.png */; };
@@ -174,8 +174,6 @@
 		9127A190167D39F000D1EB09 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		9127A191167D39F000D1EB09 /* PullToRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshView.h; sourceTree = "<group>"; };
 		9127A192167D39F000D1EB09 /* PullToRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshView.m; sourceTree = "<group>"; };
-		9127A197167D3A8B00D1EB09 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		9127A198167D3A8B00D1EB09 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9127A19A167D3C2900D1EB09 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9127A19C167D3F6100D1EB09 /* ActuDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActuDetailsViewController.h; sourceTree = "<group>"; };
 		9127A19D167D3F6100D1EB09 /* ActuDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActuDetailsViewController.m; sourceTree = "<group>"; };
@@ -238,6 +236,8 @@
 		9127A21C167E076100D1EB09 /* Banque PT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Banque PT@2x.png"; sourceTree = "<group>"; };
 		9127A21D167E076100D1EB09 /* Mines-Ponts@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Mines-Ponts@2x.png"; sourceTree = "<group>"; };
 		9127A21E167E076100D1EB09 /* CCP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CCP@2x.png"; sourceTree = "<group>"; };
+		916692531722BB7F00C6C014 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		916692541722BB7F00C6C014 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9185EE22172211B90014CC63 /* envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envelope.png; sourceTree = "<group>"; };
 		9185EE23172211B90014CC63 /* envelope@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "envelope@2x.png"; sourceTree = "<group>"; };
 		9185EE24172211B90014CC63 /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
@@ -457,8 +457,8 @@
 		9127A196167D3A7B00D1EB09 /* MBProgressHUB */ = {
 			isa = PBXGroup;
 			children = (
-				9127A197167D3A8B00D1EB09 /* MBProgressHUD.h */,
-				9127A198167D3A8B00D1EB09 /* MBProgressHUD.m */,
+				916692531722BB7F00C6C014 /* MBProgressHUD.h */,
+				916692541722BB7F00C6C014 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUB;
 			sourceTree = "<group>";
@@ -749,7 +749,6 @@
 				9127A189167D397600D1EB09 /* ActuListViewController.m in Sources */,
 				9127A18D167D39D700D1EB09 /* XMLParser.m in Sources */,
 				9127A195167D39F000D1EB09 /* PullToRefreshView.m in Sources */,
-				9127A199167D3A8B00D1EB09 /* MBProgressHUD.m in Sources */,
 				9127A19E167D3F6100D1EB09 /* ActuDetailsViewController.m in Sources */,
 				9127A1A1167D42D800D1EB09 /* ActuPartageViewController.m in Sources */,
 				9127A1A9167D479400D1EB09 /* SujetsCorrigesPageViewController.m in Sources */,
@@ -776,6 +775,7 @@
 				3FF0B45016C6949D00E07D0E /* FileManagerViewController.m in Sources */,
 				3F47442816C846500005CE67 /* FileCell.m in Sources */,
 				91C196181718990E00FD570E /* CPGEView.m in Sources */,
+				916692551722BB7F00C6C014 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

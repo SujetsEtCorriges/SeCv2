@@ -10,6 +10,7 @@
 
 #import "VariableStore.h"
 #import "ECSlidingViewController.h"
+#import "MBProgressHUD.h"
 
 @interface ConcoursListViewController ()
 
@@ -140,14 +141,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+    hud.labelText = @"Chargement...";
+    [self.view addSubview:hud];
+    [hud show:YES];
     
-    /*PageSujetViewController *pageVC = [[PageSujetViewController alloc] initWithNibName:@"PageSujetViewController" bundle:nil];
-    pageVC.concours = cell.textLabel.text;
-    
-    UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:pageVC];
-    
-    [self.revealSideViewController popViewControllerWithNewCenterController:n animated:YES];*/
     
     VariableStore *obj = [VariableStore getInstance];
     obj.concours = [[listeSection_ objectForKey:[listeSection_.allKeys objectAtIndex:[indexPath section]]] objectAtIndex:[indexPath row]];
@@ -155,12 +153,17 @@
     
     UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"sujetsCorrigesNavigation"];
     
-    [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+    [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^
+    {
         CGRect frame = self.slidingViewController.topViewController.view.frame;
         self.slidingViewController.topViewController = newTopViewController;
         self.slidingViewController.topViewController.view.frame = frame;
-        [self.slidingViewController resetTopView];
+        //[self.slidingViewController resetTopView];
+        [self.slidingViewController resetTopViewWithAnimations:nil onComplete:^{
+            [hud hide:YES];
+        }];
     }];
 }
+
 
 @end
