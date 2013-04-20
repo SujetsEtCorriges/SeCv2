@@ -26,6 +26,7 @@
 @synthesize corrigeButton = corrigeButton_;
 @synthesize bannerConcours = bannerConcours_;
 @synthesize headerConcours = headerConcours_;
+@synthesize viewDetails = viewDetails_;
 
 
 - (void)viewDidLoad
@@ -47,6 +48,10 @@
     shadowConcours.startPoint = CGPointMake(0.5, 0);
     shadowConcours.endPoint = CGPointMake(0.5,1);
     [headerConcours_.layer addSublayer:shadowConcours];
+    
+    viewDetails_.layer.cornerRadius = 5;
+    viewDetails_.layer.borderColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+    viewDetails_.layer.borderWidth = 0.5;
     
     if(corrigePartiel_ == 1)
         corrigeButton_.titleLabel.text = @"Corrigé partiel";
