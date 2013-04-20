@@ -23,6 +23,7 @@
 		3F1D769E16C819FA00020FDC /* sectionCCP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D769C16C819FA00020FDC /* sectionCCP@2x.png */; };
 		3F45810216C00F320017BD9A /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F45810116C00F320017BD9A /* NewsCell.m */; };
 		3F47442816C846500005CE67 /* FileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F47442716C846500005CE67 /* FileCell.m */; };
+		3F5DBC2F1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DBC2E1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png */; };
 		3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */; };
 		3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */; };
 		3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBFCD616C46393007ABD8E /* ViewerViewController.m */; };
@@ -131,6 +132,7 @@
 		3F45810116C00F320017BD9A /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
 		3F47442616C846500005CE67 /* FileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileCell.h; sourceTree = "<group>"; };
 		3F47442716C846500005CE67 /* FileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileCell.m; sourceTree = "<group>"; };
+		3F5DBC2E1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeaderCentraleSupelec@2x.png"; sourceTree = "<group>"; };
 		3F7BCE0C16C1BDB50084ACFD /* EpreuveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EpreuveCell.h; sourceTree = "<group>"; };
 		3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpreuveCell.m; sourceTree = "<group>"; };
 		3F7BCE0F16C1C6370084ACFD /* ConcoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcoursCell.h; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		3F07EDE31721FCCC003ACDEC /* Mini Icons */ = {
 			isa = PBXGroup;
 			children = (
+				3F5DBC2E1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png */,
 				3F07EDE41721FCF0003ACDEC /* AuthorIconMini.png */,
 				3F07EDE51721FCF0003ACDEC /* AuthorIconMini@2x.png */,
 				3F07EDE61721FCF0003ACDEC /* CommentIconMini.png */,
@@ -726,6 +729,7 @@
 				9185EE4D1722171F0014CC63 /* notepad@2x.png in Resources */,
 				9185EE511722177B0014CC63 /* list.png in Resources */,
 				9185EE521722177B0014CC63 /* list@2x.png in Resources */,
+				3F5DBC2F1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

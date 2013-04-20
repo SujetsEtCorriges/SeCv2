@@ -22,6 +22,7 @@
 @synthesize titre = titre_;
 @synthesize idArticle = idArticle_;
 @synthesize auteur = auteur_;
+@synthesize infoView = infoView_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,11 +37,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.title = @"News";
     
+    // Initialisation des champs du header
     self.titreLabel.text = self.titre;
     self.dateLabel.text = [self convertDate:self.date];
     self.auteurLabel.text = auteur_;
     
+    // Ajout de la ligne sous le header
+    CALayer *lineBottom = [CALayer layer];
+    lineBottom.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+    lineBottom.frame = CGRectMake(10, infoView_.frame.size.height-10, 300, 1);
+    [infoView_.layer addSublayer:lineBottom];
+    
+    // Initialisation de la webview
     [self.webView.scrollView setScrollEnabled:NO];
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<html> \n"
                               "<head> \n"

@@ -25,6 +25,7 @@
 @synthesize sujetButton = sujetButton_;
 @synthesize corrigeButton = corrigeButton_;
 @synthesize bannerConcours = bannerConcours_;
+@synthesize headerConcours = headerConcours_;
 
 
 - (void)viewDidLoad
@@ -39,6 +40,13 @@
     NSLog(@"Sujet : %@", lienSujet_);
     NSLog(@"Corrigé : %@", lienCorrige_);
     NSLog(@"Partiel : %i",corrigePartiel_);
+    
+    CAGradientLayer *shadowConcours = [CAGradientLayer layer];
+    shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,(id)[UIColor colorWithWhite:0 alpha:0.8].CGColor,nil];
+    shadowConcours.frame = headerConcours_.frame;
+    shadowConcours.startPoint = CGPointMake(0.5, 0);
+    shadowConcours.endPoint = CGPointMake(0.5,1);
+    [headerConcours_.layer addSublayer:shadowConcours];
     
     if(corrigePartiel_ == 1)
     {

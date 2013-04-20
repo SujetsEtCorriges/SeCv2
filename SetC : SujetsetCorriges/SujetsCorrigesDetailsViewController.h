@@ -36,5 +36,6 @@
 
 // UIImage
 @property (strong, nonatomic) IBOutlet UIImageView *bannerConcours;
+@property (strong, nonatomic) IBOutlet UIImageView *headerConcours;
 
 @end

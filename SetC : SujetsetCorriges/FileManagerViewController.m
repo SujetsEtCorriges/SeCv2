@@ -221,7 +221,8 @@
     //labelSection.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
     labelSection.textColor = [UIColor colorWithWhite:0.45 alpha:1];
     //labelSection.shadowColor = [UIColor blackColor];
-    //labelSection.shadowOffset = CGSizeMake(0, 1);
+    labelSection.shadowColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+    labelSection.shadowOffset = CGSizeMake(0, 1);
     labelSection.text = [[dictionaryDocuments allKeys] objectAtIndex:section];
     [viewSection addSubview:labelSection];
     
