@@ -30,6 +30,8 @@
 		3F5DBC2F1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5DBC2E1722AA3900F503B2 /* HeaderCentraleSupelec@2x.png */; };
 		3F7BCE0E16C1BDB50084ACFD /* EpreuveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */; };
 		3F7BCE1116C1C6370084ACFD /* ConcoursCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */; };
+		3F881A8017244082000C9BB3 /* NavBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F881A7F17244082000C9BB3 /* NavBar@2x.png */; };
+		3F881A821724465D000C9BB3 /* NavBar2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F881A811724465D000C9BB3 /* NavBar2@2x.png */; };
 		3FEBFCD716C46393007ABD8E /* ViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEBFCD616C46393007ABD8E /* ViewerViewController.m */; };
 		3FF0B45016C6949D00E07D0E /* FileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */; };
 		3FFA184D16C02B8000D6E085 /* NewsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184B16C02B8000D6E085 /* NewsBackground.png */; };
@@ -153,6 +155,8 @@
 		3F7BCE0D16C1BDB50084ACFD /* EpreuveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpreuveCell.m; sourceTree = "<group>"; };
 		3F7BCE0F16C1C6370084ACFD /* ConcoursCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcoursCell.h; sourceTree = "<group>"; };
 		3F7BCE1016C1C6370084ACFD /* ConcoursCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConcoursCell.m; sourceTree = "<group>"; };
+		3F881A7F17244082000C9BB3 /* NavBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBar@2x.png"; sourceTree = "<group>"; };
+		3F881A811724465D000C9BB3 /* NavBar2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBar2@2x.png"; sourceTree = "<group>"; };
 		3FEBFCD516C46393007ABD8E /* ViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerViewController.h; sourceTree = "<group>"; };
 		3FEBFCD616C46393007ABD8E /* ViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewerViewController.m; sourceTree = "<group>"; };
 		3FF0B44E16C6949D00E07D0E /* FileManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerViewController.h; sourceTree = "<group>"; };
@@ -439,6 +443,8 @@
 				9185EE0D17220A480014CC63 /* Partage Icons */,
 				3F07EDE31721FCCC003ACDEC /* Mini Icons */,
 				3F1D769B16C819F900020FDC /* sectionCCP.png */,
+				3F881A811724465D000C9BB3 /* NavBar2@2x.png */,
+				3F881A7F17244082000C9BB3 /* NavBar@2x.png */,
 				3F1D769C16C819FA00020FDC /* sectionCCP@2x.png */,
 				3F196E3116C42C8B00201FAC /* FenteLeft.png */,
 				3F196E3216C42C8B00201FAC /* FenteRight.png */,
@@ -787,6 +793,8 @@
 				3F45E24C1723F3B200A63187 /* SujetIconMini.png in Resources */,
 				3F45E24D1723F3B200A63187 /* SujetIconMini@2x.png in Resources */,
 				91FF21801724037300B3FB52 /* BacView.xib in Resources */,
+				3F881A8017244082000C9BB3 /* NavBar@2x.png in Resources */,
+				3F881A821724465D000C9BB3 /* NavBar2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
