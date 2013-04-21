@@ -9,6 +9,11 @@
 #import "BacView.h"
 
 @interface BacView()
+{
+    NSArray *listOptionsS;
+    NSArray *listOptionsL;
+    NSArray *listOptionsES;
+}
 
 @property (nonatomic, strong) IBOutlet UISwitch *optionSwitch1;
 @property (nonatomic, strong) IBOutlet UISwitch *optionSwitch2;
@@ -33,8 +38,12 @@
     UINib *nib = [UINib nibWithNibName:@"BacView" bundle:nil];
     UIView *myView = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
     myView.frame=CGRectMake(0,yPosition,320,257);
-    self = (BacView *)myView;
     
+    listOptionsS = [[NSArray alloc] initWithObjects:@"Histoire-Géographie", @"Langue Vivante 3", @"Langue des signes", @"Latin", @"Grec", @"EPS", @"Arts", @"Musique", @"Équitation", @"Pratiques sociales et culturelles", nil];
+    listOptionsL = [[NSArray alloc] initWithObjects:@"Langue Vivante 3", @"Langue des signes", @"Latin", @"Grec", @"EPS", @"Arts", @"Musique", nil];
+    listOptionsES = [[NSArray alloc] initWithObjects:@"Langue Vivante 3", @"Langue des signes", @"Latin", @"Grec", @"EPS", @"Arts", @"Musique", nil];
+    
+    self = (BacView *)myView;
     return self;
 }
 
