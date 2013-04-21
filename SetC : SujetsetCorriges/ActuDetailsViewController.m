@@ -53,7 +53,7 @@
     [infoView_.layer addSublayer:lineBottom];
     
     // Initialisation de la webview
-    [self.webView.scrollView setScrollEnabled:NO];
+    [self.webView.scrollView setScrollEnabled:YES];
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<html> \n"
                               "<head> \n"
                               "<style type=\"text/css\"> \n"
