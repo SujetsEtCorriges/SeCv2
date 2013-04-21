@@ -56,13 +56,13 @@
     
     // Ajout des lignes dans la vue "détails"
     CALayer *lineBottom = [CALayer layer];
-    lineBottom.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
+    lineBottom.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0].CGColor;
     lineBottom.frame = CGRectMake(10, 50, 280, 1);
     [viewDetails_.layer addSublayer:lineBottom];
     
     CALayer *lineBottom2 = [CALayer layer];
-    lineBottom2.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
-    lineBottom2.frame = CGRectMake(10, 95, 280, 1);
+    lineBottom2.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0].CGColor;
+    lineBottom2.frame = CGRectMake(10, 100, 280, 1);
     [viewDetails_.layer addSublayer:lineBottom2];
     
     if(corrigePartiel_ == 1)

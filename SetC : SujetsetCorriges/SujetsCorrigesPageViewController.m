@@ -35,6 +35,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    viewShadowConcours.backgroundColor = [UIColor clearColor];
+    
+    CAGradientLayer *shadowConcours = [CAGradientLayer layer];
+    shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.8].CGColor,(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,nil];
+    shadowConcours.frame = viewShadowConcours.frame;
+    shadowConcours.startPoint = CGPointMake(0.5, 0);
+    shadowConcours.endPoint = CGPointMake(0.5,1);
+    [viewShadowConcours.layer addSublayer:shadowConcours];
+    
+    [self.view addSubview:viewShadowConcours];
+    
+    
     VariableStore *obj=[VariableStore getInstance];
     concours_ = obj.concours;
     filiere_ = obj.filiere;
