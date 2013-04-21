@@ -15,7 +15,8 @@
 }
  
 @property (nonatomic, strong) IBOutlet UIView *scrollsView;
-@property (nonatomic, strong) IBOutlet CPGEView *optionView;
+@property (nonatomic, strong) IBOutlet CPGEView *cpgeView;
+@property (nonatomic, strong) IBOutlet BacView *bacView;
 
 @end
 
@@ -150,6 +151,8 @@
                 [self fillFiliereScrollViewWithArray:filiereBacTab_];
                 arrowL.hidden = YES;
                 arrowR.hidden = NO;
+                
+                [self displayOptionsBac];
             }
                 
             else if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Banque PT"])
@@ -211,14 +214,23 @@
 - (void)displayOptionsCPGE
 {
     //animmation sur la cellule
-    _optionView = [[CPGEView alloc] initCPGEViewAtPosition:_scrollsView.bounds.size.height];
-    _optionView.delegate = self;
-    [self.view addSubview:_optionView];    
+    _cpgeView = [[CPGEView alloc] initCPGEViewAtPosition:_scrollsView.bounds.size.height];
+    _cpgeView.delegate = self;
+    [self.view addSubview:_cpgeView];
+}
+
+- (void)displayOptionsBac
+{
+    [_cpgeView removeFromSuperview];
+    
+    _bacView = [[BacView alloc] initBacViewAtPosition:_scrollsView.bounds.size.height];
+    [self.view addSubview:_bacView];
 }
 
 -(void)removeOptionsFromView
 {
-    [_optionView removeFromSuperview];
+    [_cpgeView removeFromSuperview];
+    [_bacView removeFromSuperview];
 }
 
 

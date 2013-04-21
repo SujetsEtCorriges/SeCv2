@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CPGEView.h"
+#import "BacView.h"
 
 @interface SimuListViewController : UIViewController <UIScrollViewDelegate, UIScrollViewAccessibilityDelegate, CPGEViewDelegate>
 {

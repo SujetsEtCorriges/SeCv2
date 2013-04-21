@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -506,9 +506,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                             </view>
-                            <view contentMode="scaleToFill" id="r6a-cy-74w" userLabel="Options View" customClass="CPGEView">
+                            <view contentMode="scaleToFill" id="r6a-cy-74w" userLabel="Options View">
                                 <rect key="frame" x="0.0" y="198" width="320" height="257"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="94E-u9-zr1" userLabel="BacView" customClass="BacView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="257"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="e3z-on-Vqi" userLabel="CPGEView" customClass="CPGEView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="257"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -523,7 +535,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="optionView" destination="r6a-cy-74w" id="jOg-iK-A66"/>
+                        <outlet property="bacView" destination="94E-u9-zr1" id="HGe-nN-v0n"/>
+                        <outlet property="cpgeView" destination="e3z-on-Vqi" id="kXo-Oi-S7h"/>
                         <outlet property="scrollViewConcours_" destination="RTS-YY-Kui" id="Kgk-0v-vpV"/>
                         <outlet property="scrollViewFiliere_" destination="1fj-fw-jQ6" id="lTA-t1-Y1D"/>
                         <outlet property="scrollsView" destination="phK-7z-oaR" id="d6X-pH-BSm"/>
@@ -997,6 +1010,16 @@
         <class className="ActuViewController" superclassName="ECSlidingViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ActuViewController.h"/>
         </class>
+        <class className="BacView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BacView.h"/>
+            <relationships>
+                <relationship kind="action" name="optionSwitch1Changed:"/>
+                <relationship kind="action" name="optionSwitch2Changed:"/>
+                <relationship kind="outlet" name="optionScroll1" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="optionSwitch1" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="optionSwitch2" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
         <class className="CPGEView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CPGEView.h"/>
             <relationships>
@@ -1063,7 +1086,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SimuListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="startButtonPushed:"/>
-                <relationship kind="outlet" name="optionView" candidateClass="CPGEView"/>
+                <relationship kind="outlet" name="bacView" candidateClass="BacView"/>
+                <relationship kind="outlet" name="cpgeView" candidateClass="CPGEView"/>
                 <relationship kind="outlet" name="scrollViewConcours_" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="scrollViewFiliere_" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="scrollsView" candidateClass="UIView"/>

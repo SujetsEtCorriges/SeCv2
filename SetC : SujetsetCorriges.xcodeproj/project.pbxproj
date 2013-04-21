@@ -120,6 +120,8 @@
 		91C1961A171899B800FD570E /* CPGEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C19619171899B800FD570E /* CPGEView.xib */; };
 		91EDB45517234B5500677799 /* spiderweb.png in Resources */ = {isa = PBXBuildFile; fileRef = 91EDB45317234B5500677799 /* spiderweb.png */; };
 		91EDB45617234B5500677799 /* spiderweb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91EDB45417234B5500677799 /* spiderweb@2x.png */; };
+		91FF217E1724036200B3FB52 /* BacView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FF217D1724036200B3FB52 /* BacView.m */; };
+		91FF21801724037300B3FB52 /* BacView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91FF217F1724037300B3FB52 /* BacView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -281,6 +283,9 @@
 		91C19619171899B800FD570E /* CPGEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPGEView.xib; sourceTree = "<group>"; };
 		91EDB45317234B5500677799 /* spiderweb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spiderweb.png; sourceTree = "<group>"; };
 		91EDB45417234B5500677799 /* spiderweb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spiderweb@2x.png"; sourceTree = "<group>"; };
+		91FF217C1724036200B3FB52 /* BacView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BacView.h; sourceTree = "<group>"; };
+		91FF217D1724036200B3FB52 /* BacView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BacView.m; sourceTree = "<group>"; };
+		91FF217F1724037300B3FB52 /* BacView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BacView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -656,6 +661,9 @@
 				91C196161718990E00FD570E /* CPGEView.h */,
 				91C196171718990E00FD570E /* CPGEView.m */,
 				91C19619171899B800FD570E /* CPGEView.xib */,
+				91FF217C1724036200B3FB52 /* BacView.h */,
+				91FF217D1724036200B3FB52 /* BacView.m */,
+				91FF217F1724037300B3FB52 /* BacView.xib */,
 			);
 			name = OptionsViews;
 			sourceTree = "<group>";
@@ -778,6 +786,7 @@
 				3F45E24B1723F3B200A63187 /* CorrigeIconMini@2x.png in Resources */,
 				3F45E24C1723F3B200A63187 /* SujetIconMini.png in Resources */,
 				3F45E24D1723F3B200A63187 /* SujetIconMini@2x.png in Resources */,
+				91FF21801724037300B3FB52 /* BacView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +833,7 @@
 				3F47442816C846500005CE67 /* FileCell.m in Sources */,
 				91C196181718990E00FD570E /* CPGEView.m in Sources */,
 				916692551722BB7F00C6C014 /* MBProgressHUD.m in Sources */,
+				91FF217E1724036200B3FB52 /* BacView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
