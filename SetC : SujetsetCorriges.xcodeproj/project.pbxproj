@@ -122,6 +122,10 @@
 		91C1961A171899B800FD570E /* CPGEView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C19619171899B800FD570E /* CPGEView.xib */; };
 		91EDB45517234B5500677799 /* spiderweb.png in Resources */ = {isa = PBXBuildFile; fileRef = 91EDB45317234B5500677799 /* spiderweb.png */; };
 		91EDB45617234B5500677799 /* spiderweb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91EDB45417234B5500677799 /* spiderweb@2x.png */; };
+		91F498671724663A000924AA /* tabbar-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F498651724663A000924AA /* tabbar-active.png */; };
+		91F498681724663A000924AA /* tabbar-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F498661724663A000924AA /* tabbar-active@2x.png */; };
+		91F4986B1724664D000924AA /* tabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F498691724664D000924AA /* tabbar.png */; };
+		91F4986C1724664D000924AA /* tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91F4986A1724664D000924AA /* tabbar@2x.png */; };
 		91FF217E1724036200B3FB52 /* BacView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FF217D1724036200B3FB52 /* BacView.m */; };
 		91FF21801724037300B3FB52 /* BacView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91FF217F1724037300B3FB52 /* BacView.xib */; };
 /* End PBXBuildFile section */
@@ -287,6 +291,10 @@
 		91C19619171899B800FD570E /* CPGEView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CPGEView.xib; sourceTree = "<group>"; };
 		91EDB45317234B5500677799 /* spiderweb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spiderweb.png; sourceTree = "<group>"; };
 		91EDB45417234B5500677799 /* spiderweb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spiderweb@2x.png"; sourceTree = "<group>"; };
+		91F498651724663A000924AA /* tabbar-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-active.png"; sourceTree = "<group>"; };
+		91F498661724663A000924AA /* tabbar-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar-active@2x.png"; sourceTree = "<group>"; };
+		91F498691724664D000924AA /* tabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar.png; sourceTree = "<group>"; };
+		91F4986A1724664D000924AA /* tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar@2x.png"; sourceTree = "<group>"; };
 		91FF217C1724036200B3FB52 /* BacView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BacView.h; sourceTree = "<group>"; };
 		91FF217D1724036200B3FB52 /* BacView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BacView.m; sourceTree = "<group>"; };
 		91FF217F1724037300B3FB52 /* BacView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BacView.xib; sourceTree = "<group>"; };
@@ -610,6 +618,10 @@
 		9127A22C167E07B400D1EB09 /* Logo Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				91F498691724664D000924AA /* tabbar.png */,
+				91F4986A1724664D000924AA /* tabbar@2x.png */,
+				91F498651724663A000924AA /* tabbar-active.png */,
+				91F498661724663A000924AA /* tabbar-active@2x.png */,
 				9185EE421722160C0014CC63 /* box.png */,
 				9185EE431722160C0014CC63 /* box@2x.png */,
 				9185EE3E172215BA0014CC63 /* newspaper.png */,
@@ -795,6 +807,10 @@
 				91FF21801724037300B3FB52 /* BacView.xib in Resources */,
 				3F881A8017244082000C9BB3 /* NavBar@2x.png in Resources */,
 				3F881A821724465D000C9BB3 /* NavBar2@2x.png in Resources */,
+				91F498671724663A000924AA /* tabbar-active.png in Resources */,
+				91F498681724663A000924AA /* tabbar-active@2x.png in Resources */,
+				91F4986B1724664D000924AA /* tabbar.png in Resources */,
+				91F4986C1724664D000924AA /* tabbar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
