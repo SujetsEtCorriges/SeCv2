@@ -46,6 +46,20 @@
     self.dateLabel.text = self.date;
     self.auteurLabel.text = auteur_;
     
+    // Custom Back Bouton
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [backButton setImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    backButton.showsTouchWhenHighlighted = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    // Custom Partage Bouton
+//    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+//    [shareButton setImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal];
+//    [shareButton addTarget:self action:@selector(affichagePartage:) forControlEvents:UIControlEventTouchUpInside];
+//    shareButton.showsTouchWhenHighlighted = YES;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
+    
     // Ajout de la ligne sous le header
     CALayer *lineBottom = [CALayer layer];
     lineBottom.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;

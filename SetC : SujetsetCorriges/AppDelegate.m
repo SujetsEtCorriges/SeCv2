@@ -15,7 +15,7 @@
     // Override point for customization after application launch.
     //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:42/255.0f green:50/255.0f blue:59/255.0f alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:56/255.0f green:80/255.0f blue:103/255.0f alpha:1.0]];
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar6.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBar7.png"] forBarMetrics:UIBarMetricsDefault];
     //[[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     // Let the device know we want to receive push notifications
