@@ -53,6 +53,18 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if ([prefs integerForKey:@"registerAPNS"] == 1)
+    {
+        NSString *token = [prefs stringForKey:@"token"];
+
+        NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/administration/notificationsManager/resetBadgeDevice"];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        [request setPostValue:token forKey:@"token"];
+        [request setDelegate:self];
+        [request startAsynchronous];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -67,9 +79,10 @@
 	newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-
     if ([prefs integerForKey:@"registerAPNS"] == 0)
     {
+        [prefs setObject:newToken forKey:@"token"];
+        
         NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/administration/notificationsManager/registerDevice"];
         ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         [request setPostValue:newToken forKey:@"token"];
@@ -95,6 +108,7 @@
 #pragma ASIHTTPRequest Delegate
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+    NSLog(@"good");
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setInteger:1 forKey:@"registerAPNS"];
 }
