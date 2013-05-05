@@ -62,7 +62,20 @@
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
 {
-    //NSLog(@"My token is: %@", deviceToken);
+    NSString* newToken = [deviceToken description];
+	newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+
+    if ([prefs integerForKey:@"registerAPNS"] == 0)
+    {
+        NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/administration/notificationsManager/registerDevice"];
+        ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+        [request setPostValue:newToken forKey:@"token"];
+        [request setDelegate:self];
+        [request startAsynchronous];
+    }
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
@@ -73,9 +86,23 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSString *message = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    
     UIAlertView *pushView = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     [pushView show];
+}
+
+
+#pragma mark - ASIHTTPRequest
+#pragma ASIHTTPRequest Delegate
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setInteger:1 forKey:@"registerAPNS"];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+    NSLog(@"%@", error);
 }
 
 @end
