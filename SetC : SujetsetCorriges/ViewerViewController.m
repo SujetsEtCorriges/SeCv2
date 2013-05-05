@@ -28,6 +28,7 @@
 @synthesize activityView = activityView_;
 @synthesize viewerWebView = viewerWebView_;
 @synthesize navBar = navBar_;
+@synthesize navItem = navItem_;
 @synthesize closeButton = closeButton_;
 @synthesize actionButton = actionButton_;
 @synthesize toolBar = toolBar_;
@@ -49,6 +50,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // Custom Close Bouton
+    UIButton *closeButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [closeButton2 setImage:[UIImage imageNamed:@"Cancel.png"] forState:UIControlStateNormal];
+    [closeButton2 addTarget:self action:@selector(closeViewer:) forControlEvents:UIControlEventTouchUpInside];
+    closeButton2.showsTouchWhenHighlighted = YES;
+    navItem_.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton2];
+    
+    // Custom Save Bouton
+    UIButton *saveButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    [saveButton2 setImage:[UIImage imageNamed:@"265-download.png"] forState:UIControlStateNormal];
+    [saveButton2 setImage:[UIImage imageNamed:@"258-checkmark.png"] forState:UIControlStateDisabled];
+    [saveButton2 addTarget:self action:@selector(saveFile:) forControlEvents:UIControlEventTouchUpInside];
+    saveButton2.showsTouchWhenHighlighted = YES;
+    navItem_.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton2];
     
     NSURL *urlAddress;
     
@@ -305,33 +321,43 @@
 
 - (void)changeSaveButtonIntoSaved
 {
-    saveButton_.title = @"Saved";
-    saveButton_.enabled = NO;
+    //saveButton_.title = @"Saved";
+    //saveButton_.enabled = NO;
+    [navItem_.leftBarButtonItem setEnabled:NO];
 }
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     NSLog(@"Drag");
-    [self hideBars];
+    if(![activityView_ isAnimating])
+    {
+        [self hideBars];
+    }
 }
 
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
 {
     NSLog(@"Zoom");
-    [self hideBars];
+    if(![activityView_ isAnimating])
+    {
+        [self hideBars];
+    }
 }
 
 - (void)detectTap
 {
     NSLog(@"Tap");
-    if (navBar_.frame.origin.y == frameNavBarHidden.origin.y)
+    if(![activityView_ isAnimating])
     {
-        [self displayBars];
-    }
-    else
-    {
-        [self hideBars];
+        if (navBar_.frame.origin.y == frameNavBarHidden.origin.y)
+        {
+            [self displayBars];
+        }
+        else
+        {
+            [self hideBars];
+        }
     }
 }
 

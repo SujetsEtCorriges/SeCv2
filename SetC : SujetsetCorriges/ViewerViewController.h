@@ -42,6 +42,7 @@
 @property (strong, nonatomic) NSString *subtitleFile;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+@property (strong, nonatomic) IBOutlet UINavigationItem *navItem;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (strong, nonatomic) IBOutlet UIWebView *viewerWebView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *closeButton;

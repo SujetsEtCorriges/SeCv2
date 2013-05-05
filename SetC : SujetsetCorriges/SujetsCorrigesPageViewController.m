@@ -68,6 +68,7 @@
         // Custom Filière Bouton
         filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
         [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
+        [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
         [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
         filiereButton.showsTouchWhenHighlighted = YES;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
@@ -80,6 +81,7 @@
         // Custom Filière Bouton
         filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
         [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
+        [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
         [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
         filiereButton.showsTouchWhenHighlighted = YES;
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];

@@ -867,6 +867,7 @@
                         <outlet property="goBackButton" destination="tHf-pL-Wlm" id="KCh-uE-SdP"/>
                         <outlet property="goForwardButton" destination="kBW-ZB-3kd" id="IoY-HI-lCD"/>
                         <outlet property="navBar" destination="nJv-Nz-V42" id="cAA-Wg-FpO"/>
+                        <outlet property="navItem" destination="yX5-mY-9ix" id="z9D-56-exV"/>
                         <outlet property="refreshButton" destination="5aH-Ef-dQd" id="HH4-ge-ouc"/>
                         <outlet property="toolBar" destination="nmP-az-zeA" id="3wK-06-XR1"/>
                         <outlet property="viewerWebView" destination="tkm-MB-08w" id="wHe-Ob-xyD"/>

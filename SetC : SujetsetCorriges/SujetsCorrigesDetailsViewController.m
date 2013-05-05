@@ -42,6 +42,13 @@
     NSLog(@"Corrigé : %@", lienCorrige_);
     NSLog(@"Partiel : %i",corrigePartiel_);
     
+    // Custom Back Bouton
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [backButton setImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+    backButton.showsTouchWhenHighlighted = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
     CAGradientLayer *shadowConcours = [CAGradientLayer layer];
     shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,(id)[UIColor colorWithWhite:0 alpha:0.8].CGColor,nil];
     shadowConcours.frame = headerConcours_.frame;
