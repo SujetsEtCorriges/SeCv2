@@ -35,6 +35,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    // Custom Concours Bouton
+    UIButton *concoursButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [concoursButton setImage:[UIImage imageNamed:@"list.png"] forState:UIControlStateNormal];
+    [concoursButton addTarget:self action:@selector(affichageConcours:) forControlEvents:UIControlEventTouchUpInside];
+    concoursButton.showsTouchWhenHighlighted = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:concoursButton];
+    
     UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
     viewShadowConcours.backgroundColor = [UIColor clearColor];
     
@@ -56,11 +63,26 @@
     
     if (![concours_ isEqualToString:@"Banque PT"] && ![concours_ isEqualToString:@"aucun"])
     {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:@selector(choixFiliere:)];
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:@selector(choixFiliere:)];
+        
+        // Custom Filière Bouton
+        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
+        [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
+        filiereButton.showsTouchWhenHighlighted = YES;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
     }
     else if ([concours_ isEqualToString:@"Banque PT"])
     {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:nil];
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:nil];
+//        self.navigationItem.rightBarButtonItem.enabled = NO;
+        
+        // Custom Filière Bouton
+        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
+        [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
+        filiereButton.showsTouchWhenHighlighted = YES;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }
         
@@ -231,7 +253,10 @@
     
     [self createContentPages];
     
-    self.navigationItem.rightBarButtonItem.title = filiere_;
+    //self.navigationItem.rightBarButtonItem.title = filiere_;
+    
+    [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
     
     SujetsCorrigesListViewController *initialViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];

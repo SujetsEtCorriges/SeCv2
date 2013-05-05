@@ -15,6 +15,8 @@
     NSString *filiere_; //filiere actuelle
     UIActionSheet *menu_; //menu du picker
     NSInteger filiereRow_; //row de la filiere actuelle
+    
+    UIButton *filiereButton;
 }
 
 @property (strong, nonatomic) UIPageViewController *pageController;
