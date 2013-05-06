@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "388145035.774297"
+         timestampString = "389565352.759484"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "530"
-         endingLineNumber = "530"
+         startingLineNumber = "547"
+         endingLineNumber = "547"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "388145035.774297"
+         timestampString = "389565352.759484"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "548"
-         endingLineNumber = "548"
+         startingLineNumber = "565"
+         endingLineNumber = "565"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "388145035.774297"
+         timestampString = "389565352.759484"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "568"
-         endingLineNumber = "568"
+         startingLineNumber = "585"
+         endingLineNumber = "585"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SetC : SujetsetCorriges/FileManagerViewController.m"
-         timestampString = "388145035.774297"
+         timestampString = "389565352.759484"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "570"
-         endingLineNumber = "570"
+         startingLineNumber = "587"
+         endingLineNumber = "587"
          landmarkName = "-deleteDocuments"
          landmarkType = "5">
       </FileBreakpoint>

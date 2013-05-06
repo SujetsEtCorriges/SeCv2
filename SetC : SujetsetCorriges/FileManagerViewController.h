@@ -21,6 +21,8 @@
     NSMutableDictionary *dictionaryCurrentConcours;
     
     NSMutableArray *arrayCurrentConcours;
+    
+    UIButton *editButton2;
 }
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editButton;
 

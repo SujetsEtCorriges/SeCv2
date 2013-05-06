@@ -29,6 +29,13 @@
 {
     [super viewDidLoad];
 
+    // Custom Modiier Bouton
+    editButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+    [editButton2 setImage:[UIImage imageNamed:@"218-trash2.png"] forState:UIControlStateNormal];
+    [editButton2 addTarget:self action:@selector(enterEditMode:) forControlEvents:UIControlEventTouchUpInside];
+    editButton2.showsTouchWhenHighlighted = YES;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton2];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -420,15 +427,25 @@
         [self.tableView setAllowsMultipleSelectionDuringEditing:NO];
         // If the tableView is already in edit mode, turn it off. Also change the title of the button to reflect the intended verb (‘Edit’, in this case).
         [self.tableView setEditing:NO animated:YES];
-        [editButton_ setTitle:@"Modifier"];
-        [editButton_ setStyle:UIBarButtonItemStyleBordered];
+//        [editButton_ setTitle:@"Modifier"];
+//        [editButton_ setStyle:UIBarButtonItemStyleBordered];
+        [editButton2 setFrame:CGRectMake(0, 0, 40, 30)];
+        [editButton2 setImage:[UIImage imageNamed:@"218-trash2.png"] forState:UIControlStateNormal];
+        [editButton2 setTitle:nil forState:UIControlStateNormal];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton2];
         self.navigationItem.rightBarButtonItem = nil;
     }
     else
     {
         [self.tableView setAllowsMultipleSelectionDuringEditing:YES];
-        [editButton_ setTitle:@"Annuler"];
-        [editButton_ setStyle:UIBarButtonItemStyleDone];
+        [editButton2 setFrame: CGRectMake(0, 0, 80, 30)];
+        [editButton2 setTitle:@"Annuler" forState:UIControlStateNormal];
+        [editButton2 setImage:nil forState:UIControlStateNormal];
+        //[editButton2 setStyle:UIBarButtonItemStyleDone];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton2];
+        
+//        [editButton_ setTitle:@"Annuler"];
+//        [editButton_ setStyle:UIBarButtonItemStyleDone];
         
         UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Supprimer" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteDocuments)];
         deleteButton.tintColor = [UIColor redColor];
