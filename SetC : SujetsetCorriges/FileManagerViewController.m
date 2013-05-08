@@ -30,8 +30,8 @@
     [super viewDidLoad];
 
     // Custom Modiier Bouton
-    editButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
-    [editButton2 setImage:[UIImage imageNamed:@"218-trash2.png"] forState:UIControlStateNormal];
+    editButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 25)];
+    [editButton2 setImage:[UIImage imageNamed:@"55-todo.png"] forState:UIControlStateNormal];
     [editButton2 addTarget:self action:@selector(enterEditMode:) forControlEvents:UIControlEventTouchUpInside];
     editButton2.showsTouchWhenHighlighted = YES;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton2];
@@ -196,7 +196,7 @@
     UIView *viewSection = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, heightSection)];
     //viewSection.backgroundColor = [UIColor colorWithWhite:0.75 alpha:0.7];
     viewSection.backgroundColor = [UIColor clearColor];
-    viewSection.backgroundColor = [UIColor colorWithWhite:0.85 alpha:1];
+    viewSection.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.8];
     
 //    CAGradientLayer *shadowSection = [CAGradientLayer layer];
 //    shadowSection.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0.75 alpha:0.7].CGColor,(id)[UIColor colorWithWhite:0.85 alpha:0.7].CGColor,nil];
@@ -218,7 +218,7 @@
     //[viewSection.layer addSublayer:lineTop];
     
     CALayer *lineBottom = [CALayer layer];
-    lineBottom.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3].CGColor;
+    lineBottom.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.2].CGColor;
     lineBottom.frame = CGRectMake(0, heightSection-1, 320, 1);
     [viewSection.layer addSublayer:lineBottom];
     
@@ -430,7 +430,7 @@
 //        [editButton_ setTitle:@"Modifier"];
 //        [editButton_ setStyle:UIBarButtonItemStyleBordered];
         [editButton2 setFrame:CGRectMake(0, 0, 40, 30)];
-        [editButton2 setImage:[UIImage imageNamed:@"218-trash2.png"] forState:UIControlStateNormal];
+        [editButton2 setImage:[UIImage imageNamed:@"55-todo.png"] forState:UIControlStateNormal];
         [editButton2 setTitle:nil forState:UIControlStateNormal];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton2];
         self.navigationItem.rightBarButtonItem = nil;
@@ -447,9 +447,16 @@
 //        [editButton_ setTitle:@"Annuler"];
 //        [editButton_ setStyle:UIBarButtonItemStyleDone];
         
-        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Supprimer" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteDocuments)];
-        deleteButton.tintColor = [UIColor redColor];
-        self.navigationItem.rightBarButtonItem = deleteButton;
+        // Custom Delete Bouton
+        UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
+        [deleteButton setImage:[UIImage imageNamed:@"218-trash2.png"] forState:UIControlStateNormal];
+        [deleteButton addTarget:self action:@selector(deleteDocuments) forControlEvents:UIControlEventTouchUpInside];
+        deleteButton.showsTouchWhenHighlighted = YES;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
+        
+//        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Supprimer" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteDocuments)];
+//        deleteButton.tintColor = [UIColor redColor];
+//        self.navigationItem.rightBarButtonItem = deleteButton;
         
         // Turn on edit mode
         
