@@ -12,6 +12,8 @@
 #import "ActuDetailsViewController.h"
 
 #define kURL @"http://www.sujetsetcorriges.fr/api/get_recent_posts/"
+#define kStringRefresh @"Tirez pour rafraichir"
+#define kStringLoading @"Chargement"
 
 @interface ActuListViewController ()
 {
@@ -43,7 +45,11 @@
     firstRefresh = YES;
         
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
+    NSMutableAttributedString *refreshString = [[NSMutableAttributedString alloc] initWithString:kStringRefresh];
+    [refreshString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica" size:14.0] range:NSMakeRange(0, [kStringRefresh length])];
+    refresh.attributedTitle = refreshString;
+    //refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Tirez pour rafraîchir"];
+    //refresh.tintColor = [UIColor colorWithRed:14/255.0f green:156/255.0f blue:255/255.0f alpha:1];
     [refresh addTarget:self action:@selector(refreshView:)forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
@@ -74,8 +80,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    [self.refreshControl endRefreshing];
-    firstRefresh = NO;
+    
     
     NSLocale *frLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"fr_FR"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -83,7 +88,14 @@
     [formatter setDateFormat:@"dd MMMM - HH:mm:ss"];
     NSString *lastUpdated = [NSString stringWithFormat:@"Mis à jour le %@",
                              [formatter stringFromDate:[NSDate date]]];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    
+    NSMutableAttributedString *refreshedString = [[NSMutableAttributedString alloc] initWithString:lastUpdated];
+    [refreshedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica" size:11.0] range:NSMakeRange(0, [lastUpdated length])];
+    self.refreshControl.attributedTitle = refreshedString;
+    
+    [self.refreshControl endRefreshing];
+    firstRefresh = NO;
 }
 
 
@@ -173,7 +185,11 @@
 #pragma mark - UIRefreshControl action
 -(void)refreshView:(UIRefreshControl *)refresh
 {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];
+    //refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];
+    
+    NSMutableAttributedString *loadingString = [[NSMutableAttributedString alloc] initWithString:kStringLoading];
+    [loadingString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica" size:11.0] range:NSMakeRange(0, [kStringLoading length])];
+    self.refreshControl.attributedTitle = loadingString;
 
     [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
 }
