@@ -62,8 +62,8 @@
         NSURL *url = [NSURL URLWithString:@"http://www.sujetsetcorriges.fr/administration/notificationsManager/resetBadgeDevice"];
         ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
         [request setPostValue:token forKey:@"token"];
-        [request setDelegate:self];
-        [request startAsynchronous];
+        //[request setDelegate:self];
+        [request startSynchronous];
     }
 }
 
