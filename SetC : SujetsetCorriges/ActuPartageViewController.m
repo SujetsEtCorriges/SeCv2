@@ -34,6 +34,49 @@
     urlComments_ = obj.urlComments;
     idArticle_ = obj.idArticle;
     titreArticle_ = obj.titreArticle;
+    
+    int heightView = self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height;
+    NSLog(@"height : %i",heightView);
+    
+    CALayer *lineTop = [CALayer layer];
+    lineTop.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1].CGColor;
+    lineTop.frame = CGRectMake(0, heightView/5, 320, 1);
+    [self.view.layer addSublayer:lineTop];
+    
+    CALayer *lineBottom = [CALayer layer];
+    lineBottom.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1].CGColor;
+    lineBottom.frame = CGRectMake(0, lineTop.frame.origin.y+1, 320, 1);
+    [self.view.layer addSublayer:lineBottom];
+    
+    CALayer *lineTop2 = [CALayer layer];
+    lineTop2.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1].CGColor;
+    lineTop2.frame = CGRectMake(0, 2*heightView/5, 320, 1);
+    [self.view.layer addSublayer:lineTop2];
+    
+    CALayer *lineBottom2 = [CALayer layer];
+    lineBottom2.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1].CGColor;
+    lineBottom2.frame = CGRectMake(0, lineTop2.frame.origin.y+1, 320, 1);
+    [self.view.layer addSublayer:lineBottom2];
+    
+    CALayer *lineTop3 = [CALayer layer];
+    lineTop3.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1].CGColor;
+    lineTop3.frame = CGRectMake(0, 3*heightView/5, 320, 1);
+    [self.view.layer addSublayer:lineTop3];
+    
+    CALayer *lineBottom3 = [CALayer layer];
+    lineBottom3.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1].CGColor;
+    lineBottom3.frame = CGRectMake(0, lineTop3.frame.origin.y+1, 320, 1);
+    [self.view.layer addSublayer:lineBottom3];
+    
+    CALayer *lineTop4 = [CALayer layer];
+    lineTop4.backgroundColor = [UIColor colorWithWhite:0.15 alpha:1].CGColor;
+    lineTop4.frame = CGRectMake(0, 4*heightView/5, 320, 1);
+    [self.view.layer addSublayer:lineTop4];
+    
+    CALayer *lineBottom4 = [CALayer layer];
+    lineBottom4.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1].CGColor;
+    lineBottom4.frame = CGRectMake(0, lineTop4.frame.origin.y+1, 320, 1);
+    [self.view.layer addSublayer:lineBottom4];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 #import "CommentsViewController.h"
 
 @interface ActuPartageViewController : UIViewController
