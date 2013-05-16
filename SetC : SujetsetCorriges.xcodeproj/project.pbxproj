@@ -19,6 +19,10 @@
 		3F196E3016C42A4C00201FAC /* CentraleSupelec.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F196E2F16C42A4C00201FAC /* CentraleSupelec.png */; };
 		3F196E3316C42C8B00201FAC /* FenteLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F196E3116C42C8B00201FAC /* FenteLeft.png */; };
 		3F196E3416C42C8B00201FAC /* FenteRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F196E3216C42C8B00201FAC /* FenteRight.png */; };
+		3F1C1CB917457883008EB29C /* Comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1C1CB517457883008EB29C /* Comments.png */; };
+		3F1C1CBA17457883008EB29C /* Comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1C1CB617457883008EB29C /* Comments@2x.png */; };
+		3F1C1CBB17457883008EB29C /* Safari.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1C1CB717457883008EB29C /* Safari.png */; };
+		3F1C1CBC17457883008EB29C /* Safari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1C1CB817457883008EB29C /* Safari@2x.png */; };
 		3F1D769D16C819FA00020FDC /* sectionCCP.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D769B16C819F900020FDC /* sectionCCP.png */; };
 		3F1D769E16C819FA00020FDC /* sectionCCP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F1D769C16C819FA00020FDC /* sectionCCP@2x.png */; };
 		3F34D5781727198900A7C281 /* NavBar3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F34D5771727198900A7C281 /* NavBar3@2x.png */; };
@@ -160,6 +164,10 @@
 		3F196E2F16C42A4C00201FAC /* CentraleSupelec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CentraleSupelec.png; sourceTree = "<group>"; };
 		3F196E3116C42C8B00201FAC /* FenteLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FenteLeft.png; sourceTree = "<group>"; };
 		3F196E3216C42C8B00201FAC /* FenteRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FenteRight.png; sourceTree = "<group>"; };
+		3F1C1CB517457883008EB29C /* Comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Comments.png; sourceTree = "<group>"; };
+		3F1C1CB617457883008EB29C /* Comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Comments@2x.png"; sourceTree = "<group>"; };
+		3F1C1CB717457883008EB29C /* Safari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Safari.png; sourceTree = "<group>"; };
+		3F1C1CB817457883008EB29C /* Safari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Safari@2x.png"; sourceTree = "<group>"; };
 		3F1D769B16C819F900020FDC /* sectionCCP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sectionCCP.png; sourceTree = "<group>"; };
 		3F1D769C16C819FA00020FDC /* sectionCCP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sectionCCP@2x.png"; sourceTree = "<group>"; };
 		3F34D5771727198900A7C281 /* NavBar3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBar3@2x.png"; sourceTree = "<group>"; };
@@ -487,6 +495,10 @@
 				9185EE0D17220A480014CC63 /* Partage Icons */,
 				3F07EDE31721FCCC003ACDEC /* Mini Icons */,
 				3F1D769B16C819F900020FDC /* sectionCCP.png */,
+				3F1C1CB517457883008EB29C /* Comments.png */,
+				3F1C1CB617457883008EB29C /* Comments@2x.png */,
+				3F1C1CB717457883008EB29C /* Safari.png */,
+				3F1C1CB817457883008EB29C /* Safari@2x.png */,
 				3FE485E517418ADB00510A4B /* Facebook.png */,
 				3FE485E317418AA100510A4B /* Facebook@2x.png */,
 				3FE485E617418ADB00510A4B /* Twitter.png */,
@@ -877,6 +889,10 @@
 				3FE485E417418AA100510A4B /* Facebook@2x.png in Resources */,
 				3FE485E717418ADB00510A4B /* Facebook.png in Resources */,
 				3FE485E817418ADB00510A4B /* Twitter.png in Resources */,
+				3F1C1CB917457883008EB29C /* Comments.png in Resources */,
+				3F1C1CBA17457883008EB29C /* Comments@2x.png in Resources */,
+				3F1C1CBB17457883008EB29C /* Safari.png in Resources */,
+				3F1C1CBC17457883008EB29C /* Safari@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
