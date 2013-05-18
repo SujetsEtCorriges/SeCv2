@@ -15,6 +15,11 @@
     NSString *urlComments_;
     NSString *idArticle_;
     NSString *titreArticle_;
+    IBOutlet UIButton *buttonComments;
+    IBOutlet UIButton *buttonFacebook;
+    IBOutlet UIButton *buttonTwitter;
+    IBOutlet UIButton *buttonMail;
+    IBOutlet UIButton *buttonSafari;
 }
 
 - (IBAction)boutonFacebookPushed:(id)sender;

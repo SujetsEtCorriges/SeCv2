@@ -51,6 +51,10 @@
     [backButton setImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal];
     [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     backButton.showsTouchWhenHighlighted = YES;
+    backButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    backButton.layer.shadowOpacity = 0.6;
+    backButton.layer.shadowRadius = 1;
+    backButton.layer.shadowOffset = CGSizeMake(0, 1);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     // Custom Partage Bouton
@@ -58,6 +62,10 @@
     [shareButton setImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(affichagePartage:) forControlEvents:UIControlEventTouchUpInside];
     shareButton.showsTouchWhenHighlighted = YES;
+    shareButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    shareButton.layer.shadowOpacity = 0.6;
+    shareButton.layer.shadowRadius = 1;
+    shareButton.layer.shadowOffset = CGSizeMake(0, 1);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
     
     // Ajout de la ligne sous le header

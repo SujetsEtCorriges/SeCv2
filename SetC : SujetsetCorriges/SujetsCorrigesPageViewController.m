@@ -40,6 +40,10 @@
     [concoursButton setImage:[UIImage imageNamed:@"list.png"] forState:UIControlStateNormal];
     [concoursButton addTarget:self action:@selector(affichageConcours:) forControlEvents:UIControlEventTouchUpInside];
     concoursButton.showsTouchWhenHighlighted = YES;
+    concoursButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    concoursButton.layer.shadowOpacity = 0.6;
+    concoursButton.layer.shadowRadius = 1;
+    concoursButton.layer.shadowOffset = CGSizeMake(0, 1);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:concoursButton];
     
     UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
@@ -71,6 +75,10 @@
         [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
         [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
         filiereButton.showsTouchWhenHighlighted = YES;
+        filiereButton.layer.shadowColor = [UIColor blackColor].CGColor;
+        filiereButton.layer.shadowOpacity = 0.6;
+        filiereButton.layer.shadowRadius = 1;
+        filiereButton.layer.shadowOffset = CGSizeMake(0, 1);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
     }
     else if ([concours_ isEqualToString:@"Banque PT"])
@@ -84,6 +92,10 @@
         [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
         [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
         filiereButton.showsTouchWhenHighlighted = YES;
+        filiereButton.layer.shadowColor = [UIColor blackColor].CGColor;
+        filiereButton.layer.shadowOpacity = 0.6;
+        filiereButton.layer.shadowRadius = 1;
+        filiereButton.layer.shadowOffset = CGSizeMake(0, 1);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
         self.navigationItem.rightBarButtonItem.enabled = NO;
     }

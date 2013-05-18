@@ -34,6 +34,10 @@
     [editButton2 setImage:[UIImage imageNamed:@"55-todo.png"] forState:UIControlStateNormal];
     [editButton2 addTarget:self action:@selector(enterEditMode:) forControlEvents:UIControlEventTouchUpInside];
     editButton2.showsTouchWhenHighlighted = YES;
+    editButton2.layer.shadowColor = [UIColor blackColor].CGColor;
+    editButton2.layer.shadowOpacity = 0.6;
+    editButton2.layer.shadowRadius = 1;
+    editButton2.layer.shadowOffset = CGSizeMake(0, 1);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton2];
     
     // Uncomment the following line to preserve selection between presentations.
@@ -452,6 +456,10 @@
         [deleteButton setImage:[UIImage imageNamed:@"218-trash2.png"] forState:UIControlStateNormal];
         [deleteButton addTarget:self action:@selector(deleteDocuments) forControlEvents:UIControlEventTouchUpInside];
         deleteButton.showsTouchWhenHighlighted = YES;
+        deleteButton.layer.shadowColor = [UIColor blackColor].CGColor;
+        deleteButton.layer.shadowOpacity = 0.6;
+        deleteButton.layer.shadowRadius = 1;
+        deleteButton.layer.shadowOffset = CGSizeMake(0, 1);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
         
 //        UIBarButtonItem *deleteButton = [[UIBarButtonItem alloc] initWithTitle:@"Supprimer" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteDocuments)];

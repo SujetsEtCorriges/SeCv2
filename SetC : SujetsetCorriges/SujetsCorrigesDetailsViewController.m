@@ -47,6 +47,10 @@
     [backButton setImage:[UIImage imageNamed:@"09-arrow-west.png"] forState:UIControlStateNormal];
     [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
     backButton.showsTouchWhenHighlighted = YES;
+    backButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    backButton.layer.shadowOpacity = 0.6;
+    backButton.layer.shadowRadius = 1;
+    backButton.layer.shadowOffset = CGSizeMake(0, 1);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     
     CAGradientLayer *shadowConcours = [CAGradientLayer layer];

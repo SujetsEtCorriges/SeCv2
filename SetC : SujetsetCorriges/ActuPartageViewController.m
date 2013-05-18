@@ -77,6 +77,28 @@
     lineBottom4.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.1].CGColor;
     lineBottom4.frame = CGRectMake(0, lineTop4.frame.origin.y+1, 320, 1);
     [self.view.layer addSublayer:lineBottom4];
+    
+    //Ombres sur les boutons
+    buttonComments.layer.shadowColor = [UIColor blackColor].CGColor;
+    buttonComments.layer.shadowOpacity = 0.6;
+    buttonComments.layer.shadowRadius = 1;
+    buttonComments.layer.shadowOffset = CGSizeMake(0, 1);
+    buttonFacebook.layer.shadowColor = [UIColor blackColor].CGColor;
+    buttonFacebook.layer.shadowOpacity = 0.6;
+    buttonFacebook.layer.shadowRadius = 1;
+    buttonFacebook.layer.shadowOffset = CGSizeMake(0, 1);
+    buttonTwitter.layer.shadowColor = [UIColor blackColor].CGColor;
+    buttonTwitter.layer.shadowOpacity = 0.6;
+    buttonTwitter.layer.shadowRadius = 1;
+    buttonTwitter.layer.shadowOffset = CGSizeMake(0, 1);
+    buttonMail.layer.shadowColor = [UIColor blackColor].CGColor;
+    buttonMail.layer.shadowOpacity = 0.6;
+    buttonMail.layer.shadowRadius = 1;
+    buttonMail.layer.shadowOffset = CGSizeMake(0, 1);
+    buttonSafari.layer.shadowColor = [UIColor blackColor].CGColor;
+    buttonSafari.layer.shadowOpacity = 0.6;
+    buttonSafari.layer.shadowRadius = 1;
+    buttonSafari.layer.shadowOffset = CGSizeMake(0, 1);
 }
 
 - (void)didReceiveMemoryWarning

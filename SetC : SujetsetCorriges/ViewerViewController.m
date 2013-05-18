@@ -56,6 +56,10 @@
     [closeButton2 setImage:[UIImage imageNamed:@"Cancel.png"] forState:UIControlStateNormal];
     [closeButton2 addTarget:self action:@selector(closeViewer:) forControlEvents:UIControlEventTouchUpInside];
     closeButton2.showsTouchWhenHighlighted = YES;
+    closeButton2.layer.shadowColor = [UIColor blackColor].CGColor;
+    closeButton2.layer.shadowOpacity = 0.6;
+    closeButton2.layer.shadowRadius = 1;
+    closeButton2.layer.shadowOffset = CGSizeMake(0, 1);
     navItem_.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeButton2];
     
     // Custom Save Bouton
@@ -64,6 +68,10 @@
     [saveButton2 setImage:[UIImage imageNamed:@"258-checkmark.png"] forState:UIControlStateDisabled];
     [saveButton2 addTarget:self action:@selector(saveFile:) forControlEvents:UIControlEventTouchUpInside];
     saveButton2.showsTouchWhenHighlighted = YES;
+    saveButton2.layer.shadowColor = [UIColor blackColor].CGColor;
+    saveButton2.layer.shadowOpacity = 0.6;
+    saveButton2.layer.shadowRadius = 1;
+    saveButton2.layer.shadowOffset = CGSizeMake(0, 1);
     navItem_.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton2];
     
     NSURL *urlAddress;
@@ -304,7 +312,7 @@
     
     [self changeSaveButtonIntoSaved];
     
-    savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"258-checkmark.png"]];
 	savingHUD.mode = MBProgressHUDModeCustomView;
     savingHUD.labelText = @"Réussi";
 	[savingHUD hide:YES afterDelay:2];
@@ -313,7 +321,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    savingHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"60-x.png"]];
 	savingHUD.mode = MBProgressHUDModeCustomView;
     savingHUD.labelText = @"Erreur";
 	[savingHUD hide:YES afterDelay:2];
