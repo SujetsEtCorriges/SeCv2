@@ -184,6 +184,9 @@
 
     // Charger la requête dans la UIWebView
 	[viewerWebView_ loadRequest:requestObject];
+    
+    //Custom ToolBar
+    [toolBar_ setBackgroundImage:[UIImage imageNamed:@"ToolBarViewer.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
