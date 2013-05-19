@@ -36,7 +36,7 @@
 	// Do any additional setup after loading the view.
     
     // Custom Concours Bouton
-    UIButton *concoursButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    UIButton *concoursButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
     [concoursButton setImage:[UIImage imageNamed:@"list.png"] forState:UIControlStateNormal];
     [concoursButton addTarget:self action:@selector(affichageConcours:) forControlEvents:UIControlEventTouchUpInside];
     concoursButton.showsTouchWhenHighlighted = YES;
@@ -70,7 +70,7 @@
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:@selector(choixFiliere:)];
         
         // Custom Filière Bouton
-        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
         [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
         [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
         [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
@@ -87,7 +87,7 @@
 //        self.navigationItem.rightBarButtonItem.enabled = NO;
         
         // Custom Filière Bouton
-        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
         [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
         [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
         [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
