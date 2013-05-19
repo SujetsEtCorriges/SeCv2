@@ -37,7 +37,7 @@
     
     // Custom Concours Bouton
     UIButton *concoursButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
-    [concoursButton setImage:[UIImage imageNamed:@"list.png"] forState:UIControlStateNormal];
+    [concoursButton setImage:[UIImage imageNamed:@"ConcoursList.png"] forState:UIControlStateNormal];
     [concoursButton addTarget:self action:@selector(affichageConcours:) forControlEvents:UIControlEventTouchUpInside];
     concoursButton.showsTouchWhenHighlighted = YES;
     concoursButton.layer.shadowColor = [UIColor blackColor].CGColor;

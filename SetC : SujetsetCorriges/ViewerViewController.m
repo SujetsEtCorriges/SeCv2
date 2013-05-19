@@ -74,6 +74,9 @@
     saveButton2.layer.shadowOffset = CGSizeMake(0, 1);
     navItem_.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:saveButton2];
     
+    //Custom ToolBar
+    [toolBar_ setBackgroundImage:[UIImage imageNamed:@"ToolBarViewer.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+    
     NSURL *urlAddress;
     
     if(isLocalFile_)
@@ -184,9 +187,6 @@
 
     // Charger la requête dans la UIWebView
 	[viewerWebView_ loadRequest:requestObject];
-    
-    //Custom ToolBar
-    [toolBar_ setBackgroundImage:[UIImage imageNamed:@"ToolBarViewer.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
