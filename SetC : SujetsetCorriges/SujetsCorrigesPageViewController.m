@@ -206,9 +206,7 @@
     [self displayOrHideFiliereChoiceView];
 }
 
-- (IBAction)changeFiliere:(id)sender {
-    //[menu_ dismissWithClickedButtonIndex:0 animated:YES];
-    
+- (IBAction)changeFiliere:(id)sender {    
     UIButton *filiereChoicedButton = (UIButton*)sender;
     filiere_ = filiereChoicedButton.titleLabel.text;
     
@@ -216,17 +214,16 @@
     obj.filiere = filiere_;
     
     [self createContentPages];
-    
-    //self.navigationItem.rightBarButtonItem.title = filiere_;
-    
+        
     [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
     
     SujetsCorrigesListViewController *initialViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
+    __weak typeof(self) weakSelf = self; //corection d'un warning  voir http://stackoverflow.com/questions/14556605/capturing-self-strongly-in-this-block-is-likely-to-lead-to-a-retain-cycle
     [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
-        [self displayOrHideFiliereChoiceView];
+        [weakSelf displayOrHideFiliereChoiceView];
     }];
 }
 
@@ -239,8 +236,8 @@
                               delay: 0
                             options: (UIViewAnimationCurveLinear)
                          animations: ^{
-                             pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y + 55, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
-                             _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y + 55, 200, 50);
+                             //pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y + 50, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
+                             _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y + 50, 200, 50);
                          }
                          completion:^(BOOL finished) {
                              filiereChoiceViewOpen = YES;
@@ -254,8 +251,8 @@
                               delay: 0
                             options: (UIViewAnimationCurveLinear)
                          animations: ^{
-                             pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y - 55, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
-                             _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y - 55, 200, 50);
+                             //pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y - 50, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
+                             _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y - 50, 200, 50);
                          }
                          completion:^(BOOL finished) {
                              filiereChoiceViewOpen = NO;

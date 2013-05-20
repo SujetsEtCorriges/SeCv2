@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SujetsCorrigesPageViewController : UIViewController <UIPageViewControllerDataSource, UIPickerViewAccessibilityDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
+@interface SujetsCorrigesPageViewController : UIViewController <UIPageViewControllerDataSource>
 {
     NSString *filiere_; //filiere actuelle
     UIButton *filiereButton;
