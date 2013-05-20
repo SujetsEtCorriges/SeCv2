@@ -31,7 +31,7 @@
     concours_ = obj.concours;
     filiere_ = obj.filiere;
     
-    UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
+    /*UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
     viewShadowConcours.backgroundColor = [UIColor clearColor];
     
     CAGradientLayer *shadowConcours = [CAGradientLayer layer];
@@ -61,7 +61,7 @@
     labelMatiere.text = @"Matière";
     [viewShadowConcours addSubview:labelMatiere];
     
-    [self.view addSubview:viewShadowConcours];
+    [self.view addSubview:viewShadowConcours];*/
     
     [tableSuj_ setContentInset:UIEdgeInsetsMake(30,0,0,0)];
     

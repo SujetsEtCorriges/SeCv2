@@ -10,12 +10,7 @@
 
 @interface SujetsCorrigesPageViewController : UIViewController <UIPageViewControllerDataSource, UIPickerViewAccessibilityDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 {
-    //variables pour le picker view
-    NSArray *tabFiliere_; //tableau des filiere
     NSString *filiere_; //filiere actuelle
-    UIActionSheet *menu_; //menu du picker
-    NSInteger filiereRow_; //row de la filiere actuelle
-    
     UIButton *filiereButton;
 }
 

@@ -18,6 +18,11 @@
 #import "ASIFormDataRequest.h"
 
 @interface SujetsCorrigesPageViewController ()
+{
+    BOOL filiereChoiceViewOpen;
+}
+
+@property (weak, nonatomic) IBOutlet UIView *filiereChoiceView;
 
 @end
 
@@ -35,6 +40,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    //choix filiere
+    filiereChoiceViewOpen = NO;
+    
+    
     // Custom Concours Bouton
     UIButton *concoursButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
     [concoursButton setImage:[UIImage imageNamed:@"ConcoursList.png"] forState:UIControlStateNormal];
@@ -46,17 +55,6 @@
     concoursButton.layer.shadowOffset = CGSizeMake(0, 1);
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:concoursButton];
     
-    UIView *viewShadowConcours = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 80)];
-    viewShadowConcours.backgroundColor = [UIColor clearColor];
-    
-    CAGradientLayer *shadowConcours = [CAGradientLayer layer];
-    shadowConcours.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.8].CGColor,(id)[UIColor colorWithWhite:1 alpha:0.0].CGColor,nil];
-    shadowConcours.frame = viewShadowConcours.frame;
-    shadowConcours.startPoint = CGPointMake(0.5, 0);
-    shadowConcours.endPoint = CGPointMake(0.5,1);
-    [viewShadowConcours.layer addSublayer:shadowConcours];
-    
-    [self.view addSubview:viewShadowConcours];
     
     
     VariableStore *obj=[VariableStore getInstance];
@@ -65,11 +63,9 @@
     
     [self createContentPages];
     
-    if (![concours_ isEqualToString:@"Banque PT"] && ![concours_ isEqualToString:@"aucun"])
+    // Custom Filière Bouton
+    if (![concours_ isEqualToString:@"aucun"])
     {
-//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:@selector(choixFiliere:)];
-        
-        // Custom Filière Bouton
         filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
         [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
         [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
@@ -80,26 +76,10 @@
         filiereButton.layer.shadowRadius = 1;
         filiereButton.layer.shadowOffset = CGSizeMake(0, 1);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
+        if ([concours_ isEqualToString:@"Banque PT"])
+            filiereButton.enabled = NO;
     }
-    else if ([concours_ isEqualToString:@"Banque PT"])
-    {
-//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:filiere_ style:UIBarButtonItemStyleBordered target:self action:nil];
-//        self.navigationItem.rightBarButtonItem.enabled = NO;
-        
-        // Custom Filière Bouton
-        filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
-        [filiereButton setTitle:filiere_ forState:UIControlStateNormal];
-        [filiereButton setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateDisabled];
-        [filiereButton addTarget:self action:@selector(choixFiliere:) forControlEvents:UIControlEventTouchUpInside];
-        filiereButton.showsTouchWhenHighlighted = YES;
-        filiereButton.layer.shadowColor = [UIColor blackColor].CGColor;
-        filiereButton.layer.shadowOpacity = 0.6;
-        filiereButton.layer.shadowRadius = 1;
-        filiereButton.layer.shadowOffset = CGSizeMake(0, 1);
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:filiereButton];
-        self.navigationItem.rightBarButtonItem.enabled = NO;
-    }
-        
+
     [self createPageViewController];
 }
 
@@ -157,6 +137,7 @@
     
     [self addChildViewController:pageController_];
     [[self view] addSubview:[pageController_ view]];
+    [self.view sendSubviewToBack:pageController_.view];
     
     [self.view addSubview:pageControl_];
     
@@ -219,48 +200,17 @@
 
 
 
-#pragma mark - PickerViewDelegate
+#pragma mark - Filiere Choice View
 - (void) choixFiliere:(id)sender
 {
-    tabFiliere_ = [[NSArray alloc] initWithObjects:@"MP", @"PC", @"PSI", nil];
-    
-    menu_ = [[UIActionSheet alloc] initWithTitle:@"Choix de la filiere"
-                                        delegate:self
-                               cancelButtonTitle:nil
-                          destructiveButtonTitle:nil
-                               otherButtonTitles:nil];
-    
-    [menu_ setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    
-    
-    CGRect pickerFrame = CGRectMake(0, 40, 0, 0);
-    
-    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
-    pickerView.showsSelectionIndicator = YES;
-    pickerView.dataSource = self;
-    pickerView.delegate = self;
-    
-    [pickerView selectRow:filiereRow_ inComponent:0 animated:YES];
-    
-    [menu_ addSubview:pickerView];
-    
-    
-    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"OK"]];
-    closeButton.momentary = YES;
-    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
-    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
-    closeButton.tintColor = [UIColor blackColor];
-    [closeButton addTarget:self action:@selector(changeFiliere:) forControlEvents:UIControlEventValueChanged];
-    [menu_ addSubview:closeButton];
-    
-    [menu_ showInView:[[UIApplication sharedApplication] keyWindow]];
-    
-    [menu_ setBounds:CGRectMake(0, 0, 320, 485)];
+    [self displayOrHideFiliereChoiceView];
 }
 
-- (void) changeFiliere:(id)sender
-{
-    [menu_ dismissWithClickedButtonIndex:0 animated:YES];
+- (IBAction)changeFiliere:(id)sender {
+    //[menu_ dismissWithClickedButtonIndex:0 animated:YES];
+    
+    UIButton *filiereChoicedButton = (UIButton*)sender;
+    filiere_ = filiereChoicedButton.titleLabel.text;
     
     VariableStore *obj = [VariableStore getInstance];
     obj.filiere = filiere_;
@@ -275,30 +225,43 @@
     SujetsCorrigesListViewController *initialViewController = [self viewControllerAtIndex:0];
     NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
-    [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+        [self displayOrHideFiliereChoiceView];
+    }];
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView
+-(void)displayOrHideFiliereChoiceView
 {
-    
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
-{
-    
-    return 3;
-}
-
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    return [tabFiliere_ objectAtIndex:row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    filiereRow_ = row;
-    filiere_ = [tabFiliere_ objectAtIndex:row];
+    if (!filiereChoiceViewOpen)
+    {
+        filiereButton.enabled = NO;
+        [UIView animateWithDuration: 0.5
+                              delay: 0
+                            options: (UIViewAnimationCurveLinear)
+                         animations: ^{
+                             pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y + 55, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
+                             _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y + 55, 200, 50);
+                         }
+                         completion:^(BOOL finished) {
+                             filiereChoiceViewOpen = YES;
+                             filiereButton.enabled = YES;
+                         }];
+    }
+    else
+    {
+        filiereButton.enabled = NO;
+        [UIView animateWithDuration: 0.5
+                              delay: 0
+                            options: (UIViewAnimationCurveLinear)
+                         animations: ^{
+                             pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y - 55, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
+                             _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y - 55, 200, 50);
+                         }
+                         completion:^(BOOL finished) {
+                             filiereChoiceViewOpen = NO;
+                             filiereButton.enabled = YES;
+                         }];
+    }
 }
 
 
