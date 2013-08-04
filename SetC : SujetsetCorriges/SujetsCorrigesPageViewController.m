@@ -131,17 +131,28 @@
     [[pageController_ view] setFrame:[[self view] bounds]];
     
     SujetsCorrigesListViewController *initialViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
     
-    [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    
-    [self addChildViewController:pageController_];
-    [[self view] addSubview:[pageController_ view]];
-    [self.view sendSubviewToBack:pageController_.view];
-    
-    [self.view addSubview:pageControl_];
-    
-    [pageController_ didMoveToParentViewController:self];
+    if (initialViewController != nil)
+    {        
+        NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+        
+        [pageController_ setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        
+        [self addChildViewController:pageController_];
+        [[self view] addSubview:[pageController_ view]];
+        [self.view sendSubviewToBack:pageController_.view];
+        
+        [self.view addSubview:pageControl_];
+        
+        [pageController_ didMoveToParentViewController:self];
+    }
+    else
+    {
+        [filiereButton setHidden:YES];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Prochainement" message:@"Cette section n'est pas encore disponible" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alertView show];
+    }
+
 }
 
 - (SujetsCorrigesListViewController *)viewControllerAtIndex:(NSUInteger)index
@@ -206,7 +217,8 @@
     [self displayOrHideFiliereChoiceView];
 }
 
-- (IBAction)changeFiliere:(id)sender {    
+- (IBAction)changeFiliere:(id)sender
+{
     UIButton *filiereChoicedButton = (UIButton*)sender;
     filiere_ = filiereChoicedButton.titleLabel.text;
     
@@ -236,7 +248,6 @@
                               delay: 0
                             options: (UIViewAnimationCurveLinear)
                          animations: ^{
-                             //pageController_.view.frame = CGRectMake(pageController_.view.frame.origin.x, pageController_.view.frame.origin.y + 50, pageController_.view.frame.size.width, pageController_.view.frame.size.height);
                              _filiereChoiceView.frame = CGRectMake(60, _filiereChoiceView.frame.origin.y + 50, 200, 50);
                          }
                          completion:^(BOOL finished) {

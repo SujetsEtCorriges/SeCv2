@@ -13,14 +13,12 @@
 @interface SimuListViewController : UIViewController <UIScrollViewDelegate, UIScrollViewAccessibilityDelegate, CPGEViewDelegate>
 {
     NSMutableArray *itemArray_;
-    NSArray *concoursTab_;
+
     
     NSMutableArray *filiereArray_;
-    NSArray *filiereBacTab_;
-    NSArray *filiereCPGETab_;
+
     
     IBOutlet UIScrollView *scrollViewConcours_;
-    IBOutlet UIScrollView *scrollViewFiliere_;
     IBOutlet UIBarButtonItem *startButton;
 }
 

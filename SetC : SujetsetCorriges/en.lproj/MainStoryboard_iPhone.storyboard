@@ -485,39 +485,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" tag="601" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YtH-bD-9mu" userLabel="rightArrow">
-                                        <rect key="frame" x="284" y="116" width="16" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="forward.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" tag="600" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="irP-fZ-Opf" userLabel="leftArrow">
-                                        <rect key="frame" x="20" y="116" width="16" height="16"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="back.png">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="101" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1fj-fw-jQ6" userLabel="Filiere ScrollView">
-                                        <rect key="frame" x="40" y="99" width="240" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </scrollView>
                                     <scrollView multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="RTS-YY-Kui" userLabel="Concours ScrollView">
                                         <rect key="frame" x="90" y="10" width="140" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </scrollView>
+                                    <view contentMode="scaleToFill" id="buW-v0-fhd">
+                                        <rect key="frame" x="0.0" y="98" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
@@ -553,8 +529,8 @@
                     <connections>
                         <outlet property="bacView" destination="94E-u9-zr1" id="HGe-nN-v0n"/>
                         <outlet property="cpgeView" destination="e3z-on-Vqi" id="kXo-Oi-S7h"/>
+                        <outlet property="filiereView" destination="buW-v0-fhd" id="F4j-se-ewW"/>
                         <outlet property="scrollViewConcours_" destination="RTS-YY-Kui" id="Kgk-0v-vpV"/>
-                        <outlet property="scrollViewFiliere_" destination="1fj-fw-jQ6" id="lTA-t1-Y1D"/>
                         <outlet property="scrollsView" destination="phK-7z-oaR" id="d6X-pH-BSm"/>
                         <outlet property="startButton" destination="No4-J2-KBp" id="xm4-Fs-g67"/>
                     </connections>
@@ -1052,9 +1028,7 @@
         <image name="SujetIconMini.png" width="21" height="21"/>
         <image name="Twitter-highlighted.png" width="50" height="50"/>
         <image name="Twitter.png" width="50" height="50"/>
-        <image name="back.png" width="16" height="16"/>
         <image name="box.png" width="24" height="22"/>
-        <image name="forward.png" width="16" height="16"/>
         <image name="list.png" width="20" height="14"/>
         <image name="newspaper.png" width="28" height="23"/>
         <image name="notepad.png" width="22" height="28"/>

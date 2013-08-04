@@ -184,9 +184,7 @@
 
 #pragma mark - UIRefreshControl action
 -(void)refreshView:(UIRefreshControl *)refresh
-{
-    //refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Chargement"];
-    
+{    
     NSMutableAttributedString *loadingString = [[NSMutableAttributedString alloc] initWithString:kStringLoading];
     [loadingString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica" size:11.0] range:NSMakeRange(0, [kStringLoading length])];
     self.refreshControl.attributedTitle = loadingString;

@@ -12,11 +12,20 @@
 {
     NSUInteger page;
     NSUInteger oldPage;
+    
+    NSArray *concoursTab;
+    NSArray *filiereBacTab;
+    NSArray *filiereCPGETab;
+    
+    
+    NSString *filiere;
+    NSString *concours;
 }
  
 @property (nonatomic, strong) IBOutlet UIView *scrollsView;
 @property (nonatomic, strong) IBOutlet CPGEView *cpgeView;
 @property (nonatomic, strong) IBOutlet BacView *bacView;
+@property (weak, nonatomic) IBOutlet UIView *filiereView;
 
 @end
 
@@ -46,7 +55,7 @@
     CGFloat tailleIcone = 60;
     
     //initialisation de la scrollView Concours
-    for (NSUInteger i = 0; i < [concoursTab_ count]; i++)
+    for (NSUInteger i = 0; i < [concoursTab count]; i++)
     {
         if (i == 0)
             tailleIcone = 70;
@@ -54,22 +63,20 @@
             tailleIcone = 60;
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((paperWidth)*i + 40, 0, tailleIcone, tailleIcone)];
-        
-        //UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(130*(i+1), 0, tailleIcone, tailleIcone)];
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:[concoursTab_ objectAtIndex:i] ofType:@"png"];
+                
+        NSString *path = [[NSBundle mainBundle] pathForResource:[concoursTab objectAtIndex:i] ofType:@"png"];
         UIImage *imageTemp = [UIImage imageWithContentsOfFile:path];
         
         imageView.image = imageTemp;
         imageView.tag = i;
         [scrollViewConcours_ addSubview:imageView];
     }
-    CGSize contentSize = CGSizeMake((paperWidth)*[concoursTab_ count], scrollViewConcours_.bounds.size.height);
+    CGSize contentSize = CGSizeMake((paperWidth)*[concoursTab count], scrollViewConcours_.bounds.size.height);
     scrollViewConcours_.contentSize = contentSize;
     scrollViewConcours_.delegate = self;
     
     
-    [self fillFiliereScrollViewWithArray:filiereCPGETab_];
+    [self fillFiliereScrollViewWithArray:filiereCPGETab];
     UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
     arrowL.hidden = YES;
 }
@@ -82,13 +89,13 @@
 
 - (void)initTabs
 {
-    concoursTab_ = [[NSArray alloc]
+    concoursTab = [[NSArray alloc]
                     initWithObjects:@"Centrale-Supelec",@"Mines-Ponts",@"CCP",@"Banque PT",@"Baccalaureat",nil];
     
-    filiereBacTab_ = [[NSArray alloc]
+    filiereBacTab = [[NSArray alloc]
                       initWithObjects:@"ES", @"L", @"S", nil];
     
-    filiereCPGETab_ = [[NSArray alloc]
+    filiereCPGETab = [[NSArray alloc]
                        initWithObjects:@"MP", @"PC", @"PSI", nil];
 }
 
@@ -105,20 +112,44 @@
 
 - (void)fillFiliereScrollViewWithArray:(NSArray *)array
 {
-    for (NSUInteger i=0; i<[array count]; i++)
+    for (UIView *view in [_filiereView subviews])
+        [view removeFromSuperview];
+    
+    CGFloat widthCell = (self.view.bounds.size.width)/[array count];
+    
+    //adding cells in cellsView
+    for (int i=0; i<[array count]; i++)
     {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(scrollViewFiliere_.frame.size.width*i, 0,scrollViewFiliere_.frame.size.width, scrollViewFiliere_.frame.size.height)];
-        label.text = [array objectAtIndex:i];
-        label.textAlignment = NSTextAlignmentCenter;
+        UIButton *filiereButton = [[UIButton alloc] initWithFrame:CGRectMake(widthCell*i, 0, widthCell, 30)];
         
-        [scrollViewFiliere_ addSubview:label];
+        [filiereButton setTitle:[array objectAtIndex:i] forState:UIControlStateNormal];
+        [filiereButton setTitleColor:[UIColor colorWithRed:79/255.0f green:79/255.0f blue:79/255.0f alpha:1.0] forState:UIControlStateNormal];
+        [filiereButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        if (i == 0)
+        {
+            [filiereButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:18]];
+            filiere = [array objectAtIndex:i];
+        }
+        else
+            [filiereButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
+        
+        [filiereButton setBackgroundColor:[UIColor clearColor]];
+        
+        [filiereButton addTarget:self action:@selector(filiereSelected:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_filiereView addSubview:filiereButton];
     }
-    CGSize contentSize = CGSizeMake(scrollViewFiliere_.frame.size.width*[array count], scrollViewFiliere_.frame.size.height);
-    scrollViewFiliere_.contentSize = contentSize;
-    scrollViewFiliere_.delegate = self;
 }
 
-
+#pragma mark - UIButton Action
+- (void)filiereSelected:(UIButton*)button
+{
+    for (UIButton *filiereButton in [_filiereView subviews])
+        [filiereButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
+    
+    [button.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:18]];
+    filiere = [button.titleLabel text];
+}
 
 #pragma mark - UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -129,7 +160,7 @@
         CGFloat pageWidth = 140;
         page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         
-        if (oldPage != page && page<[concoursTab_ count]) //si changement de concours
+        if (oldPage != page && page<[concoursTab count]) //si changement de concours
         {
             NSLog(@"%d",page);
             
@@ -140,73 +171,27 @@
             UIImageView *imageViewOld = (UIImageView *)[scrollView viewWithTag:oldPage];
             imageViewOld.frame = CGRectMake(imageViewOld.frame.origin.x, imageViewOld.frame.origin.y, 60, 60);
             
-            
             [self removeOptionsFromView];
             
-            //on met à jour les filières
-            UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
-            UIButton *arrowR = (UIButton *)[self.view viewWithTag:601];
-            if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
+            if ([[concoursTab objectAtIndex:page] isEqualToString:@"Baccalaureat"])
             {
-                [self fillFiliereScrollViewWithArray:filiereBacTab_];
-                arrowL.hidden = YES;
-                arrowR.hidden = NO;
-                
+                [self fillFiliereScrollViewWithArray:filiereBacTab];
                 [self displayOptionsBac];
             }
-                
-            else if ([[concoursTab_ objectAtIndex:page] isEqualToString:@"Banque PT"])
+            else if ([[concoursTab objectAtIndex:page] isEqualToString:@"Banque PT"])
             {
-                [self fillFiliereScrollViewWithArray:[[NSArray alloc] initWithObjects:@"PT", nil]];
-                arrowL.hidden = YES;
-                arrowR.hidden = YES;
-                
+                [self fillFiliereScrollViewWithArray:[[NSArray alloc]initWithObjects:@"PT",nil]];
                 [self displayOptionsCPGE];
-                
-                
-            } 
-            else if (![[concoursTab_ objectAtIndex:page] isEqualToString:@"Baccalaureat"])
+            }
+            else
             {
-                [self fillFiliereScrollViewWithArray:filiereCPGETab_];
-                arrowL.hidden = YES;
-                arrowR.hidden = NO;
-                
+                [self fillFiliereScrollViewWithArray:filiereCPGETab];
                 [self displayOptionsCPGE];
             }
                 
-            
-            CGRect frame = scrollView.frame;
-            frame.origin.x = 0;
-            frame.origin.y = 0;
-            [scrollViewFiliere_ scrollRectToVisible:frame animated:YES];
             oldPage = page;
         }
     }
-    else if (scrollView.tag == 101)
-    {
-        CGFloat pageWidth = scrollView.frame.size.width;
-        NSInteger filiere = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        
-        UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
-        UIButton *arrowR = (UIButton *)[self.view viewWithTag:601];
-        
-        if (filiere == 0)
-        {
-            arrowL.hidden = YES;
-            arrowR.hidden = NO;
-        }
-        else if (filiere == 2)
-        {
-            arrowL.hidden = NO;
-            arrowR.hidden = YES;
-        }
-        else
-        {
-            arrowL.hidden = NO;
-            arrowR.hidden = NO;
-        }
-    }
-    
 }
 
 

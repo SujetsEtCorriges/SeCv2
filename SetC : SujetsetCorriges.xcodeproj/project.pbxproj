@@ -430,6 +430,18 @@
 			name = "Gestionnaire de fichiers";
 			sourceTree = "<group>";
 		};
+		51DAAB6817AE57E500A47B0A /* Modules externes */ = {
+			isa = PBXGroup;
+			children = (
+				9127A1AA167D481400D1EB09 /* ASIHTTPRequest */,
+				9127A17A167D376D00D1EB09 /* ECSliding */,
+				9127A196167D3A7B00D1EB09 /* MBProgressHUB */,
+				9127A18E167D39DF00D1EB09 /* PullToRefresh */,
+				9127A18A167D39C800D1EB09 /* XMLParser */,
+			);
+			name = "Modules externes";
+			sourceTree = "<group>";
+		};
 		9127A137167D36FD00D1EB09 = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +479,7 @@
 		9127A14C167D36FD00D1EB09 /* SetC : SujetsetCorriges */ = {
 			isa = PBXGroup;
 			children = (
+				51DAAB6817AE57E500A47B0A /* Modules externes */,
 				9127A177167D370B00D1EB09 /* Actualité */,
 				9127A1A6167D46AF00D1EB09 /* Sujets et Corriges */,
 				9127A1FC167DFD0400D1EB09 /* Simulateurs */,
@@ -475,11 +488,6 @@
 				9127A156167D36FD00D1EB09 /* AppDelegate.m */,
 				9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */,
 				9127A161167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard */,
-				9127A1AA167D481400D1EB09 /* ASIHTTPRequest */,
-				9127A17A167D376D00D1EB09 /* ECSliding */,
-				9127A196167D3A7B00D1EB09 /* MBProgressHUB */,
-				9127A18E167D39DF00D1EB09 /* PullToRefresh */,
-				9127A18A167D39C800D1EB09 /* XMLParser */,
 				9127A179167D376700D1EB09 /* Images */,
 				9127A14D167D36FD00D1EB09 /* Supporting Files */,
 			);
@@ -1117,6 +1125,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1133,6 +1142,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
