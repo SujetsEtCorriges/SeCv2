@@ -121,8 +121,8 @@
     {
         cell = [[NewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    cell.titleLabel.text = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
+
+    cell.titleLabel.text = [self cleanString:[[_newsData objectAtIndex:indexPath.row] objectForKey:@"title"]];
     cell.dateLabel.text = [self convertDate:[[_newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
     int nbComments = [[[_newsData objectAtIndex:indexPath.row] objectForKey:@"comment_count"] integerValue];
     NSString *stringNbComments;
@@ -174,7 +174,7 @@
         
         destViewController.url = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"url"];
         destViewController.texte = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"content"];
-        destViewController.titre = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"title"];
+        destViewController.titre = [self cleanString:[[_newsData objectAtIndex:indexPath.row] objectForKey:@"title"]];
         destViewController.auteur = [[[_newsData objectAtIndex:indexPath.row] objectForKey:@"author"] objectForKey:@"name"];
         destViewController.date = [self convertDate:[[_newsData objectAtIndex:indexPath.row] objectForKey:@"date"]];
         destViewController.idArticle = [[_newsData objectAtIndex:indexPath.row] objectForKey:@"id"];
@@ -192,6 +192,24 @@
     self.refreshControl.attributedTitle = loadingString;
 
     [self performSelectorInBackground:@selector(parseNews:) withObject:nil];
+}
+
+
+#pragma mark - clean string method
+- (NSString*)cleanString:(NSString*)string
+{
+    string = [string stringByReplacingOccurrencesOfString:@"&#xe9;" withString:@"é"];
+    string = [string stringByReplacingOccurrencesOfString:@"&#x2019;" withString:@"'"];
+    string = [string stringByReplacingOccurrencesOfString:@"&#xe0;" withString:@"à"];
+    string = [string stringByReplacingOccurrencesOfString:@"&#xe7;" withString:@"ç"];
+    string = [string stringByReplacingOccurrencesOfString:@"&#039;" withString:@"'"];
+    string = [string stringByReplacingOccurrencesOfString:@"&rsquo;" withString:@"'"];
+    string = [string stringByReplacingOccurrencesOfString:@"&#xea;" withString:@"è"];
+    string = [string stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+    string = [string stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+    string = [string stringByReplacingOccurrencesOfString:@"&#xef;" withString:@"ï"];
+    
+    return string;
 }
 
 @end

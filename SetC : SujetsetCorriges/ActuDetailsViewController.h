@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ActuDetailsViewController : UIViewController <UIWebViewDelegate>
-{
-    
-}
 
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *texte;
@@ -20,14 +17,6 @@
 @property (strong, nonatomic) NSString *auteur;
 @property (strong, nonatomic) NSString *idArticle;
 
-//view
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
-@property (strong, nonatomic) IBOutlet UIView *infoView;
-
-//label
-@property (strong, nonatomic) IBOutlet UILabel *titreLabel;
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
-@property (strong, nonatomic) IBOutlet UILabel *auteurLabel;
 
 - (IBAction)affichagePartage:(id)sender;
 

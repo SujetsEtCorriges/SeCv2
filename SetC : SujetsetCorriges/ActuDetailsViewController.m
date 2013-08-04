@@ -16,15 +16,18 @@
 
 @interface ActuDetailsViewController ()
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *infoView;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (weak, nonatomic) IBOutlet UILabel *titreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *auteurLabel;
+
 @end
 
 @implementation ActuDetailsViewController
 
-@synthesize url = url_;
-@synthesize titre = titre_;
-@synthesize idArticle = idArticle_;
-@synthesize auteur = auteur_;
-@synthesize infoView = infoView_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,9 +45,9 @@
     self.title = @"News";
     
     // Initialisation des champs du header
-    self.titreLabel.text = self.titre;
-    self.dateLabel.text = self.date;
-    self.auteurLabel.text = auteur_;
+    self.titreLabel.text = _titre;
+    self.dateLabel.text = _date;
+    self.auteurLabel.text = _auteur;
     
     // Custom Back Bouton
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
@@ -71,11 +74,12 @@
     // Ajout de la ligne sous le header
     CALayer *lineBottom = [CALayer layer];
     lineBottom.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0].CGColor;
-    lineBottom.frame = CGRectMake(10, infoView_.frame.size.height-10, 300, 1);
-    [infoView_.layer addSublayer:lineBottom];
+    lineBottom.frame = CGRectMake(10, _infoView.frame.size.height-10, 300, 1);
+    [_infoView.layer addSublayer:lineBottom];
     
     // Initialisation de la webview
-    [self.webView.scrollView setScrollEnabled:YES];
+    [self.webView.scrollView setScrollEnabled:NO];
+    [self.webView setDelegate:self];
     [self.webView loadHTMLString:[NSString stringWithFormat:@"<html> \n"
                               "<head> \n"
                               "<style type=\"text/css\"> \n"
@@ -101,14 +105,12 @@
     [super viewWillAppear:animated];
     
     ActuVariableStore *obj=[ActuVariableStore getInstance];
-    obj.urlComments = url_;
-    obj.idArticle = idArticle_;
-    obj.titreArticle = titre_;
+    obj.urlComments = _url;
+    obj.idArticle = _idArticle;
+    obj.titreArticle = _titre;
     
     if (![self.slidingViewController.underRightViewController isKindOfClass:[ActuPartageViewController class]])
-    {
         self.slidingViewController.underRightViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"partageSideView"];
-    }
     
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     [self.slidingViewController setAnchorLeftRevealAmount:80.0f];
@@ -119,5 +121,18 @@
 {
     [self.slidingViewController anchorTopViewTo:ECLeft];
 }
+
+
+#pragma mark UIWebViewDelegate methods
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{		
+    float h;
+    
+    h = webView.bounds.size.height + _infoView.bounds.size.height; // extra 70 pixels for UIButton at bottom and padding.
+
+	// get bottom of text field
+	[_scrollView setContentSize:CGSizeMake(320, h)];
+}
+
 
 @end
