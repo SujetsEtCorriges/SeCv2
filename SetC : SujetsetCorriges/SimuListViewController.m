@@ -8,6 +8,8 @@
 
 #import "SimuListViewController.h"
 
+#import "NotesViewController.h"
+
 @interface SimuListViewController ()
 {
     NSUInteger page;
@@ -20,6 +22,7 @@
     
     NSString *filiere;
     NSString *concours;
+    BOOL redoublant;
 }
  
 @property (nonatomic, strong) IBOutlet UIView *scrollsView;
@@ -47,9 +50,11 @@
     
     [self initTabs];
     [self displayOptionsCPGE];
-    
+
     oldPage = 1;
     page = 1;
+    redoublant = NO;
+    concours = [concoursTab objectAtIndex:0];
     
     CGFloat paperWidth = 140;
     CGFloat tailleIcone = 60;
@@ -77,8 +82,6 @@
     
     
     [self fillFiliereScrollViewWithArray:filiereCPGETab];
-    UIButton *arrowL = (UIButton *)[self.view viewWithTag:600];
-    arrowL.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,11 +106,6 @@
 {
     startButton = nil;
     [super viewDidUnload];
-}
-
-- (IBAction)startButtonPushed:(id)sender
-{
-    
 }
 
 - (void)fillFiliereScrollViewWithArray:(NSArray *)array
@@ -161,9 +159,7 @@
         page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         
         if (oldPage != page && page<[concoursTab count]) //si changement de concours
-        {
-            NSLog(@"%d",page);
-            
+        {            
             //Zoom algorithm
             UIImageView *imageViewZoom = (UIImageView *)[scrollView viewWithTag:page];
             imageViewZoom.frame = CGRectMake(imageViewZoom.frame.origin.x, imageViewZoom.frame.origin.y, 70, 70);
@@ -188,7 +184,8 @@
                 [self fillFiliereScrollViewWithArray:filiereCPGETab];
                 [self displayOptionsCPGE];
             }
-                
+            
+            concours = [concoursTab objectAtIndex:page];
             oldPage = page;
         }
     }
@@ -220,9 +217,23 @@
 
 
 #pragma mark - CPGEViewDelegate
--(void)statutCPGEChanged:(NSString *)statut
+-(void)statutCPGEChanged:(BOOL)statut
 {
-    //NSLog(@"changed : %@", statut);
+    redoublant = statut;
+}
+
+
+#pragma mark - Pushing
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushNotes"])
+    {
+        NotesViewController *destViewController = segue.destinationViewController;
+        
+        if (![concours isEqualToString:@"Baccalaureat"])
+            [destViewController concoursCPGE:concours filiere:filiere redoublant:redoublant];
+    }
+    
 }
 
 

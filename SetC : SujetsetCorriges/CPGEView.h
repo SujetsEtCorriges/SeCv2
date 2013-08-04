@@ -27,6 +27,6 @@
 @protocol CPGEViewDelegate <NSObject>
 
 @optional
--(void)statutCPGEChanged:(NSString*)statut;
+-(void)redoublant:(BOOL)statut;
 
 @end

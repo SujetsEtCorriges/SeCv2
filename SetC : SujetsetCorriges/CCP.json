@@ -1,0 +1,147 @@
+{
+    "MP": {
+    	"matieres": [
+    		{
+	        	"nom": "Mathématiques 1",
+				"obligatoire": 1,
+				"coefficient": 5
+			},
+			{
+	        	"nom": "Mathématiques II",
+				"obligatoire": 1,
+				"coefficient": 5
+			},
+			{
+	        	"nom": "Physique I",
+				"obligatoire": 1,
+				"coefficient": 3
+			},
+			{
+	        	"nom": "Physique II",
+				"obligatoire": 1,
+				"coefficient": 3
+			},
+			{
+	        	"nom": "Chimie",
+				"obligatoire": 1,
+				"coefficient": 2
+			},
+			{
+	        	"nom": "Informatique ou SI",
+				"obligatoire": 1,
+				"coefficient": 2
+			},
+			{
+	        	"nom": "Français",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Langue vivante",
+				"obligatoire": 1,
+				"coefficient": 2
+			},
+			{
+	        	"nom": "Langue vivante falcultative",
+				"obligatoire": 0,
+				"coefficient": 1
+			}
+    	],
+    	"bonification": 30
+    },
+    "PC": {
+    	"matieres": [
+    		{
+	        	"nom": "Mathématiques I",
+				"obligatoire": 1,
+				"coefficient": 3
+			},
+			{
+	        	"nom": "Mathématiques II",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Physique I",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Physique II",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Chimie 1",
+				"obligatoire": 1,
+				"coefficient": 3
+			},
+			{
+	        	"nom": "Chimie 2",
+				"obligatoire": 1,
+				"coefficient": 1
+			},
+			{
+	        	"nom": "Français",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Langue vivante",
+				"obligatoire": 1,
+				"coefficient": 2
+			},
+			{
+	        	"nom": "Langue vivante falcultative",
+				"obligatoire": 0,
+				"coefficient": 1
+			}
+    	],
+    	"bonification": 30
+    },
+    "PSI": {
+    	"matieres": [
+    		{
+	        	"nom": "Mathématiques I",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Mathématiques II",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Physique I",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Physique II",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "SI",
+				"obligatoire": 1,
+				"coefficient": 4
+			},
+			{
+	        	"nom": "Français",
+				"obligatoire": 1,
+				"coefficient": 5
+			},
+			{
+	        	"nom": "Langue vivante",
+				"obligatoire": 1,
+				"coefficient": 2
+			},
+			{
+	        	"nom": "Langue vivante falcultative",
+				"obligatoire": 0,
+				"coefficient": 1
+			}
+    	],
+    	"bonification": 30
+    }
+}

@@ -76,6 +76,12 @@
 		3FF0B45016C6949D00E07D0E /* FileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */; };
 		3FFA184D16C02B8000D6E085 /* NewsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184B16C02B8000D6E085 /* NewsBackground.png */; };
 		3FFA184E16C02B8000D6E085 /* NewsBackgroundHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */; };
+		51DAAB6B17AE785F00A47B0A /* matieresConcours.json in Resources */ = {isa = PBXBuildFile; fileRef = 51DAAB6A17AE785F00A47B0A /* matieresConcours.json */; };
+		51DAAB6E17AE789500A47B0A /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DAAB6D17AE789500A47B0A /* NotesViewController.m */; };
+		51F674DB17AEB19E005E3384 /* Mines-Ponts.json in Resources */ = {isa = PBXBuildFile; fileRef = 51F674DA17AEB19E005E3384 /* Mines-Ponts.json */; };
+		51F674DD17AEB1A3005E3384 /* CCP.json in Resources */ = {isa = PBXBuildFile; fileRef = 51F674DC17AEB1A3005E3384 /* CCP.json */; };
+		51F674DF17AEB1A7005E3384 /* Centrale-Supelec.json in Resources */ = {isa = PBXBuildFile; fileRef = 51F674DE17AEB1A7005E3384 /* Centrale-Supelec.json */; };
+		51F674E117AEB1AB005E3384 /* Centrale-Supelec_old.json in Resources */ = {isa = PBXBuildFile; fileRef = 51F674E017AEB1AB005E3384 /* Centrale-Supelec_old.json */; };
 		9127A147167D36FD00D1EB09 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A146167D36FD00D1EB09 /* UIKit.framework */; };
 		9127A149167D36FD00D1EB09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A148167D36FD00D1EB09 /* Foundation.framework */; };
 		9127A14B167D36FD00D1EB09 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9127A14A167D36FD00D1EB09 /* CoreGraphics.framework */; };
@@ -247,6 +253,13 @@
 		3FF0B44F16C6949D00E07D0E /* FileManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManagerViewController.m; sourceTree = "<group>"; };
 		3FFA184B16C02B8000D6E085 /* NewsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackground.png; sourceTree = "<group>"; };
 		3FFA184C16C02B8000D6E085 /* NewsBackgroundHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NewsBackgroundHighlighted.png; sourceTree = "<group>"; };
+		51DAAB6A17AE785F00A47B0A /* matieresConcours.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = matieresConcours.json; sourceTree = "<group>"; };
+		51DAAB6C17AE789500A47B0A /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
+		51DAAB6D17AE789500A47B0A /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		51F674DA17AEB19E005E3384 /* Mines-Ponts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Mines-Ponts.json"; sourceTree = "<group>"; };
+		51F674DC17AEB1A3005E3384 /* CCP.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CCP.json; sourceTree = "<group>"; };
+		51F674DE17AEB1A7005E3384 /* Centrale-Supelec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Centrale-Supelec.json"; sourceTree = "<group>"; };
+		51F674E017AEB1AB005E3384 /* Centrale-Supelec_old.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Centrale-Supelec_old.json"; sourceTree = "<group>"; };
 		9127A142167D36FD00D1EB09 /* SetC : SujetsetCorriges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SetC : SujetsetCorriges.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9127A146167D36FD00D1EB09 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9127A148167D36FD00D1EB09 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -442,6 +455,18 @@
 			name = "Modules externes";
 			sourceTree = "<group>";
 		};
+		51DAAB6917AE785700A47B0A /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				51DAAB6A17AE785F00A47B0A /* matieresConcours.json */,
+				51F674DA17AEB19E005E3384 /* Mines-Ponts.json */,
+				51F674DC17AEB1A3005E3384 /* CCP.json */,
+				51F674DE17AEB1A7005E3384 /* Centrale-Supelec.json */,
+				51F674E017AEB1AB005E3384 /* Centrale-Supelec_old.json */,
+			);
+			name = Documents;
+			sourceTree = "<group>";
+		};
 		9127A137167D36FD00D1EB09 = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +504,7 @@
 		9127A14C167D36FD00D1EB09 /* SetC : SujetsetCorriges */ = {
 			isa = PBXGroup;
 			children = (
+				51DAAB6917AE785700A47B0A /* Documents */,
 				51DAAB6817AE57E500A47B0A /* Modules externes */,
 				9127A177167D370B00D1EB09 /* Actualité */,
 				9127A1A6167D46AF00D1EB09 /* Sujets et Corriges */,
@@ -703,6 +729,8 @@
 				91C19615171898A500FD570E /* OptionsViews */,
 				9127A1FD167DFF8100D1EB09 /* SimuListViewController.h */,
 				9127A1FE167DFF8100D1EB09 /* SimuListViewController.m */,
+				51DAAB6C17AE789500A47B0A /* NotesViewController.h */,
+				51DAAB6D17AE789500A47B0A /* NotesViewController.m */,
 			);
 			name = Simulateurs;
 			sourceTree = "<group>";
@@ -973,6 +1001,11 @@
 				3F9C7550174976C300515282 /* ToolBarViewer@2x.png in Resources */,
 				3F9C755717497EC300515282 /* ConcoursList.png in Resources */,
 				3F9C755817497EC300515282 /* ConcoursList@2x.png in Resources */,
+				51DAAB6B17AE785F00A47B0A /* matieresConcours.json in Resources */,
+				51F674DB17AEB19E005E3384 /* Mines-Ponts.json in Resources */,
+				51F674DD17AEB1A3005E3384 /* CCP.json in Resources */,
+				51F674DF17AEB1A7005E3384 /* Centrale-Supelec.json in Resources */,
+				51F674E117AEB1AB005E3384 /* Centrale-Supelec_old.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +1055,7 @@
 				91FF217E1724036200B3FB52 /* BacView.m in Sources */,
 				3FE0AA1F173820040008F397 /* SujetsCorrigesNavController.m in Sources */,
 				3F89978B173AC68A0090DE37 /* ActuNavController.m in Sources */,
+				51DAAB6E17AE789500A47B0A /* NotesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,8 +1098,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1080,8 +1114,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1096,8 +1130,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1105,8 +1139,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1116,15 +1150,15 @@
 		9127A175167D36FD00D1EB09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Prefix.pch";
 				INFOPLIST_FILE = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1133,15 +1167,15 @@
 		9127A176167D36FD00D1EB09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mestiri Hedi (23EZE4M6FS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Prefix.pch";
 				INFOPLIST_FILE = "SetC : SujetsetCorriges/SetC : SujetsetCorriges-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B2894A1-30CD-4B77-9D9D-4772A521B8EA";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

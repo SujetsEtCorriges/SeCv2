@@ -1,0 +1,332 @@
+{
+    "MP": {
+	    "matieres" : [
+	      {
+	        "nom": "Mathématiques I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 12,
+		        	"Centrale Nantes" : 10,
+		        	"Centrale Marseille" : 12,
+		        	"Supélec" : 12,
+		        	"SupOptique" : 12
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Mathématiques II",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 12,
+		        	"Centrale Nantes" : 10,
+		        	"Centrale Marseille" : 12,
+		        	"Supélec" : 12,
+		        	"SupOptique" : 12
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Physique",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 7,
+		        	"Centrale Lyon" : 8,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 7,
+		        	"Centrale Marseille" : 9,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 10
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Physique - Chimie",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 7,
+		        	"Centrale Lyon" : 8,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 7,
+		        	"Centrale Marseille" : 9,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 10
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Informatique ou S2I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 8,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 7,
+		        	"Centrale Nantes" : 10,
+		        	"Centrale Marseille" : 10,
+		        	"Supélec" : 6,
+		        	"SupOptique" : 8
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Rédaction",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 11,
+		        	"Centrale Nantes" : 11,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 11
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Langue vivante I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 6,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 7,
+		        	"Centrale Marseille" : 8,
+		        	"Supélec" : 8,
+		        	"SupOptique" : 8
+	        	}
+	        ]
+	      }
+	    ],
+	    "bonification" : 80
+    },
+    "PC": {
+	    "matieres" : [
+	      {
+	        "nom": "Mathématiques I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 8,
+		        	"Centrale Lyon" : 8,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 8,
+		        	"Centrale Marseille" : 9,
+		        	"Supélec" : 9,
+		        	"SupOptique" : 10
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Mathématiques II",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 8,
+		        	"Centrale Lyon" : 8,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 8,
+		        	"Centrale Marseille" : 9,
+		        	"Supélec" : 9,
+		        	"SupOptique" : 10
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Physique I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 12,
+		        	"Centrale Nantes" : 11,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 13,
+		        	"SupOptique" : 13
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Physique II",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 12,
+		        	"Centrale Nantes" : 11,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 13,
+		        	"SupOptique" : 13
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Chimie",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 6,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 7,
+		        	"Centrale Nantes" : 6,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 6,
+		        	"SupOptique" : 6
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Rédaction",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 11,
+		        	"Centrale Nantes" : 11,
+		        	"Centrale Marseille" : 10,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 11
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Langue vivante I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 6,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 7,
+		        	"Centrale Marseille" : 7,
+		        	"Supélec" : 8,
+		        	"SupOptique" : 8
+	        	}
+	        ]
+	      }
+	    ],
+	    "bonification" : 80
+    },
+    "PSI": {
+	    "matieres" : [
+	      {
+	        "nom": "Mathématiques I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 8,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 9,
+		        	"Centrale Nantes" : 8,
+		        	"Centrale Marseille" : 9,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 10
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Mathématiques II",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 8,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 9,
+		        	"Centrale Nantes" : 8,
+		        	"Centrale Marseille" : 9,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 10
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Physique",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 10,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 11,
+		        	"Centrale Nantes" : 10,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 11,
+		        	"SupOptique" : 12
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Physique - Chimie",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 10,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 11,
+		        	"Centrale Nantes" : 10,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 11,
+		        	"SupOptique" : 12
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "S2I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 8,
+		        	"Centrale Lyon" : 9,
+		        	"Centrale Lille" : 7,
+		        	"Centrale Nantes" : 8,
+		        	"Centrale Marseille" : 10,
+		        	"Supélec" : 8,
+		        	"SupOptique" : 8
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Rédaction",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 11,
+		        	"Centrale Lyon" : 10,
+		        	"Centrale Lille" : 11,
+		        	"Centrale Nantes" : 11,
+		        	"Centrale Marseille" : 11,
+		        	"Supélec" : 10,
+		        	"SupOptique" : 11
+	        	}
+	        ]
+	      },
+	      {
+	        "nom": "Langue vivante I",
+	        "obligatoire": 1,
+	        "coefficient": [
+	        	{
+		        	"Centrale Paris" : 6,
+		        	"Centrale Lyon" : 7,
+		        	"Centrale Lille" : 8,
+		        	"Centrale Nantes" : 7,
+		        	"Centrale Marseille" : 7,
+		        	"Supélec" : 8,
+		        	"SupOptique" : 6
+	        	}
+	        ]
+	      }
+	    ],
+	    "bonification" : 80
+    }
+}

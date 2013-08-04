@@ -44,19 +44,19 @@
 - (IBAction)valueChanged:(id)sender
 {
     UISegmentedControl *sg = (UISegmentedControl *)sender;
-    NSString *statut;
+    BOOL statut;
     
     switch (sg.selectedSegmentIndex)
     {
         case 0:
-            statut = @"3/2";
+            statut = NO;
             break;
         case 1:
-            statut = @"5/2";
+            statut = YES;
             break;
     }
     
-    [self.delegate statutCPGEChanged:statut];
+    [self.delegate redoublant:statut];
 }
 
 

@@ -1,0 +1,20 @@
+{
+    "Centrale-Supelec": {
+        "MP" : ["Mathématiques I","Mathématiques II", "Physique", "Physique - Chimie", "Informatique ou S2I", "Rédaction", "Langue vivante I"],
+        "PC" : ["Mathématiques I","Mathématiques II", "Physique I", "Physique II", "Chimie", "Rédaction", "Informatique ou S2I", "Langue vivante I"],
+        "PSI" : ["Mathématiques I","Mathématiques II", "Physique", "Physique - Chimie", "S2I", "Rédaction", "Langue vivante I"]
+    },
+    "Mines-Ponts": {
+        "MP" : ["Mathématiques I","Mathématiques II", "Physique I", "Physique II", "Chimie", "Informatique ou SI", "Français", "Langue vivante"],
+        "PC" : ["Mathématiques I","Mathématiques II", "Physique I", "Physique II", "Chimie", "Français", "Langue vivante"],
+        "PSI" : ["Mathématiques I","Mathématiques II", "Physique", "Physique - Chimie", "SI", "Français", "Langue vivante"]
+    },
+    "CCP": {
+        "MP" : ["Mathématiques 1","Mathématiques 2", "Physique 1", "Physique 2", "Chimie", "Informatique ou SI", "Français", "Langue vivante", "Langue vivante falcultative"],
+        "PC" : ["Mathématiques 1","Mathématiques 2", "Physique 1", "Physique 2", "Chimie 1", "Chimie 2", "Français", "Langue vivante", "Langue vivante falcultative"],
+        "PSI" : ["Mathématiques 1","Mathématiques 2", "Physique 1", "Physique 2", "SI", "Français", "Langue vivante", "Langue vivante falcultative"]
+    },
+    "Banque PT": {
+        "PT" : ["Mathématiques A","Mathématiques B", "Mathématiques C", "Physique A", "Physique B", "Physique C", "Sciences Industrielles A", "Sciences Industrielles B", "Sciences Industrielles C", "Langue vivante A", "Langue vivante B"]
+    }
+}
