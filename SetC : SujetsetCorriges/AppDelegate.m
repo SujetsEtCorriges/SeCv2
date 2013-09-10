@@ -22,15 +22,26 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
         (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     
-    UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
+    UIImage* tabBarBackground = [UIImage imageNamed:@"TabBar2.png"];
     [[UITabBar appearance] setBackgroundImage:tabBarBackground];
-    
-    
-    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-active.png"]];
+    //[[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar-active.png"]];
+    [[UITabBar appearance] setSelectionIndicatorImage:[[UIImage alloc] init]];
+    [[UITabBarItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor lightGrayColor], UITextAttributeTextColor,
+      [UIFont fontWithName:@"Helvetica Neue" size:9.0], UITextAttributeFont,
+      nil]
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor colorWithRed:10/255.0f green:164/255.0f blue:252/255.0f alpha:1], UITextAttributeTextColor,
+      [UIFont fontWithName:@"Helvetica Neue" size:9.0], UITextAttributeFont,
+      nil]
+                                             forState:UIControlStateHighlighted];
     
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

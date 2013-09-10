@@ -67,6 +67,13 @@
 		3F9C7550174976C300515282 /* ToolBarViewer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C754E174976C300515282 /* ToolBarViewer@2x.png */; };
 		3F9C755717497EC300515282 /* ConcoursList.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C755517497EC300515282 /* ConcoursList.png */; };
 		3F9C755817497EC300515282 /* ConcoursList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F9C755617497EC300515282 /* ConcoursList@2x.png */; };
+		3FC9DF0F17DFCF4C005FB165 /* TabBar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9DF0D17DFCF4B005FB165 /* TabBar2.png */; };
+		3FC9DF1017DFCF4C005FB165 /* TabBar2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9DF0E17DFCF4C005FB165 /* TabBar2@2x.png */; };
+		3FC9DF1517DFD527005FB165 /* 16-line-chart-inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9DF1117DFD526005FB165 /* 16-line-chart-inv.png */; };
+		3FC9DF1617DFD527005FB165 /* 16-line-chart-inv@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9DF1217DFD526005FB165 /* 16-line-chart-inv@2x.png */; };
+		3FC9DF1717DFD527005FB165 /* 16-line-chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9DF1317DFD527005FB165 /* 16-line-chart.png */; };
+		3FC9DF1817DFD527005FB165 /* 16-line-chart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9DF1417DFD527005FB165 /* 16-line-chart@2x.png */; };
+		3FC9DF1E17DFDAA3005FB165 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9DF1D17DFDAA3005FB165 /* TabBarController.m */; };
 		3FE0AA1F173820040008F397 /* SujetsCorrigesNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE0AA1E173820040008F397 /* SujetsCorrigesNavController.m */; };
 		3FE485E21741888100510A4B /* Twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE485E11741888100510A4B /* Twitter@2x.png */; };
 		3FE485E417418AA100510A4B /* Facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE485E317418AA100510A4B /* Facebook@2x.png */; };
@@ -241,6 +248,14 @@
 		3F9C754E174976C300515282 /* ToolBarViewer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolBarViewer@2x.png"; sourceTree = "<group>"; };
 		3F9C755517497EC300515282 /* ConcoursList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConcoursList.png; sourceTree = "<group>"; };
 		3F9C755617497EC300515282 /* ConcoursList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ConcoursList@2x.png"; sourceTree = "<group>"; };
+		3FC9DF0D17DFCF4B005FB165 /* TabBar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabBar2.png; sourceTree = "<group>"; };
+		3FC9DF0E17DFCF4C005FB165 /* TabBar2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TabBar2@2x.png"; sourceTree = "<group>"; };
+		3FC9DF1117DFD526005FB165 /* 16-line-chart-inv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart-inv.png"; sourceTree = "<group>"; };
+		3FC9DF1217DFD526005FB165 /* 16-line-chart-inv@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart-inv@2x.png"; sourceTree = "<group>"; };
+		3FC9DF1317DFD527005FB165 /* 16-line-chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart.png"; sourceTree = "<group>"; };
+		3FC9DF1417DFD527005FB165 /* 16-line-chart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "16-line-chart@2x.png"; sourceTree = "<group>"; };
+		3FC9DF1C17DFDAA3005FB165 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		3FC9DF1D17DFDAA3005FB165 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		3FE0AA1D173820040008F397 /* SujetsCorrigesNavController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SujetsCorrigesNavController.h; sourceTree = "<group>"; };
 		3FE0AA1E173820040008F397 /* SujetsCorrigesNavController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SujetsCorrigesNavController.m; sourceTree = "<group>"; };
 		3FE485E11741888100510A4B /* Twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Twitter@2x.png"; sourceTree = "<group>"; };
@@ -512,6 +527,8 @@
 				3FF0B44D16C6947300E07D0E /* Gestionnaire de fichiers */,
 				9127A155167D36FD00D1EB09 /* AppDelegate.h */,
 				9127A156167D36FD00D1EB09 /* AppDelegate.m */,
+				3FC9DF1C17DFDAA3005FB165 /* TabBarController.h */,
+				3FC9DF1D17DFDAA3005FB165 /* TabBarController.m */,
 				9127A15E167D36FD00D1EB09 /* MainStoryboard_iPhone.storyboard */,
 				9127A161167D36FD00D1EB09 /* MainStoryboard_iPad.storyboard */,
 				9127A179167D376700D1EB09 /* Images */,
@@ -565,6 +582,12 @@
 				9185EE0D17220A480014CC63 /* Partage Icons */,
 				3F07EDE31721FCCC003ACDEC /* Mini Icons */,
 				3F1D769B16C819F900020FDC /* sectionCCP.png */,
+				3FC9DF1117DFD526005FB165 /* 16-line-chart-inv.png */,
+				3FC9DF1217DFD526005FB165 /* 16-line-chart-inv@2x.png */,
+				3FC9DF1317DFD527005FB165 /* 16-line-chart.png */,
+				3FC9DF1417DFD527005FB165 /* 16-line-chart@2x.png */,
+				3FC9DF0D17DFCF4B005FB165 /* TabBar2.png */,
+				3FC9DF0E17DFCF4C005FB165 /* TabBar2@2x.png */,
 				3F9C755517497EC300515282 /* ConcoursList.png */,
 				3F9C755617497EC300515282 /* ConcoursList@2x.png */,
 				3F9C754D174976C300515282 /* ToolBarViewer.png */,
@@ -1006,6 +1029,12 @@
 				51F674DD17AEB1A3005E3384 /* CCP.json in Resources */,
 				51F674DF17AEB1A7005E3384 /* Centrale-Supelec.json in Resources */,
 				51F674E117AEB1AB005E3384 /* Centrale-Supelec_old.json in Resources */,
+				3FC9DF0F17DFCF4C005FB165 /* TabBar2.png in Resources */,
+				3FC9DF1017DFCF4C005FB165 /* TabBar2@2x.png in Resources */,
+				3FC9DF1517DFD527005FB165 /* 16-line-chart-inv.png in Resources */,
+				3FC9DF1617DFD527005FB165 /* 16-line-chart-inv@2x.png in Resources */,
+				3FC9DF1717DFD527005FB165 /* 16-line-chart.png in Resources */,
+				3FC9DF1817DFD527005FB165 /* 16-line-chart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1085,7 @@
 				3FE0AA1F173820040008F397 /* SujetsCorrigesNavController.m in Sources */,
 				3F89978B173AC68A0090DE37 /* ActuNavController.m in Sources */,
 				51DAAB6E17AE789500A47B0A /* NotesViewController.m in Sources */,
+				3FC9DF1E17DFDAA3005FB165 /* TabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
