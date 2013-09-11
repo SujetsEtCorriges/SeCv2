@@ -32,6 +32,8 @@
     UITabBarItem *item1 = [self.tabBar.items objectAtIndex:1];
     UITabBarItem *item2 = [self.tabBar.items objectAtIndex:2];
     
+    [item0 setFinishedSelectedImage:[UIImage imageNamed:@"166-newspaper-inv.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"166-newspaper.png"]];
+    [item2 setFinishedSelectedImage:[UIImage imageNamed:@"16-line-chart-inv.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"16-line-chart.png"]];
     [item2 setFinishedSelectedImage:[UIImage imageNamed:@"16-line-chart-inv.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"16-line-chart.png"]];
 }
 
